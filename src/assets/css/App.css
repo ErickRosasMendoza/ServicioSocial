@@ -10,13 +10,15 @@ body{
 }
 
 #header{
- 
-  height: 150px;
+  height: 160px;
   width: 100%;
-  background-color: white;
-  border-bottom: 1px solid #ccc;
-  border-top: 5px solid #53cff1;
-
+  background-color: #f5f5f0;
+  border-bottom: 5px solid #812121;
+  border-top: 5px solid #812121;
+  display: block;
+  float: center;
+  color:  #812121;
+  font-size: 30px;
 }
 .center{
   width: 100%;
@@ -28,17 +30,21 @@ body{
 }
 
 #logo{
-  width: 70%;
-  font-size: 25px;
+  margin-top: 5px;
+  width: 12%;
   float: left;
   margin-left: 10px;
+}
+#logo2{
+  margin-top: 5px;
+  width: 8%;
+  float: right;
+  margin-right: 10px;
 }
 #logo img{
   margin-top: 25px;
   float: left;
   height: 60px;
-  animation: girar infinite 20s linear;
-
 }
 @keyframes girar{
   form{
@@ -52,8 +58,9 @@ body{
 }
 #brand{
   display: block;
-  margin: 2px;
-  float: left;
+  text-align: center;
+  color:  #812121;
+  font-size: 30px;
 }
 #menu{
   margin-top: -80px;
