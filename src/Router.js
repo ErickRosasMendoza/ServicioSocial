@@ -20,6 +20,7 @@ import Search from './components/Search';
 import CreateArticle from './components/CreateArticle';
 import CreateUsuario from './components/CreateUsuario';
 import ClienteDetalle from './components/ClienteDetalle';
+import HeaderDEyAE from './components/HeaderDEyAE';
 
 
 
@@ -32,7 +33,7 @@ class Router extends React.Component {
 
             <BrowserRouter>
 
-                <Header />
+                <HeaderDEyAE />
 
                 
                 {/**CONFIGURAR RUTAS Y PAGINAS  */}
