@@ -8,10 +8,12 @@ class HeaderDEyAE extends React.Component{
     render(){
         return(
             <header id = "header">
-			<div><img src={logo} id="logo" alt="esime" /><img src={logo2} id="logo2" alt="politecnico" /><strong>Escuela Superior de Ingeniería Mecánica y Eléctrica Zacatenco<br></br>
+			<div><img src={logo} id="logo" alt="esime" /><img src={logo2} id="logo2" alt="politecnico" /></div>
+                <div>
+               <strong>Escuela Superior de Ingeniería Mecánica y Eléctrica Zacatenco<br></br>
 				Oficina de Servicio Social<br></br>
 				Departamento de Extensión y Apoyos Educativos</strong>
-				</div>
+                </div>	
 		</header>
         );//Fin de Return
     }//Fin de Render
