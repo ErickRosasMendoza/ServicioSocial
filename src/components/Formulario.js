@@ -4,12 +4,9 @@ import SideBar from './SideBar';
 
 class Formulario extends React.Component {
 
-    nombreRef = React.createRef();
-    apellidosRef = React.createRef();
-    descripcionRef = React.createRef();
-    hombreRef = React.createRef();
-    mujerRef = React.createRef();
-    otroRef = React.createRef();
+    mailRef = React.createRef();
+    contraseñaRef = React.createRef();
+
 
     state = {
         user:{}
@@ -21,20 +18,11 @@ class Formulario extends React.Component {
         evento.preventDefault();
        
       
-        var genero = 'hombre';
 
-        if(this.hombreRef.current.checked){
-            genero = this.hombreRef.current.value;
-        }else if(this.mujerRef.current.checked){
-            genero = this.mujerRef.current.value;
-        }else {genero= this.otroRef.current.value;
-        }
         
         var user = {
-            nombre:this.nombreRef.current.value,
-            apellidos:this.apellidosRef.current.value,
-            descripcion:this.descripcionRef.current.value,
-            genero:genero
+            mail:this.mailRef.current.value,
+            contraseña:this.contraseñaRef.current.value,
         };
         console.log(user);
         this.setState({
@@ -49,7 +37,7 @@ class Formulario extends React.Component {
 
     render() {
         console.log(this.props)
-        if(this.state.user.nombre){
+        if(this.state.user.contraseña){
             var user = this.state.user;
         }
 
@@ -59,8 +47,8 @@ class Formulario extends React.Component {
             <form id="formulario" onSubmit={this.recibirFormulario} onChange = {this.recibirFormulario}  >
                  { this.state.user.nombre &&
                 <div id = "user-data">
-                <p><strong>Nombre: {user.nombre}</strong></p>
-                <p><strong>Apellidos: {user.apellidos}</strong></p>
+                <p><strong>e-mail: {user.mail}</strong></p>
+                <p><strong>contraseña: {user.contraseña}</strong></p>
                 <p><strong>Descripcion: {user.descripcion}</strong></p>
                 <p><strong>Genero: {user.genero}</strong></p>
                 </div>
@@ -68,7 +56,7 @@ class Formulario extends React.Component {
             }
 
                 <Slider
-                    title="Formulario"
+                    title="iniciar sessión"
 
                     size="slider-small"
                 />
@@ -79,33 +67,20 @@ class Formulario extends React.Component {
 
 
                     <div className="form-group" >
-                        <label htmlFor="nombre" >Nombre</label><br />
-                        <input type="text" name="nombre" ref={this.nombreRef} />
+                        <label htmlFor="mail" >E-mail</label><br />
+                        <input type="text" name="mail" ref={this.mailRef} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="apellidos" >Apellidos</label><br />
-                        <input type="text" name="apellidos"  ref={this.apellidosRef} />
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="descripcion" >Descripcion</label><br />
-                        <textarea name="descripcion" ref={this.descripcionRef}></textarea>
+                        <label htmlFor="contraseña" >Contraseña</label><br />
+                        <input type="text" name="contraseña"  ref={this.contraseñaRef} />
                     </div>
 
 
-                    <div className="form-radio">
-                        <label htmlFor="genero">Género</label><br />
 
-
-                        <input type="radio" value="hombre" ref={this.hombreRef} />hombre<br />
-                        <input type="radio" value="mujer" ref={this.mujerRef}/>mujer<br />
-                        <input type="radio" value="otro" ref={this.otroRef} />otro
-
-				    </div >
 
                     <br />
-                    <input type="submit" value="Enviar" className="btn btn-success form-radio" />
+                    <input type="submit" value="Aceptar" className="btn btn-success form-radio" />
 
 
 

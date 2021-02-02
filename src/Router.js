@@ -39,7 +39,7 @@ class Router extends React.Component {
                 {/**CONFIGURAR RUTAS Y PAGINAS  */}
                 
                 <Switch>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" component={Formulario} />
                     <Route exact path="/home" component={Home} />
                     <Route exact path = "/formulario" component = {Formulario}/>
                     <Route exact path="/segunda-ruta" component={MiComponente} />
@@ -86,31 +86,9 @@ class Router extends React.Component {
                 </Switch>
                
         <div className="clearfix"></div>
-       
-
-      
-       
-       
-      
-
-      
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          
-          
-          Learn React
-          
-          
-        </a>
-        
-    
-       
-      
+         
       <div className="clearfix"></div>
+      <br/>
       <Footer/>
 
 
