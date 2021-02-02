@@ -12,12 +12,12 @@ body{
 #header{
   height: 160px;
   width: 100%;
-  background-color: #f5f5f0;
+  background: radial-gradient(circle, rgb(243, 250, 223) 0%, rgba(255,255,255,1) 100%);
   border-bottom: 5px solid #812121;
   border-top: 5px solid #812121;
   display: block;
   float: center;
-  color:  #812121;
+ 
   font-size: 30px;
 }
 .center{
@@ -96,15 +96,15 @@ body{
   
 }
 #slider{
-  background: #1eb9e4;
+  background: #812121;
   width: 100%;
   height: 250px;
   /*line-height: 320px;*/
   color: white;
   text-shadow: 0px 0px 5px #444;
   /*degradado ccs*/
-  background: rgb(45,192,247);
-  background: radial-gradient(circle, rgba(45,192,247,1) 0%, rgba(255,255,255,1) 100%);
+  background: 812121(45,192,247);
+  background: radial-gradient(circle, 812121(45,192,247,1) 0%, rgba(255,255,255,1) 100%);
 
 }
 #slider h1{
@@ -137,13 +137,13 @@ body{
   color: white;
 }
 #slider.slider-small{
-  height: 150px;
+  height: 90px;
 }
 #slider.slider-small h1{
 
   margin-top: 0.1px;
   padding: 0px;
-  padding-top: 50px;
+  padding-top: 18px;
  
 }
 #content{
@@ -211,10 +211,10 @@ body{
 }
 
 .btn-success{
-  background:  #53cff1  ;
+  background:  #126c85  ;
 }
 .btn-success:hover{
-  background:  #126c85;
+  background:  #084758;
 
 }
 
