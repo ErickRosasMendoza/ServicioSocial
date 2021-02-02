@@ -12,13 +12,13 @@ body{
 #header{
   height: 160px;
   width: 100%;
-  background: radial-gradient(circle, rgb(243, 250, 223) 0%, rgba(255,255,255,1) 100%);
+  background: radial-gradient(circle, #e6e6e6 0%, rgba(255,255,255,1) 100%);
   border-bottom: 5px solid #812121;
   border-top: 5px solid #812121;
   display: block;
   float: center;
- 
   font-size: 30px;
+  color: #812121;
 }
 .center{
   width: 100%;
@@ -63,10 +63,10 @@ body{
   font-size: 30px;
 }
 #menu{
-  margin-top: -80px;
-  width: 60%;
+  margin-top: -50px;
+  width: 25%;
   float: right;
-  font-size: 20px;
+  font-size: 26px;
 }
 #menu ul{
   line-height:80px;
@@ -83,16 +83,18 @@ body{
  
 }
 #menu a{
-  text-decoration: none;
-  color: #444;
-  transition: 300ms all;
+ 
+  color: rgb(255, 255, 255);
+  transition: 200ms all;
+  margin-left: 100px;
+
 }
 #menu a:hover{
-  color:  #1eb9e4;
+  color:  #ecc5c5;
 }
 .active{
 
-  border-bottom: 2px solid  #1eb9e4;
+  border-bottom: 2px solid  #a50b0b;
   
 }
 #slider{

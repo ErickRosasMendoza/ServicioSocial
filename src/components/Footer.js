@@ -7,7 +7,7 @@ import React from 'react';
             <footer id="footer">
 			<div className="center">
 				<p>
-					&copy;EQUIPO CHINGON!
+					&copy;ESIMEZ
 				</p>
 			</div>
 		</footer>
