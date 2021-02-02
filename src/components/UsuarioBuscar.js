@@ -2,66 +2,53 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-class Clientes extends React.Component {
+class UsuarioBuscar extends React.Component {
 
     state = {
-        clientes: [],
+        usuarioBuscar: [],
         status: null
     };
 
     componentWillMount() {
-        this.getClientes();
+        this.getUsuariosBuscar();
     }
 
-    getClientes = () => {
+    getUsuarioBuscar = () => {
 
-       
-
-        axios.get("http://localhost:8080/cliente/findAll")
+        axios.get("http://localhost:8080/usuario/findAll")
             .then(response => {
                 this.setState({
-                    clientes: response.data,
+                    usuarioBuscar: response.data,
                     status: "true"
                 });
-                console.log(this.state.clientes);
+                console.log(this.state.usuarioBuscar);
             });
     }
 
     render() {
-
-
-
         return (
             <React.Fragment>
-
                 <article className="item-lista">
                     <tbody >
                         <tr >
-                            <th className="table" >  Id </th>
-                            <th className="table">Nombre </th>
+                            <th className="table">Correo</th>
                         </tr>
                     </tbody>
 
-                    {this.state.clientes.map((cliente, i) =>
+                    {this.state.map((usuarioBuscar, i) =>
 
                         <tbody key={i}>
                             <tr>
-                                <td className="table"> {cliente.idCliente}</td>
-                              
-                               <td className="table"> <Link to={'/blog/clienteDetalle/' + cliente.idCliente} 
-                               >   {cliente.nombre} </Link></td>
+                                <td className="table"> {usuarioBuscar.email}</td>
                             </tr>
                         </tbody>
                     )
 
                     }
-
-
-
                 </article>
             </React.Fragment>
         );
     }
 }
 
-export default Clientes;
+export default UsuarioBuscar;

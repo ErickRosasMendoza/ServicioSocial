@@ -21,7 +21,8 @@ import CreateArticle from './components/CreateArticle';
 import CreateUsuario from './components/CreateUsuario';
 import ClienteDetalle from './components/ClienteDetalle';
 import HeaderDEyAE from './components/HeaderDEyAE';
-
+import Usuario from './components/Usuario';
+import DirectorioAdmin from './components/DirectorioAdmin';
 
 
 
@@ -49,7 +50,8 @@ class Router extends React.Component {
                     <Route exact path = "/peliculas/reseña/:id" component = {PeliculaReseña}/>
                     <Route exact path = "/blog/crear" component = {CreateUsuario}/>
                     <Route exact path = "/blog/clienteDetalle/:id" component = {ClienteDetalle}/>
-             
+                    <Route exact path = "/usuario" component = {Usuario}/>
+                    <Route exact path = "/DirectorioAdmin" component = {DirectorioAdmin}/>
 
 
                     {/**CONFIGURAR RUTAS Y PAGINAS usando render y props*/}
