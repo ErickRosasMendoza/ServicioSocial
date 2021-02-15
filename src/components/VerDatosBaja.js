@@ -33,7 +33,6 @@ class VerDatosBaja extends React.Component{
             if(this.state.tipoBaja.egresado == false){
                 return(
                     <div className="center">
-                    <section id="content">
                             <div id="sidebar" className="bajaCenter">
                                 <div className="text_login">
                                    Registro de Servicio Social: {this.state.tipoBaja.registroSS}
@@ -62,13 +61,11 @@ class VerDatosBaja extends React.Component{
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
                             </div>          
-                    </section>
                 </div>
                 );
             }else{
                 return(
                     <div className="center">
-                    <section id="content">
                             <div id="sidebar" className="bajaCenter">
                                 <div className="text_login">
                                    Registro de Servicio Social: {this.state.tipoBaja.registroSS}
@@ -94,20 +91,17 @@ class VerDatosBaja extends React.Component{
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
                             </div>          
-                    </section>
                 </div>
                 );
             }//Fin de else egresado
         }else{
             return(
                 <div className="center">
-                <section id="content">
                         <div id="sidebar" className="bajaCenter">
                             <div className="text_login">
                                 No tienes datos disponibles, registralos para empezar con tu documentación BAJA DE SERVICIO SOCIAL.
                             </div>
                         </div>          
-                </section>
             </div>
             );
         }//Fin de else status == 'success'

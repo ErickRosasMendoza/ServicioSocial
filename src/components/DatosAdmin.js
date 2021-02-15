@@ -80,7 +80,6 @@ class DatosAdmin extends React.Component {
 
         return (
             <div className = "center">
-                <section id = "content">
                     <Slider
                         title="REGISTRARSE"
                         size="slider-small"
@@ -101,7 +100,6 @@ class DatosAdmin extends React.Component {
                         <br/>
                         <button  className = "btn" onClick = {this.saveAdmin}>Aceptar</button>
                     </div>
-                </section>
             </div>
         );
     }

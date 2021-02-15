@@ -32,7 +32,6 @@ class VerDatosServicio extends React.Component{
         if(this.state.status == 'success'){
             return(
                 <div className="center">
-                <section id="content">
                         <div id="sidebar" className="servicioCenter">
                             <div className="text_login">
                                 Responsable Directo: {this.state.servicio.responsableDirecto}
@@ -43,19 +42,16 @@ class VerDatosServicio extends React.Component{
                             <br/>
                             <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
                         </div>          
-                </section>
             </div>
             );
         }else{ 
             return(
                 <div className="center">
-                <section id="content">
                         <div id="sidebar" className="servicioCenter">
                             <div className="text_login">
                                 No tienes datos disponibles, registralos para empezar con tu documentación SERVICIO SOCIAL.
                             </div>
                         </div>          
-                </section>
             </div>
             );
         }//Fin de else status == 'success'

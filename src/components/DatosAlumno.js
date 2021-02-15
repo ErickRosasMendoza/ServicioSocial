@@ -91,7 +91,6 @@ class DatosAlumno extends React.Component {
 
         return (
             <div className = "center">
-            <section id = "content">
                 <Slider
                     title="REGISTRARSE"
                     size="slider-small"
@@ -132,7 +131,6 @@ class DatosAlumno extends React.Component {
                     <br/>
                     <button  className = "btn" onClick = {this.saveAlumno}>Aceptar</button>
                     </div>
-            </section>
         </div>
         );
     }

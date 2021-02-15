@@ -65,7 +65,6 @@ class Dictamen extends React.Component {
             size="slider-small"
             />
                 <DirectorioAlumno />
-                <section id="content">
                         <div id="sidebar" className="dictamenLeft">
                             <div>
                                 <label htmlFor="creditos" className="text_login">Porcentaje de Creditos</label>
@@ -84,7 +83,6 @@ class Dictamen extends React.Component {
                           </div>
                        <SubirDictamen/>
                        <VerDatosDictamen/>
-                </section>
             </div>
         );
     }

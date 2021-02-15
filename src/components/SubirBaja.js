@@ -93,7 +93,6 @@ class SubirBaja extends React.Component {
         if(this.state.listar.length >=1){
         return (
             <div className="center">
-                <section id="content">
                         <div id="sidebar" className="bajaRight">
                             <div>
                                     {this.state.listar.map((lista1, i) =>
@@ -116,13 +115,11 @@ class SubirBaja extends React.Component {
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>
                         </div>           
-                </section>
             </div>
         );
     }else if(this.state.listar.length == 0){
         return (
             <div className="center">
-                <section id="content">
                         <div id="sidebar" className="bajaRight">
                             <div>
                                 Aun no hay archivos guardados
@@ -131,13 +128,11 @@ class SubirBaja extends React.Component {
                             <br/>
                             <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>
                         </div>           
-                </section>
             </div>
         );
     }else{
         return (
             <div className="center">
-                <section id="content">
                         <div id="sidebar" className="bajaRight">
                             <div>
                                 Cargando... Espere un momento
@@ -146,7 +141,6 @@ class SubirBaja extends React.Component {
                             <br/>
                             <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>
                         </div>           
-                </section>
             </div>
         );
     }

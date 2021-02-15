@@ -72,7 +72,6 @@ render() {
        return (
         <React.Fragment>
             <DirectorioAdmin />
-            <article>
                 <tbody >
                     <tr >
                         <th className="table">Nombre</th>
@@ -94,7 +93,6 @@ render() {
                 </tbody>
                 )
                 }
-            </article>
         </React.Fragment>
     );
     }else if(this.state.alumnos.length === 0 && this.state.status === 'success'){

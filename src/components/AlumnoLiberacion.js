@@ -127,20 +127,16 @@ class AlumnoLiberacion extends React.Component{
         }else{
             return(
                 <div className="center">
-                <section id="content">
                         <div id="sidebar" className="dictamenCenter">
                             <div className="text_login">
                                 No tienes datos disponibles, registralos para empezar con tu documentación de DICTAMEN DE MENOS DE 70% DE CREDITOS.
                             </div>
                         </div>          
-                </section>
-                <section id="content">
                         <div id="sidebar" className="dictamenRicht">
                             <div className="text_login">
                                 No tienes datos disponibles, registralos para empezar con tu documentación de DICTAMEN DE MENOS DE 70% DE CREDITOS.
                             </div>
                         </div>          
-                </section>
             </div>
             );
         }

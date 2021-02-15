@@ -101,7 +101,6 @@ class Liberacion extends React.Component {
                 size="slider-small"
                 />
                 <DirectorioAlumno />
-                <section id="content">
                         <div id="sidebar" className="liberacionLeft">
                             <div>
                                <label htmlFor="registroSS" className="text_login">Número de Registro Servicio Social</label>
@@ -148,7 +147,6 @@ class Liberacion extends React.Component {
                           </div>
                           <SubirLiberacion/>
                           <VerDatosLiberacion/>
-                </section>
             </div>
         );
     }

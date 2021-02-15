@@ -96,7 +96,6 @@ class SubirDictamen extends React.Component {
         if(this.state.listar.length >=1){
             return (
                 <div className="center">
-                    <section id="content">
                             <div id="sidebar" className="dictamenRight">
                                 <div>
                                     {this.state.listar.map((lista1, i) =>
@@ -119,13 +118,11 @@ class SubirDictamen extends React.Component {
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
                             </div>
-                    </section>
                 </div>
             );
         }else if(this.state.listar.length == 0){
             return (
                 <div className="center">
-                    <section id="content">
                             <div id="sidebar" className="dictamenRight">
                                 <div>
                                     Aun no hay archivos guardados
@@ -134,13 +131,11 @@ class SubirDictamen extends React.Component {
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
                             </div>
-                    </section>
                 </div>
             );
         }else{
             return (
             <div className="center">
-                <section id="content">
                         <div id="sidebar" className="dictamenRight">
                             <div>
                                 Cargando... Espere un momento
@@ -149,7 +144,6 @@ class SubirDictamen extends React.Component {
                             <br/>
                             <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
                         </div>
-                </section>
             </div>
         );
     }
