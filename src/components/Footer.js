@@ -7,7 +7,7 @@ import React from 'react';
             <footer id="footer">
 			<div className="center">
 				<p>
-					&copy;Master en Frameworks para JavaScript
+					&copy;ESIMEZ
 				</p>
 			</div>
 		</footer>
