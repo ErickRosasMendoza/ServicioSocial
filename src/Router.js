@@ -45,7 +45,7 @@ import AlumnoServicio from './components/AlumnoServicio';
 class Router extends React.Component {
     render() {
         return (
-            <BrowserRouter>
+            <BrowserRouter >
                 {/**CONFIGURAR RUTAS Y PAGINAS  */}
                 <Switch>
                     <Route exact path="/" component={Home} />
@@ -90,10 +90,8 @@ class Router extends React.Component {
                 </Switch>
                
         <div className="clearfix"></div>
-    
-      <div className="clearfix"></div>
       <br/>
-      <Footer/>
+    { /* <Footer/>*/}
 
             </BrowserRouter>
         );

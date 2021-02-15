@@ -8,6 +8,7 @@ import Global from '../Global';
 import SubirDictamen from './SubirDictamen';
 import VerDatosDictamen from './VerDatosDictamen';
 import Cookies from 'universal-cookie';
+import Footer from './Footer';
 
 const cookies = new Cookies();
 
@@ -59,6 +60,7 @@ class Dictamen extends React.Component {
         }
 
         return (
+            <body className = "Luis">
             <div className="center">
             <Slider
             title="DOCUMENTACIÓN DICTAMEN DE MENOS DE 70% DE CREDITOS"
@@ -85,7 +87,10 @@ class Dictamen extends React.Component {
                        <SubirDictamen/>
                        <VerDatosDictamen/>
                 </section>
+                <Footer/>
             </div>
+            </body>
+            
         );
     }
 }
