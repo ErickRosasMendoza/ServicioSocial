@@ -61,10 +61,6 @@ class AlumnoBaja extends React.Component{
     render(){
             return(
                 <div className="center">
-                    <Slider
-                    title="DOCUMENTACIÓN BAJA DE SERVICIO SOCIAL"
-                    size="slider-small"
-                    />
                 <DirectorioAdmin />
                     <div id="sidebar" className="infoAdminLeft">
                         <div className="text_login">

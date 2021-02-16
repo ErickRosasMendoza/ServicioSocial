@@ -48,10 +48,6 @@ class CrearAdmin extends React.Component {
 
         return (
             <div className="center">
-                <Slider
-                    title="LISTA DE ALUMNOS"
-                    size="slider-small"
-                    />
                     <DirectorioAdmin />
                         <div id="sidebar" className="crearAdmin">
                             <div>

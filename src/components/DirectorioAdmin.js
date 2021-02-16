@@ -42,12 +42,12 @@ class DirectorioAdmin extends Component{
                             <th className="table"><div>
                                 <ul>
                                     <li>
-                                        <Link to='#' id="linea">Buscar Programa Academico</Link>
+                                        <Link to='#' className="active">Buscar Programa Academico</Link>
                                         <ul>
-                                            <li><Link to={'/BuscarICA'} id="linea">INGENIERÍA EN CONTROL Y AUTOMATIZACIÓN</Link></li>
-                                            <li><Link to={'/BuscarICE'} id="linea">INGENIERÍA EN COMUNICACIONES Y ELECTRÓNICA</Link></li>
-                                            <li><Link to={'/BuscarIE'} id="linea">INGENIERÍA ELÉCTRICA</Link></li>
-                                            <li><Link to={'/BuscarISISA'} id="linea">INGENIERÍA EN SISTEMAS AUTOMOTRICES</Link></li>
+                                            <li><Link to={'/BuscarICA'} className="active">INGENIERÍA EN CONTROL Y AUTOMATIZACIÓN</Link></li>
+                                            <li><Link to={'/BuscarICE'} className="active">INGENIERÍA EN COMUNICACIONES Y ELECTRÓNICA</Link></li>
+                                            <li><Link to={'/BuscarIE'} className="active">INGENIERÍA ELÉCTRICA</Link></li>
+                                            <li><Link to={'/BuscarISISA'} className="active">INGENIERÍA EN SISTEMAS AUTOMOTRICES</Link></li>
                                         </ul>
                                         </li>
                                     </ul>

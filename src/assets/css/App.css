@@ -159,6 +159,7 @@ div {
 .active{
   text-decoration: none;
   color: #a7a7a7;
+  line-height: inherit;
 }
 #slider{
   background: #343a40;
@@ -677,7 +678,7 @@ ul {
   padding: 0;
 }
 ul li {display: inline-block;}
-ul li:hover {background: #555;}
+ul li:hover {background:#343a40;}
 ul li:hover ul {display: block;}
 ul li ul {
   position: absolute;
@@ -685,11 +686,8 @@ ul li ul {
   display: none;
 }
 ul li ul li { 
-  background: #555; 
+  background: #343a40; 
   display: block; 
 }
 ul li ul li a {display:block !important;} 
-ul li ul li:hover {background: #666;}
-#alingTable{
-  margin-top: -100px;
-}
+ul li ul li:hover {background: #343a40;}

@@ -34,10 +34,6 @@ class BuscarISISA extends React.Component {
         if(this.state.programas.length >=1){
             return (
                 <div className="center">
-                <Slider
-                    title="LISTA DE ALUMNOS"
-                    size="slider-small"
-                    />
                     <DirectorioAdmin />
                                     <tbody >
                                         <tr >
@@ -64,10 +60,6 @@ class BuscarISISA extends React.Component {
         }else if(this.state.programas.length === 0 && this.state.status === 'true'){
             return (
                 <div className="center">
-                <Slider
-                    title="LISTA DE ALUMNOS"
-                    size="slider-small"
-                    />
                     <DirectorioAdmin />
                                     <tbody >
                                         <tr >
@@ -86,10 +78,6 @@ class BuscarISISA extends React.Component {
         }else{
             return(
                 <div className="center">
-                <Slider
-                    title="LISTA DE ALUMNOS"
-                    size="slider-small"
-                    />
                     <DirectorioAdmin />
                                     <tbody >
                                         <tr >
