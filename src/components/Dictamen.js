@@ -60,10 +60,6 @@ class Dictamen extends React.Component {
 
         return (
             <div className="center">
-            <Slider
-            title="DOCUMENTACIÓN DICTAMEN DE MENOS DE 70% DE CREDITOS"
-            size="slider-small"
-            />
                 <DirectorioAlumno />
                         <div id="sidebar" className="dictamenLeft">
                             <div>

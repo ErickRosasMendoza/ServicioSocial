@@ -34,8 +34,8 @@ class DirectorioAlumno extends Component{
     render(){
             return(
                 <div className="center">
-                <tbody >
-                    <tr >
+                <tbody>
+                    <tr>
                         <th className="table"><Link to='/CrearDictamen' className = "active">Dictamen de 70%</Link></th>
                         <th className="table"><Link to='/CrearLiberacion' className = "active">Liberacion Extemporanea</Link></th>
                         <th className="table"> <Link to='/CrearBaja' className = "active">Baja de Servicio Social</Link></th>

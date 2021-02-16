@@ -95,10 +95,6 @@ class Baja extends React.Component {
 
         return (
             <div className="center">
-            <Slider
-            title="DOCUMENTACIÓN BAJA DE SERVICIO SOCIAL"
-            size="slider-small"
-            />
                 <DirectorioAlumno />
                         <div id="sidebar" className="bajaLeft">
                             <div>
