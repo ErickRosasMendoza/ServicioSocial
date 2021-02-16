@@ -60,10 +60,6 @@ class ServicioSocial extends React.Component {
 
         return (
             <div className="center">
-            <Slider
-            title="DOCUMENTACIÓN SERVICIO SOCIAL"
-            size="slider-small"
-            />
                 <DirectorioAlumno />
                         <div id="sidebar" className="servicioLeft">
                             <div>

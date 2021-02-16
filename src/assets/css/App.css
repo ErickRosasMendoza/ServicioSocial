@@ -23,18 +23,61 @@ rgba(68, 14, 14, 0.507) 25%,
 #header{
   height: 160px;
   width: 100%;
-  background: rgb(251,251,251);
-  background: rgb(251,251,251);
-  background: radial-gradient(circle, rgba(251,251,251,1) 0%, rgba(233,233,233,1) 4%, rgba(255,255,255,1) 100%);
-  border-bottom: 0px solid #812121;
-  border: 0px solid #812121;
-  margin: 0px;
+  background: #E9ECEF;
+  margin: 0px,0px,8px;
+  color: #8A2D2D;
+}
+.h2, h2 {
+  font-size: 2rem;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  color: inherit;
+}
+h2 {
   display: block;
-  font-size: 30px;
-  color: #812121;
-  border-radius: 3px;
-  padding: 0px;
-  margin-bottom: 0px;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+.jumbotron {
+  color: #8a2d2d;
+  margin: 0;
+  padding: 2px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background: #E9ECEF;
+  height: 110px;
+}
+.text-center {
+  text-align: center!important;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+.h3, h3 {
+  font-size: 1.75rem;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+h3 {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+div {
+  display: block;
 }
 .center{
   width: 100%;
@@ -118,18 +161,16 @@ rgba(68, 14, 14, 0.507) 25%,
 }
 .active{
   text-decoration: none;
+  color: #a7a7a7;
 }
 #slider{
-  background: #812121;
+  background: #343a40;
   max-width: 100%;
   height: 200px;
   line-height: 60px;
-  color: white;
-  text-shadow: 0px 0px 5px #444;
-  /*degradado ccs*/
-  background: 812121(45,192,247);
-  background: radial-gradient(circle, 812121(45,192,247,1) 0%, rgba(255,255,255,1) 100%);
-  font-size: 25px;
+  color: #a7a7a7;
+  font-weight:100;
+  font-size: 20px;
   border: 0px;
 }
 #slider h1{
@@ -192,8 +233,8 @@ rgba(68, 14, 14, 0.507) 25%,
 }
 #sidebar{
   width: 32%;
-  height: 430px;
-  margin-top: 50px;
+  height: 420px;
+  margin-top: 10px;
   margin-left:  450px;
   background: rgb(255, 255, 255);
   border-radius: 1px;
@@ -226,8 +267,8 @@ rgba(68, 14, 14, 0.507) 25%,
   max-width: 40%;
 }
 #sidebar.dictamenCenter{
-  margin-left: 520px;
-  margin-top: -1270px;
+  margin-left: 580px;
+  margin-top: -268px;
   height: 250px;
   max-width: 24%;
 }
@@ -283,8 +324,8 @@ rgba(68, 14, 14, 0.507) 25%,
   max-width: 40%;
 }
 #sidebar.liberacionCenter{
-  margin-left: 520px;
-  margin-top: -1848px;
+  margin-left: 580px;
+  margin-top: -848px;
   height: 715px;
   max-width: 24%;
 }
@@ -301,8 +342,8 @@ rgba(68, 14, 14, 0.507) 25%,
   max-width: 40%;
 }
 #sidebar.bajaCenter{
-  margin-left: 520px;
-  margin-top: -1850px;
+  margin-left: 580px;
+  margin-top: -848px;
   height: 685px;
   max-width: 24%;
 }
@@ -319,8 +360,8 @@ rgba(68, 14, 14, 0.507) 25%,
   max-width: 40%;
 }
 #sidebar.servicioCenter{
-  margin-left: 520px;
-  margin-top: -1268px;
+  margin-left: 580px;
+  margin-top: -268px;
   height: 250px;
   max-width: 24%;
 }
@@ -472,9 +513,6 @@ textarea:focus{
 .article-item .image-wrap img{
   width: 200px;
   height: auto;
-
-
-
 }
 .center .subheader{
   font-size: 35px;
@@ -550,12 +588,9 @@ input[type="radio"]{
 }
 .table{
   padding-top: 1px;
-  border-color: #884b4b;
-  background: rgb(212,186,183);
-  background: linear-gradient(0deg, rgba(212,186,183,0) 0%, rgba(129,33,33,1) 100%);
   margin-top: 1px;
   text-align: center;
-  border-radius: 2px;
+  background: #343a40;
   width: 250px; bottom: 1px solid #000000;
   padding-bottom: 20px;
 }
@@ -565,13 +600,8 @@ input[type="radio"]{
   background: radial-gradient(circle, rgba(169,173,179,1) 32%, rgba(211,238,174,1) 77%);
   margin-top: 1px;
   text-align: center;
-  border-radius: 2px;
   width: 250px; bottom: 1px solid #000000;
   padding-bottom: 20px;
-}
-table, th, td {
-  border: 1px solid rgb(219, 218, 218);
-  
 }
 tbody, td {
   padding-top: 20px;
@@ -636,6 +666,7 @@ tbody, td {
 #linea{
   text-shadow: none;
   text-decoration: none;
+  color:white;
 }
  Link {
   font-size: 20px;
@@ -662,3 +693,6 @@ ul li ul li {
 }
 ul li ul li a {display:block !important;} 
 ul li ul li:hover {background: #666;}
+#alingTable{
+  margin-top: -100px;
+}

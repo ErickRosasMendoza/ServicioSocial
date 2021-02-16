@@ -40,12 +40,14 @@ import AlumnoDictamen from './components/AlumnoDictamen';
 import AlumnoBaja from './components/AlumnoBaja';
 import AlumnoLiberacion from './components/AlumnoLiberacion';
 import AlumnoServicio from './components/AlumnoServicio';
+import HeaderDEyAE from './components/HeaderDEyAE';
 
 
 class Router extends React.Component {
     render() {
         return (
-            <BrowserRouter >
+            <BrowserRouter>
+            <HeaderDEyAE/>
                 {/**CONFIGURAR RUTAS Y PAGINAS  */}
                 <Switch>
                     <Route exact path="/" component={Home} />
@@ -91,8 +93,7 @@ class Router extends React.Component {
                
         <div className="clearfix"></div>
       <br/>
-    { /* <Footer/>*/}
-
+     <Footer/>
             </BrowserRouter>
         );
     }

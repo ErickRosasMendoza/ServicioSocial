@@ -5,6 +5,7 @@ import logo2 from '../assets/images/ipnLogo.png'
 import Slider from './Slider';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
+import HeaderDEyAE from './HeaderDEyAE';
 import Global from '../Global';
 
 const cookies = new Cookies();

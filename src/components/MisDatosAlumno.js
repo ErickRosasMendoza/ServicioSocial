@@ -42,10 +42,6 @@ class MisDatosAlumno extends React.Component{
     render() {
             return(
                 <div className="center">
-                <Slider
-                title="DATOS PERSONALES"
-                size="slider-small"
-                />
                     <DirectorioAlumno />
                     <br/>
                     <tbody >
