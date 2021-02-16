@@ -37,13 +37,14 @@ class DirectorioAdmin extends Component{
             <div className="center">
                     <tbody >
                         <tr >
-                            <th className="table"><Link to='/Buscar' className = "active">Buscar Alumno</Link></th>
                             <th className="table"><Link to='/Lista' className = "active">Lista de Alumnos</Link></th>
                             <th className="table"><div>
                                 <ul>
                                     <li>
                                         <Link to='#' className="active">Buscar Programa Academico</Link>
                                         <ul>
+                                            <li><Link to={'/BuscarNombre'} className="active">BUSCAR POR NOMBRE</Link></li>
+                                            <li><Link to={'/BuscarBoleta'} className="active">BUSCAR POR BOLETA</Link></li>
                                             <li><Link to={'/BuscarICA'} className="active">INGENIERÍA EN CONTROL Y AUTOMATIZACIÓN</Link></li>
                                             <li><Link to={'/BuscarICE'} className="active">INGENIERÍA EN COMUNICACIONES Y ELECTRÓNICA</Link></li>
                                             <li><Link to={'/BuscarIE'} className="active">INGENIERÍA ELÉCTRICA</Link></li>
@@ -55,7 +56,7 @@ class DirectorioAdmin extends Component{
                             </th>
                             <th className="table"><Link to='/Crearadmin' className = "active">Crear Administrador</Link></th>
                             <th className="table"><Link to='/MisDatosAdmin' className = "active">Datos Personales</Link></th>
-                            <th className="table"><button onClick={this.cerrarSesion}>cerrar sesion</button></th>
+                            <th className="table"><button id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</button></th>
                         </tr>
                     </tbody>
                 </div>

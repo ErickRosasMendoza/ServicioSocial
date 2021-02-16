@@ -41,6 +41,8 @@ import AlumnoBaja from './components/AlumnoBaja';
 import AlumnoLiberacion from './components/AlumnoLiberacion';
 import AlumnoServicio from './components/AlumnoServicio';
 import HeaderDEyAE from './components/HeaderDEyAE';
+import DirectorioArchivosAlumno from './components/DirectorioArchivosAlumno';
+import BuscarBoleta from './components/BuscarBoleta';
 
 
 class Router extends React.Component {
@@ -52,8 +54,10 @@ class Router extends React.Component {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path = "/DirectorioAdmin" component = {DirectorioAdmin}/>
+                    <Route exact path = "/DirectorioArchivosAlumno/:id" component = {DirectorioArchivosAlumno}/>
                     <Route exact path = "/Lista" component = {ListaAlumnos}/>
-                    <Route exact path = "/Buscar" component ={BuscarAlumno}/>
+                    <Route exact path = "/BuscarNombre" component ={BuscarAlumno}/>
+                    <Route exact path = "/BuscarBoleta" component = {BuscarBoleta}/>
                     <Route exact path = "/Crearadmin" component = {CrearAdmin}/>
                     <Route exact path = "/BuscarICE" component = {BuscarICE}/>
                     <Route exact path = "/BuscarICA" component = {BuscarICA}/>

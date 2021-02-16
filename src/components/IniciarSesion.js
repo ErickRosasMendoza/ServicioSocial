@@ -6,6 +6,8 @@ import Cookies from 'universal-cookie';
 import Global from '../Global';
 import Slider from './Slider';
 import HeaderDEyAE from './HeaderDEyAE';
+import md5 from 'md5';
+
 
 const cookies = new Cookies();
 
@@ -33,7 +35,17 @@ class IniciarSesion extends React.Component{
         })
     }
 
+    passwordChange = () =>{
+        this.setState({
+            form:{
+                contraseña: md5(this.state.form.contraseña)
+            }
+        })
+        console.log(this.state.form.contraseña)
+    }
+
     login= async (e) =>{
+        this.passwordChange();
         await axios.get(this.url + "usuario/findEmail/" + this.state.form.email)
         .then(response=>{
             return response.data;

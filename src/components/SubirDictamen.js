@@ -126,7 +126,7 @@ class SubirDictamen extends React.Component {
                             <div id="sidebar" className="dictamenRight">
                                 <div>
                                     Aun no hay archivos guardados
-                                    <input type="file" name = "file" onChange={this.fileChange} />
+                                    <input type="file" name = "file"  onChange={this.fileChange} />
                                 </div>
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 

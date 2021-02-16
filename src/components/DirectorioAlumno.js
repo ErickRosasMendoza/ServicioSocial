@@ -41,7 +41,7 @@ class DirectorioAlumno extends Component{
                         <th className="table"> <Link to='/CrearBaja' className = "active">Baja de Servicio Social</Link></th>
                         <th className="table"><Link to='/CrearServicio' className = "active">Documentacion de Servicio Social</Link></th>
                         <th className="table"><Link to='/MisDatosAlumno' className = "active">Datos Personales</Link></th>
-                        <th className="table"> <button onClick={this.cerrarSesion}>cerrar sesion</button></th>
+                        <th className="table " > <button id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</button></th>
                     </tr>
                 </tbody>
                 </div>

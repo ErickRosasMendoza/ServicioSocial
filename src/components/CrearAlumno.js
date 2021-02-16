@@ -5,8 +5,8 @@ import logo2 from '../assets/images/ipnLogo.png'
 import Slider from './Slider';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import HeaderDEyAE from './HeaderDEyAE';
 import Global from '../Global';
+import md5 from 'md5';
 
 const cookies = new Cookies();
 
@@ -27,18 +27,26 @@ class CrearAlumno extends React.Component {
     };
 
     changeState = async (e) => {
+        
        await this.setState({
             usuario: {
                 email: this.emailRef.current.value,
-                contraseña: this.contraseñaRef.current.value,
+                contraseña: md5(this.contraseñaRef.current.value),
                 tipoUsuario: "false"
             },
-            confirmarContraseña: this.confirmarContraseñaRef.current.value
+            confirmarContraseña: md5(this.confirmarContraseñaRef.current.value)
         });
+       // console.log(this.state.usuario.email);
+        //console.log(this.state.usuario.contraseña)
+       
+       
     }
+
 
     saveUsuario = (e) => {
         this.changeState();
+  
+        
         if(this.state.usuario.email && this.state.usuario.email != null && this.state.usuario.email != undefined){
                 if(this.state.usuario.contraseña && this.state.usuario.contraseña != null && this.state.usuario.contraseña != undefined){
                     if(this.state.usuario.contraseña === this.state.confirmarContraseña){
