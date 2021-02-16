@@ -232,11 +232,11 @@ div {
   border: 0px;
 }
 #sidebar{
-  width: 32%;
-  height: 420px;
+  width: 28%;
+  height: 440px;
   margin-top: 25px;
-  margin-left:  450px;
-  margin-bottom: 53px;
+  margin-left:  545px;
+  margin-bottom: 32px;
   background: rgb(255, 255, 255);
   border-radius: 1px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
