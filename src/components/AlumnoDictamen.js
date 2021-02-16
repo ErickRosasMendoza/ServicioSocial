@@ -64,10 +64,6 @@ class AlumnoDictamen extends React.Component{
         if(this.state.statusDictamen == 'success' && this.state.statusLista == 'success'){
             return(
                 <div className="center">
-                    <Slider
-                    title="DOCUMENTACIÓN DICTAMEN DE MENOS DE 70% DE CREDITOS"
-                    size="slider-small"
-                    />
                 <DirectorioAdmin />
                     <div id="sidebar" className="infoAdminLeft">
                     <div className="text_login">
@@ -111,10 +107,6 @@ class AlumnoDictamen extends React.Component{
         }else if(this.state.statusDictamen == 'success' && this.state.statusLista != 'success'){
             return(
                 <div className="center">
-                    <Slider
-                    title="DOCUMENTACIÓN DICTAMEN DE MENOS DE 70% DE CREDITOS"
-                    size="slider-small"
-                    />
                 <DirectorioAdmin />
                     <div id="sidebar" className="infoAdminLeft">
                     <div className="text_login">
@@ -149,10 +141,6 @@ class AlumnoDictamen extends React.Component{
         }else if(this.state.statusDictamen != 'success' && this.state.statusLista == 'success'){
             return(
                 <div className="center">
-                    <Slider
-                    title="DOCUMENTACIÓN DICTAMEN DE MENOS DE 70% DE CREDITOS"
-                    size="slider-small"
-                    />
                 <DirectorioAdmin />
                     <div id="sidebar" className="infoAdminLeft">
                     <div className="text_login">
@@ -191,10 +179,6 @@ class AlumnoDictamen extends React.Component{
         }else{
             return(
                 <div className="center">
-                    <Slider
-                    title="DOCUMENTACIÓN DICTAMEN DE MENOS DE 70% DE CREDITOS"
-                    size="slider-small"
-                    />
                 <DirectorioAdmin />
                     <div id="sidebar" className="infoAdminLeft">
                     <div className="text_login">

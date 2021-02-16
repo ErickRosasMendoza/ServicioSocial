@@ -63,10 +63,6 @@ class AlumnoServicio extends React.Component{
         if(this.state.servicio.idAlumno && this.state.servicio.idAlumno != null && this.state.servicio.idAlumno != undefined){
             return(
                 <div className="center">
-                    <Slider
-                    title="DOCUMENTACIÓN SERVICIO SOCIAL"
-                    size="slider-small"
-                    />
                 <DirectorioAdmin />
                     <div id="sidebar" className="infoAdminLeft">
                     <div className="text_login">

@@ -62,10 +62,6 @@ class AlumnoLiberacion extends React.Component{
         if(this.state.liberacion.idAlumno && this.state.liberacion.idAlumno != null && this.state.liberacion.idAlumno != undefined){
             return(
                 <div className="center">
-                    <Slider
-                    title="DOCUMENTACIÓN LIBERACIÓN EXTEMPORANEA"
-                    size="slider-small"
-                    />
                 <DirectorioAdmin />
                     <div id="sidebar" className="infoAdminLeft">
                         <div className="text_login">

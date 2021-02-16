@@ -43,10 +43,6 @@ class BuscarAlumno extends React.Component {
         }*/
         return (
             <div className="center">
-            <Slider
-                title="BUSCAR ALUMNO"
-                size="slider-small"
-                />
                 <DirectorioAdmin />
                 <section id="content">
                         <div className="form-group" >
