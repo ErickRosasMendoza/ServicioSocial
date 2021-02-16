@@ -33,7 +33,6 @@ class VerDatosLiberacion extends React.Component{
             if(this.state.liberacionExtemporanea.egresado == false){
                 return(
                     <div className="center">
-                    <section id="content">
                             <div id="sidebar" className="liberacionCenter">
                                 <div className="text_login">
                                    Registro de Servicio Social: {this.state.liberacionExtemporanea.registroSS}
@@ -62,13 +61,11 @@ class VerDatosLiberacion extends React.Component{
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
                             </div>          
-                    </section>
                 </div>
                 );
             }else{
                 return(
                     <div className="center">
-                    <section id="content">
                             <div id="sidebar" className="bajaCenter">
                                 <div className="text_login">
                                    Registro de Servicio Social: {this.state.liberacionExtemporanea.registroSS}
@@ -94,20 +91,17 @@ class VerDatosLiberacion extends React.Component{
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
                             </div>          
-                    </section>
                 </div>
                 );
             }//Fin de else egresado
         }else{
             return(
                 <div className="center">
-                <section id="content">
                         <div id="sidebar" className="liberacionCenter">
                             <div className="text_login">
                                 No tienes datos disponibles, registralos para empezar con tu documentación LIBERACION EXTEMPORANEA.
                             </div>
                         </div>          
-                </section>
             </div>
             );
         }//Fin de else status == 'success'

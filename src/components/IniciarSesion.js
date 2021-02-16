@@ -66,7 +66,6 @@ class IniciarSesion extends React.Component{
         render(){
             return(
                 <div className = "center">
-             
                     <Slider 
                     title="Iniciar Sesión"
                     size="slider-small"
@@ -91,7 +90,6 @@ class IniciarSesion extends React.Component{
                         <br/>
                         <button  class = "btn" onClick = {this.login} >Aceptar</button>
                     </div>
-              
                 </div>
             );
         }

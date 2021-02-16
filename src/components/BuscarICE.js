@@ -39,7 +39,6 @@ class BuscarICE extends React.Component {
                     size="slider-small"
                     />
                     <DirectorioAdmin />
-                    <section id="content">
                                     <tbody >
                                         <tr >
                                             <th className="table_lista">Nombre</th>
@@ -60,7 +59,6 @@ class BuscarICE extends React.Component {
                                         </tr>
                                     </tbody>
                                 )}
-                    </section>
                 </div>
             );
         }else if(this.state.programas.length === 0 && this.state.status === 'true'){
@@ -71,7 +69,6 @@ class BuscarICE extends React.Component {
                     size="slider-small"
                     />
                     <DirectorioAdmin />
-                    <section id="content">
                                     <tbody >
                                         <tr >
                                             <th className="table_lista">Nombre</th>
@@ -84,7 +81,6 @@ class BuscarICE extends React.Component {
                                 <div>
                                     <h1>Aun no existen alumnos registrados de este Programa Academico</h1>
                             </div>
-                    </section>
                 </div>
             );
         }else{
@@ -95,7 +91,6 @@ class BuscarICE extends React.Component {
                     size="slider-small"
                     />
                     <DirectorioAdmin />
-                    <section id="content">
                                     <tbody >
                                         <tr >
                                             <th className="table_lista">Nombre</th>
@@ -108,7 +103,6 @@ class BuscarICE extends React.Component {
                                     <div>
                                     <h1>Cargando... Espere un momento</h1>
                                 </div>
-                    </section>
                 </div>
             );
         }

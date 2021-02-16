@@ -53,7 +53,6 @@ class CrearAdmin extends React.Component {
                     size="slider-small"
                     />
                     <DirectorioAdmin />
-                <section id="content">
                         <div id="sidebar" className="crearAdmin">
                             <div>
                                 <label htmlFor="email" className="text_login">Email</label>
@@ -66,8 +65,6 @@ class CrearAdmin extends React.Component {
                             <br/>
                             <button className = "btn" onClick = {this.saveUsuario}>Aceptar</button>
                           </div>
-                       
-                </section>
             </div>
         );
     }

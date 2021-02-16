@@ -60,14 +60,12 @@ class Dictamen extends React.Component {
         }
 
         return (
-            <body className = "Luis">
             <div className="center">
             <Slider
             title="DOCUMENTACIÓN DICTAMEN DE MENOS DE 70% DE CREDITOS"
             size="slider-small"
             />
                 <DirectorioAlumno />
-                <section id="content">
                         <div id="sidebar" className="dictamenLeft">
                             <div>
                                 <label htmlFor="creditos" className="text_login">Porcentaje de Creditos</label>
@@ -85,12 +83,7 @@ class Dictamen extends React.Component {
                                 <button className = "btn"  onClick = {this.saveDictamen}>Aceptar</button>
                           </div>
                        <SubirDictamen/>
-                       <VerDatosDictamen/>
-                </section>
-                <Footer/>
             </div>
-            </body>
-            
         );
     }
 }

@@ -32,7 +32,6 @@ class VerDatosDictamen extends React.Component{
         if(this.state.status == 'success'){
             return(
                 <div className="center">
-                <section id="content">
                         <div id="sidebar" className="dictamenCenter">
                             <div className="text_login">
                                 Procentaje de creditos: {this.state.dictamen.porcentajeCreditos}
@@ -43,19 +42,16 @@ class VerDatosDictamen extends React.Component{
                             <br/>
                             <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
                         </div>          
-                </section>
             </div>
             );
         }else{
             return(
                 <div className="center">
-                <section id="content">
                         <div id="sidebar" className="dictamenCenter">
                             <div className="text_login">
                                 No tienes datos disponibles, registralos para empezar con tu documentación de DICTAMEN DE MENOS DE 70% DE CREDITOS.
                             </div>
                         </div>          
-                </section>
             </div>
             );
         }//Fin de else status == 'success'
