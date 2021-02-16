@@ -58,10 +58,10 @@ render() {
                 <article className="item-lista">
                      <tbody>
                             <tr>
-                                <td className="table"> {alumno.nombre}</td>
-                                <td className="table"> {alumno.apellidoPaterno}</td>
-                                <td className="table"> {alumno.apellidoMaterno}</td>
-                                <td className="table"> {alumno.email}</td>
+                                <td className="table_lista"> {alumno.nombre}</td>
+                                <td className="table_lista"> {alumno.apellidoPaterno}</td>
+                                <td className="table_lista"> {alumno.apellidoMaterno}</td>
+                                <td className="table_lista"> {alumno.email}</td>
                             </tr>
                         </tbody>
                 </article>
@@ -74,21 +74,22 @@ render() {
             <DirectorioAdmin />
                 <tbody >
                     <tr >
-                        <th className="table">Nombre</th>
-                        <th className="table">Apellido Paterno</th>
-                        <th className="table">Apellido Materno</th>
-                        <th className="table">Boleta</th>
-                        <th className="table">Programa Academico</th>
+                        <th className="table_lista">Nombre</th>
+                        <th className="table_lista">Apellido Paterno</th>
+                        <th className="table_lista">Apellido Materno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
                     </tr>
                 </tbody>
                 {this.state.alumnos.map((alumno, i) =>
                     <tbody key={i}>
                     <tr>
-                        <td className="table"> <Link to={'/AlumnoBaja/' + alumno.idAlumno}>{alumno.nombre}</Link></td>
-                        <td className="table"> <Link to={'/AlumnoLiberacion/' + alumno.idAlumno}>{alumno.apellidoPaterno}</Link></td> 
-                        <td className="table"> <Link to={'/AlumnoServicio/' + alumno.idAlumno}>{alumno.apellidoMaterno}</Link></td>
-                        <td className="table"> <Link to={'/AlumnoDetalle/' + alumno.idAlumno}>{alumno.boleta}</Link></td>
-                        <td className="table"> <Link to={'/AlumnoDictamen/' + alumno.idAlumno}>{alumno.programaAcademico}</Link></td>
+                        <td className="table_lista">{alumno.nombre}</td>
+                        <td className="table_lista">{alumno.apellidoPaterno}</td> 
+                        <td className="table_lista">{alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{alumno.boleta}</td>
+                        <td className="table_lista">{alumno.programaAcademico}</td>
+                        <td><Link to={'/DirectorioArchivosAlumno/' + alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                     </tr>
                 </tbody>
                 )
@@ -116,20 +117,20 @@ render() {
                 <article className="item-lista">
                     <tbody >
                         <tr >
-                            <th className="table">Nombre</th>
-                            <th className="table">Apellido Paterno</th>
-                            <th className="table" >Apellido Paterno</th>
-                            <th className="table">Email</th>
+                            <th className="table_lista">Nombre</th>
+                            <th className="table_lista">Apellido Paterno</th>
+                            <th className="table_lista" >Apellido Paterno</th>
+                            <th className="table_lista">Email</th>
                         </tr>
                     </tbody>
 
                     {this.state.alumnos.map((alumno, i) =>
                      <tbody key={i}>
                             <tr>
-                                <td className="table"> {alumno.nombre}</td>
-                                <td className="table"> {alumno.apellidoPaterno}</td>
-                                <td className="table"> {alumno.apellidoMaterno}</td>
-                                <td className="table"> {alumno.email}</td>
+                                <td className="table_lista"> {alumno.nombre}</td>
+                                <td className="table_lista"> {alumno.apellidoPaterno}</td>
+                                <td className="table_lista"> {alumno.apellidoMaterno}</td>
+                                <td className="table_lista"> {alumno.email}</td>
                             </tr>
                         </tbody>
                     )

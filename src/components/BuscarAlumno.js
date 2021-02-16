@@ -2,10 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Global from '../Global';
-import Slider from './Slider';
-import { Redirect } from 'react-router-dom';
 import DirectorioAdmin from './DirectorioAdmin';
-import BuscarCorreo from './BuscarCorreo';
 
 class BuscarAlumno extends React.Component {
 
@@ -38,13 +35,9 @@ class BuscarAlumno extends React.Component {
     }//Fin de searchAlumno
 
     render() {
-      /*  if(this.state.status === 'true'){
-            return <Redirect to = "/"></Redirect>
-        }*/
         return (
             <div className="center">
                 <DirectorioAdmin />
-                <section id="content">
                         <div className="form-group" >
                             <label htmlFor="nombre" className="text_login">Buscar por Nombre</label>
                             <input type="text"  className="input_login" name="nombre" ref={this.nombreRef} onChange={this.changeState} />
@@ -65,12 +58,12 @@ class BuscarAlumno extends React.Component {
                                         <td className="table_lista">{alumno.nombre}</td>
                                         <td className="table_lista">{alumno.apellidoPaterno}</td>
                                         <td className="table_lista">{alumno.apellidoMaterno}</td>
-                                        <td className="table_lista"><Link to={'/AlumnoDetalle/' + alumno.idAlumno}>{alumno.boleta}</Link></td>
+                                        <td className="table_lista">{alumno.boleta}</td>
                                         <td className="table_lista">{alumno.programaAcademico}</td>
+                                        <td><Link to={'/DirectorioArchivosAlumno/' + alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                     </tr>
                                 </tbody>
                             )}
-                </section>
             </div>
         );
     }//Fin de Render

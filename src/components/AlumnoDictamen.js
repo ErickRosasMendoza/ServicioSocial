@@ -4,6 +4,7 @@ import axios from 'axios';
 import DirectorioAdmin from './DirectorioAdmin';
 import Slider from './Slider';
 import Global from '../Global';
+import DirectorioArchivosAlumno from './DirectorioArchivosAlumno';
 
 class AlumnoDictamen extends React.Component{
 
