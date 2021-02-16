@@ -31,7 +31,7 @@ class SubirDictamen extends React.Component {
     }
 
     getLista = () => {
-        axios.get(this.url + "lista/findDictamen/" + this.state.idDictamen)
+        axios.get(this.url + "lista/v/" + this.state.idDictamen)
             .then(response => {
                 this.setState({
                     listar: response.data,

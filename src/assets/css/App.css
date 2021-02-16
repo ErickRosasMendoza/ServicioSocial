@@ -17,6 +17,9 @@ background: linear-gradient(40deg, rgba(47,1,1,1) 1%,
 rgba(68, 14, 14, 0.507) 25%,
  rgba(98, 0, 0, 0.904) 70%);
 } */
+.Luis{
+  max-height: 50%;
+}
 #header{
   height: 160px;
   width: 100%;
