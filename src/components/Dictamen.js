@@ -79,6 +79,7 @@ class Dictamen extends React.Component {
                                 <button className = "btn"  onClick = {this.saveDictamen}>Aceptar</button>
                           </div>
                        <SubirDictamen/>
+                       <VerDatosDictamen/>
             </div>
         );
     }
