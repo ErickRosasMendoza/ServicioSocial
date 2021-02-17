@@ -50,11 +50,7 @@ class BuscarIE extends React.Component {
                                             <td className="table_lista">{programa1.nombre}</td>
                                             <td className="table_lista">{programa1.apellidoPaterno}</td>
                                             <td className="table_lista">{programa1.apellidoMaterno}</td>
-<<<<<<< HEAD
                                             <td className="table_lista">{programa1.bolta}</td>
-=======
-                                            <td className="table_lista">{programa1.boleta}</td>
->>>>>>> ba7fa7634a5324c56b3c7cc9b3bd150bb10e5b1e
                                             <td className="table_lista">{programa1.programaAcademico}
                                             <td><Link to={'/DirectorioArchivosAlumno/' + programa1.idAlumno} id="btn_watch">Ver Archivos</Link></td></td>
                                         </tr>
