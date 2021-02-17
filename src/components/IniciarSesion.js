@@ -41,7 +41,7 @@ class IniciarSesion extends React.Component{
                 contraseña: md5(this.state.form.contraseña)
             }
         })
-        console.log(this.state.form.contraseña)
+        //console.log(this.state.form.contraseña)
     }
 
     login= async (e) =>{
