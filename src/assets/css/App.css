@@ -697,6 +697,7 @@ input[type="radio"]{
 }
 ul {
   display: inline;
+  transition: 300ms;
   margin: 0;
   padding: 0;
 }
