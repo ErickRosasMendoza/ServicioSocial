@@ -43,12 +43,20 @@ import AlumnoServicio from './components/AlumnoServicio';
 import HeaderDEyAE from './components/HeaderDEyAE';
 import DirectorioArchivosAlumno from './components/DirectorioArchivosAlumno';
 import BuscarBoleta from './components/BuscarBoleta';
+import { positions, Provider } from "react-alert";
 
+import { useAlert } from "react-alert";
 
+  
+ 
 class Router extends React.Component {
+    
+   
     render() {
         return (
+            
             <BrowserRouter>
+            
             <HeaderDEyAE/>
                 {/**CONFIGURAR RUTAS Y PAGINAS  */}
                 <Switch>
@@ -98,7 +106,9 @@ class Router extends React.Component {
         <div className="clearfix"></div>
       <br/>
      <Footer/>
+    
             </BrowserRouter>
+           
         );
     }
 }

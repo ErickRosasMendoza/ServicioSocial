@@ -41,7 +41,7 @@ class DirectorioAdmin extends Component{
                             <th className="table"><div>
                                 <ul>
                                     <li>
-                                        <Link to='#' className="active">Buscar Programa Academico</Link>
+                                        <Link to='#' className="active">Buscar Alumno</Link>
                                         <ul>
                                             <li><Link to={'/BuscarNombre'} className="active">BUSCAR POR NOMBRE</Link></li>
                                             <li><Link to={'/BuscarBoleta'} className="active">BUSCAR POR BOLETA</Link></li>
