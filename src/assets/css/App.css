@@ -166,7 +166,6 @@ div {
   transition: 300ms;
 }
 .active:hover{
-
   color: rgb(145, 145, 145);
 }
 
@@ -604,8 +603,6 @@ input[type="radio"]{
 }
 .table_lista{
   padding-top: 1px;
-  background: rgb(169,173,179);
-  background: radial-gradient(circle, rgba(169,173,179,1) 32%, rgba(211,238,174,1) 77%);
   margin-top: 1px;
   text-align: center;
   width: 250px; bottom: 1px solid #000000;
@@ -697,9 +694,13 @@ ul {
   margin: 0;
   padding: 0;
 }
+
 ul li {display: inline-block;}
 
-ul li:hover {background: #555;}
+ul li:hover {background: #343a40;}
+ul li:hover ul {display: block;}
+
+ul li:hover {background: #343a40;}
 ul li:hover ul {color: block;}
 
 ul li ul {
