@@ -52,11 +52,11 @@ class CrearAdmin extends React.Component {
                         <div id="sidebar" className="crearAdmin">
                             <div>
                                 <label htmlFor="email" className="text_login">Email</label>
-                                <input type="text" className="input_login" name="email" ref={this.emailRef} placeholder="email@dominio" onChange={this.changeState}/>
+                                <input type="email" className="input_login" name="email" ref={this.emailRef} placeholder="Ingresa aquí el correo electrónico" onChange={this.changeState}/>
                             </div>
                             <div>
                                 <label htmlFor="contraseña" className="text_login">Contraseña</label>
-                                <input type="text" className="input_login" name="contarseña" ref={this.contraseñaRef} placeholder="Contraseña" onChange={this.changeState}/>
+                                <input type="text" className="input_login" name="contarseña" ref={this.contraseñaRef} placeholder="Ingresa aquí la contraseña" onChange={this.changeState}/>
                             </div>
                             <br/>
                             <button className = "btn" onClick = {this.saveUsuario}>Aceptar</button>
