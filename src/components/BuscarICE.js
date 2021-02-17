@@ -37,9 +37,7 @@ class BuscarICE extends React.Component {
                     <DirectorioAdmin />
                                     <tbody >
                                         <tr >
-                                            <th className="table_lista">Nombre</th>
-                                            <th className="table_lista">Apellido Paterno</th>
-                                            <th className="table_lista">Apellido Materno</th>
+                                            <th className="table_lista">Alumno</th>
                                             <th className="table_lista">Boleta</th>
                                             <th className="table_lista">Programa Academico</th>
                                         </tr>
@@ -47,9 +45,7 @@ class BuscarICE extends React.Component {
                                 {this.state.programas.map((programa1, i) =>
                                     <tbody key={i}>
                                         <tr>
-                                            <td className="table_lista">{programa1.nombre}</td>
-                                            <td className="table_lista">{programa1.apellidoPaterno}</td>
-                                            <td className="table_lista">{programa1.apellidoMaterno}</td>
+                                            <td className="table_lista">{programa1.nombre} {programa1.apellidoPaterno} {programa1.apellidoMaterno}</td>
                                             <td className="table_lista">{programa1.boleta}</td>
                                             <td className="table_lista">{programa1.programaAcademico}</td>
                                             <td><Link to={'/DirectorioArchivosAlumno/' + programa1.idAlumno} id="btn_watch">Ver Archivos</Link></td>
@@ -64,9 +60,7 @@ class BuscarICE extends React.Component {
                     <DirectorioAdmin />
                                     <tbody >
                                         <tr >
-                                            <th className="table_lista">Nombre</th>
-                                            <th className="table_lista">Apellido Paterno</th>
-                                            <th className="table_lista">Apellido Materno</th>
+                                            <th className="table_lista">Alumno</th>
                                             <th className="table_lista">Boleta</th>
                                             <th className="table_lista">Programa Academico</th>
                                         </tr>
@@ -82,9 +76,7 @@ class BuscarICE extends React.Component {
                     <DirectorioAdmin />
                                     <tbody >
                                         <tr >
-                                            <th className="table_lista">Nombre</th>
-                                            <th className="table_lista">Apellido Paterno</th>
-                                            <th className="table_lista">Apellido Materno</th>
+                                            <th className="table_lista">Alumno</th>
                                             <th className="table_lista">Boleta</th>
                                             <th className="table_lista">Programa Academico</th>
                                         </tr>
