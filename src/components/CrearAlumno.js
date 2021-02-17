@@ -48,7 +48,7 @@ class CrearAlumno extends React.Component {
   
         
         if(this.state.usuario.email && this.state.usuario.email != null && this.state.usuario.email != undefined){
-                if(this.state.usuario.contraseña && this.state.usuario.contraseña != null && this.state.usuario.contraseña != undefined){
+                if(this.contraseñaRef.current.value && this.contraseñaRef.current.value != null && this.contraseñaRef.current.value != undefined){
                     if(this.state.usuario.contraseña === this.state.confirmarContraseña){
                         axios.post(this.url+"usuario/save", this.state.usuario)
                         .then(res => {
@@ -94,15 +94,15 @@ class CrearAlumno extends React.Component {
                             <div className = "input-border">
                             <br/> <br/> <br/>
                                 <label htmlFor="email" className="text_login">Email</label>
-                                <input type="text" className="input_login" name="email" ref={this.emailRef} placeholder="email@dominio" onChange={this.changeState}/>
+                                <input type="email" className="input_login" name="email" ref={this.emailRef} placeholder="Ingresa quí tu correo electrónico" onChange={this.changeState}/>
                             </div>
                             <div>
                                 <label htmlFor="contraseña" className="text_login">Contraseña</label>
-                                <input type="password" className="input_login" name="contarseña" ref={this.contraseñaRef} placeholder="Contraseña" onChange={this.changeState}/>
+                                <input type="password" className="input_login" name="contarseña" ref={this.contraseñaRef} placeholder="Ingresa aquí tu contraseña" onChange={this.changeState}/>
                             </div>
                             <div>
                                 <label htmlFor="contraseñaconfirm" className="text_login">Confirma Contraseña</label>
-                                <input type="password" className="input_login" name="contarseñaconfirm" ref={this.confirmarContraseñaRef} placeholder="Contraseña" onChange={this.changeState}/>
+                                <input type="password" className="input_login" name="contarseñaconfirm" ref={this.confirmarContraseñaRef} placeholder="Confirma aquí tu contraseña" onChange={this.changeState}/>
                             </div>
                             <br/>
                             <button  className = "btn" onClick = {this.saveUsuario}>Aceptar</button>

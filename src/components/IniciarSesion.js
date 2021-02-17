@@ -94,11 +94,11 @@ class IniciarSesion extends React.Component{
                         <div className = "input-border" >
                         <br/> <br/> <br/>
                             <label htmlFor="email"  className="text_login">Correo electrónico </label>
-                            <input type="text" className="input_login" name ="email" onChange = {this.handleChange} placeholder="email@dominio"/>
+                            <input type="email" className="input_login" name ="email" onChange = {this.handleChange} placeholder="Ingresa aquí tu correo electrónico"/>
                         </div>
                         <div>
                             <label htmlFor="contraseña" className="text_login">Contraseña</label>
-                            <input type="password" className="input_login" name = "contraseña" autoComplete="on" placeholder="*********"  onChange = {this.handleChange}/>
+                            <input type="password" className="input_login" name = "contraseña" autoComplete="on" placeholder="Ingresa aquí tu contraseña"  onChange = {this.handleChange}/>
                         </div>
                         <br/>
                         <button  class = "btn" onClick = {this.login} >Aceptar</button>

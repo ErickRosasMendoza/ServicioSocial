@@ -167,7 +167,6 @@ div {
   transition: 300ms;
 }
 .active:hover{
-
   color: rgb(145, 145, 145);
 }
 
@@ -697,6 +696,7 @@ ul {
   margin: 0;
   padding: 0;
 }
+
 ul li {display: inline-block;}
 
 ul li:hover {background:#343a40;}
