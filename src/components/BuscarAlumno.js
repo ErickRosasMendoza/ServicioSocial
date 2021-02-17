@@ -45,9 +45,7 @@ class BuscarAlumno extends React.Component {
                        <button  onClick = {this.searchAlumno}>BUSCAR</button>
                                 <tbody >
                                     <tr >
-                                        <th className="table_lista">Nombre</th>
-                                        <th className="table_lista">Apellido Paterno</th>
-                                        <th className="table_lista">Apellido Materno</th>
+                                        <th className="table_lista">Alumno</th>
                                         <th className="table_lista">Boleta</th>
                                         <th className="table_lista">Programa Academico</th>
                                     </tr>
@@ -55,9 +53,7 @@ class BuscarAlumno extends React.Component {
                             {this.state.alumnos.map((alumno, i) =>
                                 <tbody key={i}>
                                     <tr>
-                                        <td className="table_lista">{alumno.nombre}</td>
-                                        <td className="table_lista">{alumno.apellidoPaterno}</td>
-                                        <td className="table_lista">{alumno.apellidoMaterno}</td>
+                                        <td className="table_lista">{alumno.nombre} {alumno.apellidoPaterno} {alumno.apellidoMaterno}</td>
                                         <td className="table_lista">{alumno.boleta}</td>
                                         <td className="table_lista">{alumno.programaAcademico}</td>
                                         <td><Link to={'/DirectorioArchivosAlumno/' + alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>

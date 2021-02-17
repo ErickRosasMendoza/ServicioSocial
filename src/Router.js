@@ -43,11 +43,7 @@ import AlumnoServicio from './components/AlumnoServicio';
 import HeaderDEyAE from './components/HeaderDEyAE';
 import DirectorioArchivosAlumno from './components/DirectorioArchivosAlumno';
 import BuscarBoleta from './components/BuscarBoleta';
-import { positions, Provider } from "react-alert";
 
-import { useAlert } from "react-alert";
-
-  
  
 class Router extends React.Component {
     

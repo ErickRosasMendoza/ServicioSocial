@@ -46,18 +46,14 @@ class BuscarBoleta extends React.Component {
                        <button  onClick = {this.searchBoleta}>BUSCAR</button>
                                 <tbody >
                                     <tr >
-                                        <th className="table_lista">Nombre</th>
-                                        <th className="table_lista">Apellido Paterno</th>
-                                        <th className="table_lista">Apellido Materno</th>
+                                        <th className="table_lista">Alumno</th>
                                         <th className="table_lista">Boleta</th>
                                         <th className="table_lista">Programa Academico</th>
                                     </tr>
                                 </tbody>
                                 <tbody>
                                     <tr>
-                                        <td className="table_lista">{this.state.alumno.nombre}</td>
-                                        <td className="table_lista">{this.state.alumno.apellidoPaterno}</td>
-                                        <td className="table_lista">{this.state.alumno.apellidoMaterno}</td>
+                                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
                                         <td className="table_lista">{this.state.alumno.boleta}</td>
                                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                                         <td><Link to={'/DirectorioArchivosAlumno/' + this.state.alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>

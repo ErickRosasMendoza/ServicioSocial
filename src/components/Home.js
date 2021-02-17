@@ -2,7 +2,6 @@ import React from 'react';
 import Slider from './Slider';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import { useAlert } from "react-alert";
 const cookies = new Cookies();
 
 class Home extends React.Component{
