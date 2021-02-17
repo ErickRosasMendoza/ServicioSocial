@@ -53,7 +53,7 @@ class Router extends React.Component {
             
             <BrowserRouter>
             
-            <HeaderDEyAE/>
+            
                 {/**CONFIGURAR RUTAS Y PAGINAS  */}
                 <Switch>
                     <Route exact path="/" component={Home} />
