@@ -77,6 +77,7 @@ class IniciarSesion extends React.Component{
         })
     }
         render(){
+           
             return(
                 <div className = "center">
                     <Slider 

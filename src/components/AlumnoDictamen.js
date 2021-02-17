@@ -18,41 +18,32 @@ class AlumnoDictamen extends React.Component{
         statusDictamen: null,
         statusLista: null
     };
-        componentWillMount() {
-            const { match: { params } } = this.props;
-            console.log(params.id)
-            var id = params.id;
-            this.setState({
-                    idAlumno: id
-            })
-        }
-        componentDidMount(){
-            console.log(this.state.idAlumno);
-            this.getDictamen();
-            this.getLista();
+        componentWillMount = () =>{
             this.getAlumno();
+          this.getDictamen();
+            this.getLista();
         }
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.state.idAlumno)
+            axios.get(this.url +"alumno/find/"+ this.props.id)
             .then(response => {
             this.setState({
                 alumno: response.data,
             });
             } );   
         }//Fin de getAlumno()
-    
-    getDictamen = () => {
-        axios.get(this.url +"dictamen/findIdAlumno/"+ this.state.idAlumno)
-        .then(response => {
-        this.setState({
-            dictamen: response.data,
-            statusDictamen: 'success'
-        });
-        } );   
-    }//Fin de getDictamen()
+        getDictamen = () => {
+            axios.get(this.url +"dictamen/findIdAlumno/"+ this.state.idAlumno)
+            .then(response => {
+            this.setState({
+                dictamen: response.data,
+                statusDictamen: 'success'
+            });
+            } );   
+        }
+
 
     getLista = () => {
-        axios.get(this.url+"/lista/findDictamen/" + this.state.idAlumno)
+        axios.get(this.url+"/lista/findDictamen/" + this.props.id)
             .then(response => {
                 this.setState({
                     listar: response.data,
@@ -60,37 +51,11 @@ class AlumnoDictamen extends React.Component{
                 });
             });
     }//Fin de getLista
-    
+
     render(){
         if(this.state.statusDictamen == 'success' && this.state.statusLista == 'success'){
             return(
                 <div className="center">
-                <DirectorioAdmin />
-                    <div id="sidebar" className="infoAdminLeft">
-                    <div className="text_login">
-                        <strong>Nombre:</strong> {this.state.alumno.nombre}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Paterno:</strong> {this.state.alumno.apellidoPaterno}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Materno:</strong> {this.state.alumno.apellidoMaterno} 
-                        </div>
-                        <div className="text_login">
-                            <strong>Boleta:</strong> {this.state.alumno.boleta}
-                        </div>
-                        <div className="text_login">
-                            <strong>Programa Academico:</strong> {this.state.alumno.programaAcademico} 
-                        </div>
-                    </div>
-                    <div id="sidebar" className="infoAdminCenter">
-                    <div className="text_login">
-                            <strong>Procentaje de creditos:</strong> {this.state.dictamen.porcentajeCreditos}%
-                        </div>
-                        <div className="text_login">
-                            <strong>Semestre:</strong> {this.state.dictamen.semestre}
-                        </div>
-                    </div>
                     <div id="sidebar" className="dictamenAdminRight">
                         {this.state.listar.map((lista1, i) =>
                             <tbody key={i}>
@@ -102,38 +67,14 @@ class AlumnoDictamen extends React.Component{
                                 </tr>
                             </tbody>
                         )}
+                       
                     </div>
                 </div>
             );
         }else if(this.state.statusDictamen == 'success' && this.state.statusLista != 'success'){
             return(
                 <div className="center">
-                <DirectorioAdmin />
-                    <div id="sidebar" className="infoAdminLeft">
-                    <div className="text_login">
-                        <strong>Nombre:</strong> {this.state.alumno.nombre}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Paterno:</strong> {this.state.alumno.apellidoPaterno}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Materno:</strong> {this.state.alumno.apellidoMaterno} 
-                        </div>
-                        <div className="text_login">
-                            <strong>Boleta:</strong> {this.state.alumno.boleta}
-                        </div>
-                        <div className="text_login">
-                            <strong>Programa Academico:</strong> {this.state.alumno.programaAcademico} 
-                        </div>
-                    </div>
-                    <div id="sidebar" className="infoAdminCenter">
-                    <div className="text_login">
-                            <strong>Procentaje de creditos:</strong> {this.state.dictamen.porcentajeCreditos}%
-                        </div>
-                        <div className="text_login">
-                            <strong>Semestre:</strong> {this.state.dictamen.semestre}
-                        </div>
-                    </div>
+
                     <div id="sidebar" className="dictamenAdminRight">
                         No hay archivos guardados
                     </div>
@@ -141,25 +82,7 @@ class AlumnoDictamen extends React.Component{
             );
         }else if(this.state.statusDictamen != 'success' && this.state.statusLista == 'success'){
             return(
-                <div className="center">
-                <DirectorioAdmin />
-                    <div id="sidebar" className="infoAdminLeft">
-                    <div className="text_login">
-                        <strong>Nombre:</strong> {this.state.alumno.nombre}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Paterno:</strong> {this.state.alumno.apellidoPaterno}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Materno:</strong> {this.state.alumno.apellidoMaterno} 
-                        </div>
-                        <div className="text_login">
-                            <strong>Boleta:</strong> {this.state.alumno.boleta}
-                        </div>
-                        <div className="text_login">
-                            <strong>Programa Academico:</strong> {this.state.alumno.programaAcademico} 
-                        </div>
-                    </div>
+                <div className="center">                   
                     <div id="sidebar" className="infoAdminCenter">
                         Aun no hay datos registrados para esta documentación
                     </div>
@@ -174,33 +97,12 @@ class AlumnoDictamen extends React.Component{
                                 </tr>
                             </tbody>
                         )}
-                    </div>
+                 </div>
                 </div>
             );
         }else{
             return(
                 <div className="center">
-                <DirectorioAdmin />
-                    <div id="sidebar" className="infoAdminLeft">
-                    <div className="text_login">
-                        <strong>Nombre:</strong> {this.state.alumno.nombre}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Paterno:</strong> {this.state.alumno.apellidoPaterno}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Materno:</strong> {this.state.alumno.apellidoMaterno} 
-                        </div>
-                        <div className="text_login">
-                            <strong>Boleta:</strong> {this.state.alumno.boleta}
-                        </div>
-                        <div className="text_login">
-                            <strong>Programa Academico:</strong> {this.state.alumno.programaAcademico} 
-                        </div>
-                    </div>
-                    <div id="sidebar" className="infoAdminCenter">
-                        Aun no hay datos registrados para esta documentación
-                    </div>
                     <div id="sidebar" className="dictamenAdminRight">
                     No hay archivos guardados
                 </div>
