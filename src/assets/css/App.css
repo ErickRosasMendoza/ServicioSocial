@@ -169,6 +169,10 @@ div {
 .active:hover{
   color: rgb(145, 145, 145);
 }
+.active_archivos{
+  text-decoration: none;
+  color: black;
+}
 
 #slider{
   background: #343a40;
@@ -701,8 +705,8 @@ ul li {display: inline-block;}
 ul li:hover {background:#343a40;}
 ul li:hover ul {display: block;}
 
-ul li:hover {background: rgb(49, 49, 49);}
-ul li:hover ul {color: #343a40;}
+ul li:hover {background: #343a40;}
+ul li:hover ul {color: block;}
 
 ul li ul {
   position: absolute;
