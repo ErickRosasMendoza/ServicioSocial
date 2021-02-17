@@ -698,14 +698,12 @@ ul {
   padding: 0;
 }
 ul li {display: inline-block;}
-<<<<<<< HEAD
+
 ul li:hover {background:#343a40;}
 ul li:hover ul {display: block;}
-=======
 
->>>>>>> e08a13a10f8a53626898f9873232a930f36bc74f
-ul li:hover {background: #555;}
-ul li:hover ul {color: block;}
+ul li:hover {background: rgb(49, 49, 49);}
+ul li:hover ul {color: #343a40;}
 
 ul li ul {
   position: absolute;
