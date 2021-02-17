@@ -27,10 +27,10 @@ class DirectorioArchivosAlumno extends Component{
                 <DirectorioAdmin />
                 <tbody>
                     <tr>
-                        <td className="table_lista"> <Link to={'/AlumnoDictamen/' + this.state.idAlumno} className="">Docuementacion Dictamen de 70%</Link></td>
-                        <td className="table_lista"> <Link to={'/AlumnoLiberacion/' + this.state.idAlumno} className="">Docuementacion Liberacion Extemporanea</Link></td>
-                        <td className="table_lista"> <Link to={'/AlumnoBaja/' + this.state.idAlumno} className="">Documentacion Baja de Servicio Social</Link></td> 
-                        <td className="table_lista"> <Link to={'/AlumnoServicio/' +this.state.idAlumno} className="">Docuementacion Servicio Social</Link></td>
+                        <td className="table_lista"> <Link to={'/AlumnoDictamen/' + this.state.idAlumno} className="active">Docuementacion Dictamen de 70%</Link></td>
+                        <td className="table_lista"> <Link to={'/AlumnoLiberacion/' + this.state.idAlumno} className="active">Docuementacion Liberacion Extemporanea</Link></td>
+                        <td className="table_lista"> <Link to={'/AlumnoBaja/' + this.state.idAlumno} className="active">Documentacion Baja de Servicio Social</Link></td> 
+                        <td className="table_lista"> <Link to={'/AlumnoServicio/' +this.state.idAlumno} className="active">Docuementacion Servicio Social</Link></td>
                     </tr>
                 </tbody>
                 </div>
