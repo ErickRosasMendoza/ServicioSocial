@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Slider from './Slider';
+import HeaderDEyAE from './HeaderDEyAE';
 import { Link } from 'react-router-dom';
 import DirectorioAlumno from './DirectorioAlumno';
 import Global from '../Global';
@@ -61,6 +61,7 @@ class Dictamen extends React.Component {
 
         return (
             <div className="center">
+            <HeaderDEyAE />
                 <DirectorioAlumno />
                         <div id="sidebar" className="dictamenLeft">
                             <div>

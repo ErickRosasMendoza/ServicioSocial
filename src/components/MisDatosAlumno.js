@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Slider from './Slider';
+import HeaderDEyAE from './HeaderDEyAE';
 import axios from 'axios';
 import Global from '../Global';
 import DirectorioAlumno from './DirectorioAlumno';
@@ -42,6 +42,7 @@ class MisDatosAlumno extends React.Component{
     render() {
             return(
                 <div className="center">
+                <HeaderDEyAE />
                     <DirectorioAlumno />
                     <br/>
                     <tbody >

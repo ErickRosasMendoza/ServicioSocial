@@ -155,7 +155,7 @@ class IniciarSesion extends React.Component {
         return (
 
             <div className= "center">
-                <HeaderDEyAE />
+                
                 <Slider
                     title="Iniciar Sesión"
                     size="slider-small"
@@ -193,7 +193,7 @@ class IniciarSesion extends React.Component {
                          switch (this.state.statusPassword) {
                         case "false":
                             return (
-                                <a className="warning">¡contraseña erronea!</a>
+                                <a className="warning">¡contraseña incorrecta!</a>
                             );
                          }
                       })()}
