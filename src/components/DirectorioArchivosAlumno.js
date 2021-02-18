@@ -17,13 +17,11 @@ class DirectorioArchivosAlumno extends Component{
         idTramite: 0,
         status: null
     };
-
+    
     componentWillMount() {
-        const { match: { params } } = this.props;
-        console.log(params.id)
-        var id = params.id;
+        console.log("this.props.idAlumno" + "<--- idAlumno props en DAA")
         this.setState({
-                idAlumno: id
+                idAlumno: "id.props.idAlumno"
         })
         console.log(this.state.idAlumno)
     }

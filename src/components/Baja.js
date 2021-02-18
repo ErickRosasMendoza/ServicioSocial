@@ -38,11 +38,12 @@ class Baja extends React.Component {
                 egresado: this.egresadoRef.current.value,
                 semestre: this.semestreRef.current.value,
                 registroSS: this.registroSSRef.current.value,
-                prestatario: this.prestatarioRef.current.value,
-                programaSS: this.programaSSRef.current.value,
+                prestatario: this.prestatarioRef.current.value.toUpperCase(),
+                programaSS: this.programaSSRef.current.value.toUpperCase(),
                 fechaInicio: this.fechaInicioRef.current.value,
                 fechaTermino: this.fechaTerminoRef.current.value,
                 tipoDeBaja: this.tipoDeBajaRef.current.value,
+                horas: 0,
                 idAlumno: this.state.idAlumno,
                 idSolicitud: this.state.idAlumno
             }
@@ -136,9 +137,9 @@ class Baja extends React.Component {
                             <div>
                                 <label htmlFor="semestre" className="text_login">Semestre</label>
                                     <select name="semestre" className="input_login" ref={this.semestreRef} onChange={this.changeState}>
-                                    <option value="7">SEPTIMO</option>
-                                    <option value="8">OCTAVO</option>
-                                    <option value="9">NOVENO</option>
+                                    <option value="SEPTIMO">SEPTIMO</option>
+                                    <option value="OCTAVO">OCTAVO</option>
+                                    <option value="NOVENO">NOVENO</option>
                                     <option value="null">EGRESADO</option>
                                     </select>
                             </div>

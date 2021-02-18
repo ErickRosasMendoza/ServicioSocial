@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import Global from '../Global';
 import Slider from './Slider';
-import HeaderDEyAE from './HeaderDEyAE';
 import md5 from 'md5';
 
 
@@ -218,6 +217,4 @@ class IniciarSesion extends React.Component {
      }
         
 }
-
-
 export default IniciarSesion;
