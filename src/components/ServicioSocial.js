@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Slider from './Slider';
+import HeaderDEyAE from './HeaderDEyAE';
 import axios from 'axios';
 import DirectorioAlumno from './DirectorioAlumno';
 import Global from '../Global';
@@ -60,6 +60,7 @@ class ServicioSocial extends React.Component {
 
         return (
             <div className="center">
+            <HeaderDEyAE/>
                 <DirectorioAlumno />
                         <div id="sidebar" className="servicioLeft">
                             <div>

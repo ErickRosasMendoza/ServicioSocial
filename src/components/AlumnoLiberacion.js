@@ -20,21 +20,14 @@ class AlumnoLiberacion extends React.Component{
         statusLista: null
     };
         componentWillMount() {
-            const { match: { params } } = this.props;
-            console.log(params.id)
-            var id = params.id;
-            this.setState({
-                    idAlumno: id
-            })
-        }
-        componentDidMount(){
-            console.log(this.state.idAlumno);
-            this.getliberacion();
-            this.getLista();
+
             this.getAlumno();
+            this.getLista();
+            this.getliberacion();
         }
+
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.state.idAlumno)
+            axios.get(this.url +"alumno/find/"+ this.props.id)
             .then(response => {
             this.setState({
                 alumno: response.data,
@@ -44,7 +37,7 @@ class AlumnoLiberacion extends React.Component{
         }//Fin de getAlumno()
     
     getliberacion = () => {
-        axios.get(this.url +"liberacionExtemporanea/findIdAlumno/"+ this.state.idAlumno)
+        axios.get(this.url +"liberacionExtemporanea/findIdAlumno/"+ this.props.id)
         .then(response => {
         this.setState({
             liberacion: response.data,
@@ -54,7 +47,7 @@ class AlumnoLiberacion extends React.Component{
     }//Fin de getLiberacion()
 
     getLista = () => {
-        axios.get(this.url+"/lista/findLiberacion/" + this.state.idAlumno)
+        axios.get(this.url+"/lista/findLiberacion/" + this.props.id)
             .then(response => {
                 this.setState({
                     listar: response.data,
@@ -129,6 +122,7 @@ class AlumnoLiberacion extends React.Component{
                 </tbody>
                 <div id="sidebar" className="dictamenAdminCenter">
                         Este alumno aun no tiene archivos registrados
+
                     </div>
             </div>
         );

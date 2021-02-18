@@ -35,6 +35,10 @@ class DirectorioAdmin extends Component{
     render(){
         return(
             <div className="center">
+            <Slider
+            title= {this.state.email}
+            size="slider-small"
+            title2="DEyAE"/>
                     <tbody >
                         <tr >
                             <th className="table"><Link to='/Lista' className = "active">Lista de Alumnos</Link></th>

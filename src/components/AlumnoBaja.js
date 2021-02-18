@@ -19,22 +19,21 @@ class AlumnoBaja extends React.Component{
         statusTipoBaja: null,
         statusLista: null
     };
-        componentWillMount() {
-            const { match: { params } } = this.props;
-            console.log(params.id)
-            var id = params.id;
-            this.setState({
-                    idAlumno: id
-            })
+      componentWillMount() {
+           this.getAlumno();
+           this.getLista();
+           this.getTipoBaja();
         }
+         /* 
         componentDidMount(){
             console.log(this.state.idAlumno);
             this.getTipoBaja();
             this.getLista();
             this.getAlumno();
         }
+        */
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.state.idAlumno)
+            axios.get(this.url +"alumno/find/"+ this.props.id)
             .then(response => {
             this.setState({
                 alumno: response.data,
@@ -43,7 +42,7 @@ class AlumnoBaja extends React.Component{
         }//Fin de getAlumno()
     
     getTipoBaja = () => {
-        axios.get(this.url +"solicitudBaja/findIdAlumno/"+ this.state.idAlumno)
+        axios.get(this.url +"solicitudBaja/findIdAlumno/"+ this.props.id)
         .then(response => {
         this.setState({
             tipoBaja: response.data,
@@ -53,7 +52,7 @@ class AlumnoBaja extends React.Component{
     }//Fin de getTipoBaja()
 
     getLista = () => {
-        axios.get(this.url+"/lista/findBaja/" + this.state.idAlumno)
+        axios.get(this.url+"/lista/findBaja/" + this.props.id)
             .then(response => {
                 this.setState({
                     listar: response.data,
@@ -128,6 +127,7 @@ class AlumnoBaja extends React.Component{
                 </tbody>
                 <div id="sidebar" className="dictamenAdminCenter">
                         Este alumno aun no tiene archivos registrados
+
                     </div>
             </div>
         );

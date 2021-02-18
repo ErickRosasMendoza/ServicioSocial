@@ -19,22 +19,14 @@ class AlumnoServicio extends React.Component{
         statusServicio: null,
         statusLista: null
     };
-        componentWillMount() {
-            const { match: { params } } = this.props;
-            console.log(params.id)
-            var id = params.id;
-            this.setState({
-                    idAlumno: id
-            })
-        }
-        componentDidMount(){
-            console.log(this.state.idAlumno);
-            this.getServicio();
+     componentWillMount=()=> {
             this.getLista();
-            this.getAlumno();
+            this.getServicio();
+            this.getAlumno();            
         }
+
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.state.idAlumno)
+            axios.get(this.url +"alumno/find/"+ this.props.id)
             .then(response => {
             this.setState({
                 alumno: response.data,
@@ -44,7 +36,7 @@ class AlumnoServicio extends React.Component{
         }//Fin de getAlumno()
     
     getServicio = () => {
-        axios.get(this.url +"servicioSocial/findIdAlumno/"+ this.state.idAlumno)
+        axios.get(this.url +"servicioSocial/findIdAlumno/"+ this.props.id)
         .then(response => {
         this.setState({
             servicio: response.data,
@@ -54,7 +46,7 @@ class AlumnoServicio extends React.Component{
     }//Fin de getservicio()
 
     getLista = () => {
-        axios.get(this.url+"/lista/findServicio/" + this.state.idAlumno)
+        axios.get(this.url+"/lista/findServicio/" + this.props.id)
             .then(response => {
                 this.setState({
                     listar: response.data,
@@ -64,6 +56,7 @@ class AlumnoServicio extends React.Component{
     }//Fin de getLista
     
     render(){
+
         if(this.state.listar.length >=1 && this.state.statusServicio == 'success' && this.state.statusLista == 'success'){
         return(
             <div className="center">
@@ -129,6 +122,7 @@ class AlumnoServicio extends React.Component{
                 </tbody>
                 <div id="sidebar" className="dictamenAdminCenter">
                         Este alumno aun no tiene archivos registrados
+
                     </div>
             </div>
         );
