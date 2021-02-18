@@ -19,13 +19,22 @@ class AlumnoDictamen extends React.Component{
         statusDictamen: null,
         statusLista: null
     };
-        componentWillMount = () =>{
-            this.getAlumno();
-          this.getDictamen();
+        componentWillMount() {
+            const { match: { params } } = this.props;
+            console.log(params.id)
+            var id = params.id;
+            this.setState({
+                    idAlumno: id
+            })
+        }
+        componentDidMount(){
+            console.log(this.state.idAlumno);
+            this.getDictamen();
             this.getLista();
+            this.getAlumno();
         }
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.props.id)
+            axios.get(this.url +"alumno/find/"+ this.state.idAlumno)
             .then(response => {
             this.setState({
                 alumno: response.data,
@@ -33,19 +42,19 @@ class AlumnoDictamen extends React.Component{
             console.log(this.state.alumno.idAlumno + "<--- idAlumno despues de getalumno en AD")
             } );   
         }//Fin de getAlumno()
-        getDictamen = () => {
-            axios.get(this.url +"dictamen/findIdAlumno/"+ this.state.idAlumno)
-            .then(response => {
-            this.setState({
-                dictamen: response.data,
-                statusDictamen: 'success'
-            });
-            } );   
-        }
-
+    
+    getDictamen = () => {
+        axios.get(this.url +"dictamen/findIdAlumno/"+ this.state.idAlumno)
+        .then(response => {
+        this.setState({
+            dictamen: response.data,
+            statusDictamen: 'success'
+        });
+        } );   
+    }//Fin de getDictamen()
 
     getLista = () => {
-        axios.get(this.url+"/lista/findDictamen/" + this.props.id)
+        axios.get(this.url+"/lista/findDictamen/" + this.state.idAlumno)
             .then(response => {
                 this.setState({
                     listar: response.data,
@@ -53,7 +62,7 @@ class AlumnoDictamen extends React.Component{
                 });
             });
     }//Fin de getLista
-
+    
     render(){
         if(this.state.listar.length >=1 && this.state.statusDictamen == 'success' && this.state.statusLista == 'success'){
             return(
@@ -93,7 +102,6 @@ class AlumnoDictamen extends React.Component{
                                 </tr>
                             </tbody>
                         )}
-                       
                     </div>
                 </div>
             );
@@ -162,7 +170,38 @@ class AlumnoDictamen extends React.Component{
                                 </tr>
                             </tbody>
                         )}
-                 </div>
+                    </div>
+                </div>
+            );
+        }else if(this.state.listar.length == 0 && this.state.statusDictamen != 'success'){
+            return(
+                <div className="center">
+                <DirectorioAdmin />
+                    <tbody>
+                        <tr >
+                            <th className="table_lista">Alumno</th>
+                            <th className="table_lista">Boleta</th>
+                            <th className="table_lista">Programa Academico</th>
+                            <th className="table_lista">Semestre</th>
+                            <th className="table_lista">Prorcentaje Creditos</th>  
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                            <td className="table_lista">{this.state.alumno.boleta}</td> 
+                            <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                            <td className="table_lista">SIN REGISTRO</td>
+                            <td className="table_lista">SIN REGISTRO</td>
+                        </tr>
+                    </tbody>
+                    <br/>
+                    <DirectorioArchivosAlumno
+                    idAlumno={this.state.idAlumno}
+                    />
+                    <div id="sidebar" className="dictamenAdminCenter">
+                        Este alumno aun no tiene archivos registrados
+                    </div>
                 </div>
             );
         }else if(this.state.listar.length == 0 && this.state.statusDictamen != 'success'){

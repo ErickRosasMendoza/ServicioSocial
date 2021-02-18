@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+ import React, {Component} from 'react';
 import axios from 'axios';
 import Slider from './Slider';
 import { Link, Switch } from 'react-router-dom';
@@ -115,14 +115,4 @@ class DirectorioArchivosAlumno extends Component{
 
         }   
     }
-                    
-                   
-                
-            
-
-            
-
-
-
-
-export default DirectorioArchivosAlumno;
+export default DirectorioArchivosAlumno; 
