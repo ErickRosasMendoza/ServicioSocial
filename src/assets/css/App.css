@@ -93,14 +93,14 @@ div {
   margin-left: 0px;
 }
 #logo2{
-  margin-top: 36px;
+  margin-top: 30px;
   width: 27%;
   float: left;
-  margin-left: 5px;
+  margin-left: 0px;
   
 }
 .text-logo{
-  margin-top: 7px;
+  margin-top: 4px;
   font-size: 20px;
   color: rgb(95, 95, 95);
   float: left;
@@ -243,8 +243,8 @@ div {
   border: 0px;
 }
 #sidebar{
-  width: 28%;
-  height: 440px;
+  width: 30%;
+  height: 460px;
   margin-top: 25px;
   margin-left:  480px;
   margin-bottom: 32px;
@@ -378,8 +378,13 @@ div {
   max-width: 24%;
 }
 .warning{
+  display: block;
   color:red;
   font-weight: 400;
+  font-size: 15px;
+  text-align: left;
+  margin-left: 30px;
+  
 }
 .registrarse{
   color: #ffffff;
