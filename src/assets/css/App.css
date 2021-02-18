@@ -347,14 +347,14 @@ div {
 }
 #sidebar.bajaRight{
   float: right;
-  margin-top: -830px;
+  margin-top: -862px;
   margin-right: 5px;
   height: 250px;
   max-width: 40%;
 }
 #sidebar.bajaCenter{
   margin-left: 580px;
-  margin-top: -848px;
+  margin-top: -863px;
   height: 685px;
   max-width: 24%;
 }

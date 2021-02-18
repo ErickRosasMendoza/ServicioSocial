@@ -23,6 +23,7 @@ class Baja extends React.Component {
     fechaInicioRef = React.createRef();
     fechaTerminoRef = React.createRef();
     tipoDeBajaRef = React.createRef();
+    horasRef = React.createRef();
     idAlumno = React.createRef();
 
 
@@ -33,22 +34,40 @@ class Baja extends React.Component {
     };
 
     changeState = () => {
-        this.setState({
-            baja: {
-                egresado: this.egresadoRef.current.value,
-                semestre: this.semestreRef.current.value,
-                registroSS: this.registroSSRef.current.value,
-                prestatario: this.prestatarioRef.current.value.toUpperCase(),
-                programaSS: this.programaSSRef.current.value.toUpperCase(),
-                fechaInicio: this.fechaInicioRef.current.value,
-                fechaTermino: this.fechaTerminoRef.current.value,
-                tipoDeBaja: this.tipoDeBajaRef.current.value,
-                horas: 0,
-                idAlumno: this.state.idAlumno,
-                idSolicitud: this.state.idAlumno
-            }
-        });
-       // console.log(this.state + "Cambiando datos a usuario");
+        if(this.tipoDeBajaRef.current.value !="BAJA CON RECONOCIMIENTO DE HORAS")
+        {
+            this.setState({
+                baja: {
+                    egresado: this.egresadoRef.current.value,
+                    semestre: this.semestreRef.current.value,
+                    registroSS: this.registroSSRef.current.value,
+                    prestatario: this.prestatarioRef.current.value.toUpperCase(),
+                    programaSS: this.programaSSRef.current.value.toUpperCase(),
+                    fechaInicio: this.fechaInicioRef.current.value,
+                    fechaTermino: this.fechaTerminoRef.current.value,
+                    tipoDeBaja: this.tipoDeBajaRef.current.value,
+                    horas: 0,
+                    idAlumno: this.state.idAlumno,
+                    idSolicitud: this.state.idAlumno
+                }
+            });
+        }else{
+            this.setState({
+                baja: {
+                    egresado: this.egresadoRef.current.value,
+                    semestre: this.semestreRef.current.value,
+                    registroSS: this.registroSSRef.current.value,
+                    prestatario: this.prestatarioRef.current.value.toUpperCase(),
+                    programaSS: this.programaSSRef.current.value.toUpperCase(),
+                    fechaInicio: this.fechaInicioRef.current.value,
+                    fechaTermino: this.fechaTerminoRef.current.value,
+                    tipoDeBaja: this.tipoDeBajaRef.current.value,
+                    horas: this.horasRef.current.value,
+                    idAlumno: this.state.idAlumno,
+                    idSolicitud: this.state.idAlumno
+                }
+            });
+        }
     }
 
     saveBaja = (e) => {
@@ -60,18 +79,16 @@ class Baja extends React.Component {
                         if(this.state.baja.fechaTermino && this.state.baja.fechaTermino != null && this.state.baja.fechaTermino != undefined){
                             axios.post(this.url + "solicitudBaja/save", this.state.baja)
                             .then(res => {
-                            // console.log(this.state.usuario.idUsuario + "idUsuario Antes de guardar Usuario");
                                 this.setState(
-                                    {
-                                        status: "true"
-                                    }
-                                );
+                                {
+                                    status: "true"
+                                });
                             })
                             alert("DOCUMENTO GENERADO")
                         }else{
                             alert("LLENA EL CAMPO FECHA DE TERMINO")
                             window.location.href = './CrearBaja';
-                        }
+                        }//Fin de else Fecha Termino
                     }else{
                         alert("LLENA EL CAMPO FECHA DE INICIO")
                         window.location.href = './CrearBaja';
@@ -121,10 +138,14 @@ class Baja extends React.Component {
                             <div>
                                 <label htmlFor="tipoBaja" className="text_login">Tipo de Baja</label>
                                 <select name="tipoBaja" className="input_login" ref={this.tipoDeBajaRef} onChange={this.changeState}>
-                                    <option value="SIN RECONOCIMIENTO DE HORAS">SIN RECONOCIMIENTO DE HORAS</option>
-                                    <option value="CON RECONOCIMIENTO DE HORAS">CON RECONOCIMIENTO DE HORAS</option>
-                                    <option value="POR MOVILIDAD ACADÉMICA">POR MOVILIDAD ACADÉMICA</option>
+                                    <option value="BAJA SIN RECONOCIMIENTO DE HORAS">SIN RECONOCIMIENTO DE HORAS</option>
+                                    <option value="BAJA CON RECONOCIMIENTO DE HORAS">CON RECONOCIMIENTO DE HORAS</option>
+                                    <option value="BAJA POR MOVILIDAD ACADÉMICA">POR MOVILIDAD ACADÉMICA</option>
                                     </select>
+                            </div>
+                            <div>
+                                <label htmlFor="horas" className="text_login">Horas de Servicio Social</label>
+                                <input type="text" className="input_login" name="horas" placeholder="Ingresa el total de horas" ref={this.horasRef} onChange={this.changeState}/>
                             </div>
                             <div>
                                 <label htmlFor="egresado" className="text_login">Eres egresado?</label>
