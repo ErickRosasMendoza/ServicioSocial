@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Global from '../Global';
 import Cookies from 'universal-cookie';
+import PdfDictamenAlumno from './PdfDictamenAlumno';
 
 const cookies = new Cookies();
 
@@ -12,6 +13,7 @@ class VerDatosDictamen extends React.Component{
     state = {
         dictamen: {},
         idAlumno: cookies.get('idAlumno'),
+        email: cookies.get('email'),
         status: null
     };
         componentWillMount() {
@@ -40,7 +42,12 @@ class VerDatosDictamen extends React.Component{
                                 Semestre: {this.state.dictamen.semestre}
                             </div>
                             <br/>
-                            <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
+                            <PdfDictamenAlumno
+                            creditos={this.state.dictamen.porcentajeCreditos}
+                            semestre={this.state.dictamen.semestre}
+                            email={this.state.email}
+                            idAlumno={this.state.idAlumno}
+                            />
                         </div>          
             </div>
             );

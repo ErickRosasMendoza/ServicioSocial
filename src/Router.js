@@ -101,7 +101,6 @@ class Router extends React.Component {
                
         <div className="clearfix"></div>
       <br/>
-    {/* <Footer/>*/}
     
             </BrowserRouter>
            

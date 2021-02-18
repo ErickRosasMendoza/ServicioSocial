@@ -49,15 +49,13 @@ class MisDatosAdmin extends React.Component{
                     <tbody >
                         <tr >
                             <th className="table">Nombre</th>
-                            <th className="table">Apellidos</th>
                             <th className="table">Telefono</th>
                             <th className="table">Correo</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
-                            <td className="table"> {this.state.admin.nombre}</td>
-                            <td className="table"> {this.state.admin.apellidos}</td>
+                            <td className="table"> {this.state.admin.nombre} {this.state.admin.apellidos}</td>
                             <td className="table"> {this.state.admin.telefono}</td>
                             <td className="table"> {this.state.email}</td>
                         </tr>

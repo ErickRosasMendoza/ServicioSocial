@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import DirectorioAdmin from './DirectorioAdmin';
+import DirectorioArchivosAlumno from './DirectorioArchivosAlumno';
 import Slider from './Slider';
+import BorrarDoc from './BorrarDoc';
 import Global from '../Global';
 
 class AlumnoBaja extends React.Component{
@@ -14,7 +16,8 @@ class AlumnoBaja extends React.Component{
         idAlumno: "",
         tipoBaja: {},
         alumno: {},
-        status: null
+        statusTipoBaja: null,
+        statusLista: null
     };
       componentWillMount() {
            this.getAlumno();
@@ -43,7 +46,7 @@ class AlumnoBaja extends React.Component{
         .then(response => {
         this.setState({
             tipoBaja: response.data,
-            status: 'success'
+            statusTipoBaja: 'success'
         });
         } );   
     }//Fin de getTipoBaja()
@@ -53,71 +56,177 @@ class AlumnoBaja extends React.Component{
             .then(response => {
                 this.setState({
                     listar: response.data,
+                    statusLista: 'success'
                 });
             });
     }//Fin de getLista
     
     render(){
-            return(
-                <div className="center">
-               
-                    <div id="sidebar" className="infoAdminLeft">
-                        <div className="text_login">
-                            <strong>Nombre:</strong> {this.state.alumno.nombre}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Paterno:</strong> {this.state.alumno.apellidoPaterno}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Materno:</strong> {this.state.alumno.apellidoMaterno} 
-                        </div>
-                        <div className="text_login">
-                            <strong>Boleta:</strong> {this.state.alumno.boleta}
-                        </div>
-                        <div className="text_login">
-                            <strong>Programa Academico:</strong> {this.state.alumno.programaAcademico} 
-                        </div>
-                    </div>
-                    <div id="sidebar" className="infoAdminCenter">
-                        <div className="text_login">
-                            <strong>Registro de Servicio Social:</strong> {this.state.tipoBaja.registroSS}
-                        </div>
-                        <div className="text_login">
-                            <strong>Programa de ServicioSocial:</strong> {this.state.tipoBaja.programaSS}
-                        </div>
-                        <div className="text_login">
-                            <strong>Prestatario:</strong> {this.state.tipoBaja.prestatario}
-                        </div>
-                        <div className="text_login">
-                            <strong>Fecha de Inicio:</strong> {this.state.tipoBaja.fechaInicio}
-                        </div>
-                        <div className="text_login">
-                            <strong>Fecha de Término:</strong> {this.state.tipoBaja.fechaTermino}
-                        </div>
-                        <div className="text_login">
-                            <strong>Tipo de Baja:</strong> {this.state.tipoBaja.tipoBaja}
-                        </div>
-                        <div className="text_login">
-                            <strong>Egresado:</strong> No, No soy EGRESADO
-                        </div>
-                        <div className="text_login">
-                            <strong>Semestre:</strong> {this.state.tipoBaja.semestre}
-                        </div>
-                    </div>
-                    <div id="sidebar" className="tipoBajaAdminRight">
-                        {this.state.listar.map((lista1, i) =>
-                            <tbody key={i}>
-                                <tr>
-                                    <td>{lista1.nombreDoc}</td>
-                                    <td><Link to={'/PdfBaja/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
-                                    <td><Link to={'/DocBaja/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
-                                    <td><button id="btn_delete"  onClick = "">Eliminar</button></td>
-                                </tr>
-                            </tbody>
-                        )}
-                    </div>
+        if(this.state.listar.length >=1 && this.state.statusTipoBaja == 'success' && this.state.statusLista == 'success'){
+        return(
+            <div className="center">
+            <DirectorioAdmin />
+                <tbody>
+                    <tr >
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+                        <th className="table_lista">Semestre</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td> 
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        <td className="table_lista">{this.state.tipoBaja.semestre}</td>
+                        <td className="table_lista">{this.state.tipoBaja.registroSS}</td>
+                    </tr>
+                </tbody>
+                <div id="sidebar" className="dictamenAdminCenter">
+                    {this.state.listar.map((lista1, i) =>
+                        <tbody key={i}>
+                            <tr>
+                                <td>{lista1.nombreDoc}</td>
+                                <td><Link to={'/PdfDictamen/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
+                                <td><Link to={'/DocDictamen/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
+                                <td><BorrarDoc
+                                    idLista={lista1.idLista}
+                                    idDoc={lista1.idDoc}
+                                    url= "docBaja/deleteDoc/"
+                                    redirect={lista1.idAlumno}
+                                    /></td>
+                            </tr>
+                        </tbody>
+                    )}
                 </div>
-            );
+            </div>
+        );
+    }else if(this.state.listar.length == 0 && this.state.statusTipoBaja == 'success'){
+        return(
+            <div className="center">
+            <DirectorioAdmin />
+                <tbody>
+                    <tr >
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+                        <th className="table_lista">Semestre</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td> 
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        <td className="table_lista">{this.state.tipoBaja.semestre}</td>
+                        <td className="table_lista">{this.state.tipoBaja.registroSS}</td>
+                    </tr>
+                </tbody>
+                <div id="sidebar" className="dictamenAdminCenter">
+                        Este alumno aun no tiene archivos registrados
+
+                    </div>
+            </div>
+        );
+    }else if(this.state.listar.length != 0 && this.state.statusTipoBaja != 'success'){
+        return(
+            <div className="center">
+            <DirectorioAdmin />
+                <tbody>
+                    <tr >
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+                        <th className="table_lista">Semestre</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td> 
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        <td className="table_lista">SIN REGISTRO</td>
+                        <td className="table_lista">SIN REGISTRO</td>
+                    </tr>
+                </tbody>
+                <div id="sidebar" className="dictamenAdminCenter">
+                    {this.state.listar.map((lista1, i) =>
+                        <tbody key={i}>
+                            <tr>
+                                <td>{lista1.nombreDoc}</td>
+                                <td><Link to={'/PdfDictamen/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
+                                <td><Link to={'/DocDictamen/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
+                                <td><BorrarDoc
+                                    idLista={lista1.idLista}
+                                    idDoc={lista1.idDoc}
+                                    url= "docBaja/deleteDoc/"
+                                    redirect={lista1.idAlumno}
+                                    /></td>
+                            </tr>
+                        </tbody>
+                    )}
+                </div>
+            </div>
+        );
+    }else if(this.state.listar.length == 0 && this.state.statusTipoBaja != 'success'){
+        return(
+            <div className="center">
+            <DirectorioAdmin />
+                <tbody>
+                    <tr >
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+                        <th className="table_lista">Semestre</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td> 
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        <td className="table_lista">SIN REGISTRO</td>
+                        <td className="table_lista">SIN REGISTRO</td>
+                    </tr>
+                </tbody>
+                <div id="sidebar" className="dictamenAdminCenter">
+                    Este alumno aun no tiene archivos registrados
+                </div>
+            </div>
+        );
+    }else{
+        return(
+            <div className="center">
+            <DirectorioAdmin />
+                <tbody>
+                    <tr >
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+                        <th className="table_lista">Semestre</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td> 
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        <td className="table_lista">Cargando...</td>
+                        <td className="table_lista">Cargando...</td>
+                    </tr>
+                </tbody>
+                <div id="sidebar" className="dictamenAdminCenter">
+                    Cargando... Espere un momento...
+                </div>
+            </div>
+        );
+    }
 }//Fin de Render ()
 }//Fin de Classs AlumnoBaja
 export default AlumnoBaja;

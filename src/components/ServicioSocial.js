@@ -28,7 +28,7 @@ class ServicioSocial extends React.Component {
         this.setState({
             servicio: {
                 semestre: this.semestreRef.current.value,
-                responsableDirecto: this.responsableDirectoRef.current.value,
+                responsableDirecto: this.responsableDirectoRef.current.value.toUpperCase(),
                 idAlumno: this.state.idAlumno,
                 idServicio: this.state.idAlumno
             }
@@ -70,9 +70,9 @@ class ServicioSocial extends React.Component {
                             <div>
                                 <label htmlFor="semestre" className="text_login">Semestre</label>
                                 <select name="semestre" className="input_login" ref={this.semestreRef} onChange={this.changeState}>
-                                    <option value="7">SEPTIMO</option>
-                                    <option value="8">OCTAVO</option>
-                                    <option value="9">NOVENO</option>
+                                    <option value="SEPTIMO">SEPTIMO</option>
+                                    <option value="OCTAVO">OCTAVO</option>
+                                    <option value="NOVENO">NOVENO</option>
                                     </select>
                             </div>
                             <br/>
