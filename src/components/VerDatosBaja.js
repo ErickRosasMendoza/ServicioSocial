@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Global from '../Global';
 import Cookies from 'universal-cookie';
+import PdfBajaAlumno from './PdfBajaAlumno';
 
 const cookies = new Cookies();
 
@@ -12,6 +13,7 @@ class VerDatosBaja extends React.Component{
     state = {
         tipoBaja: {},
         idAlumno: cookies.get('idAlumno'),
+        email: cookies.get('email'),
         status: null
     };
         componentWillMount() {
@@ -25,6 +27,7 @@ class VerDatosBaja extends React.Component{
                         tipoBaja: res.data,
                         status: 'success'
                        });
+                       console.log(this.state.tipoBaja.tipoBaja)
             });
         }//Fin de funcion getBaja()
         
@@ -50,7 +53,7 @@ class VerDatosBaja extends React.Component{
                                     Fecha de Término: {this.state.tipoBaja.fechaTermino}
                                 </div>
                                 <div className="text_login">
-                                    Tipo de Baja: {this.state.tipoBaja.tipoBaja}
+                                    Tipo de Baja: {this.state.tipoBaja.tipoDeBaja}
                                 </div>
                                 <div className="text_login">
                                     Egresado: No, No soy EGRESADO
@@ -59,7 +62,18 @@ class VerDatosBaja extends React.Component{
                                     Semestre: {this.state.tipoBaja.semestre}
                                 </div>
                                 <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
+                                <PdfBajaAlumno
+                                registroSS={this.state.tipoBaja.registroSS}
+                                programaSS={this.state.tipoBaja.programaSS}
+                                prestatario={this.state.tipoBaja.prestatario}
+                                fechaInicio={this.state.tipoBaja.fechaInicio}
+                                fechaTermino={this.state.tipoBaja.fechaTermino}
+                                baja={this.state.tipoBaja.tipoDeBaja}
+                                horas={this.state.tipoBaja.horas}
+                                redaccion={" alumno del " + this.state.tipoBaja.semestre + " semestre "}
+                                email={this.state.email}
+                                idAlumno={this.state.idAlumno}
+                                />
                             </div>          
                 </div>
                 );
@@ -83,13 +97,24 @@ class VerDatosBaja extends React.Component{
                                     Fecha de Término: {this.state.tipoBaja.fechaTermino}
                                 </div>
                                 <div className="text_login">
-                                    Tipo de Baja: {this.state.tipoBaja.tipoBaja}
+                                    Tipo de Baja: {this.state.tipoBaja.tipoDeBaja}
                                 </div>
                                 <div className="text_login">
                                     Egresado: Sí, Sí soy EGRESADO
                                 </div>
                                 <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
+                                <PdfBajaAlumno
+                                registroSS={this.state.tipoBaja.registroSS}
+                                programaSS={this.state.tipoBaja.programaSS}
+                                prestatario={this.state.tipoBaja.prestatario}
+                                fechaInicio={this.state.tipoBaja.fechaInicio}
+                                fechaTermino={this.state.tipoBaja.fechaTermino}
+                                baja={this.state.tipoBaja.tipoDeBaja}
+                                horas={this.state.tipoBaja.horas}
+                                redaccion={" egresado "}
+                                email={this.state.email}
+                                idAlumno={this.state.idAlumno}
+                                />  
                             </div>          
                 </div>
                 );

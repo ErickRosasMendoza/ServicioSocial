@@ -37,8 +37,8 @@ class Liberacion extends React.Component {
                 egresado: this.egresadoRef.current.value,
                 semestre: this.semestreRef.current.value,
                 registroSS: this.registroSSRef.current.value,
-                prestatario: this.prestatarioRef.current.value,
-                programaSS: this.programaSSRef.current.value,
+                prestatario: this.prestatarioRef.current.value.toUpperCase(),
+                programaSS: this.programaSSRef.current.value.toUpperCase(),
                 fechaInicio: this.fechaInicioRef.current.value,
                 fechaTermino: this.fechaTerminoRef.current.value,
                 telefono: this.telefonoRef.current.value,
@@ -132,9 +132,9 @@ class Liberacion extends React.Component {
                             <div>
                                 <label htmlFor="semestre" className="text_login">Semestre</label>
                                 <select name="semestre" className="input_login" ref={this.semestreRef} onChange={this.changeState}>
-                                    <option value="7">SEPTIMO</option>
-                                    <option value="8">OCTAVO</option>
-                                    <option value="9">NOVENO</option>
+                                    <option value="SEPTIMO">SEPTIMO</option>
+                                    <option value="OCTAVO">OCTAVO</option>
+                                    <option value="NOVENO">NOVENO</option>
                                     <option value="null">SOY EGRESADO</option>
                                     </select>
                             </div>

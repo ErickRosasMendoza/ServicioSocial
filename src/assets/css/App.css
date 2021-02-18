@@ -295,10 +295,9 @@ div {
   height: auto;
   max-width: 24%;
 }
-#sidebar.dictamenAdminRight{
-  float: right;
-  margin-top: -112px;
-  margin-right: 5px;
+#sidebar.dictamenAdminCenter{
+  float: center;
+  margin-top: -240px;
   height: auto;
   max-width: 40%;
 }
@@ -608,8 +607,10 @@ input[type="radio"]{
 }
 .table_lista{
   padding-top: 1px;
-  margin-top: 1px;
-  background: gray;
+  border-width: 1px;
+  border-style: dotted;
+  border-color: #bbbbbb;
+  color: #135081;
   text-align: center;
   width: 250px; bottom: 1px solid #000000;
   padding-bottom: 10px;

@@ -47,8 +47,6 @@ class MisDatosAlumno extends React.Component{
                     <tbody >
                         <tr >
                             <th className="table_lista">Nombre</th>
-                            <th className="table_lista">Apellido Paterno</th>
-                            <th className="table_lista">Apellido Materno</th>
                             <th className="table_lista">Boleta</th>
                             <th className="table_lista">Programa Academico</th>
                             <th className="table_lista">Correo</th>
@@ -56,9 +54,7 @@ class MisDatosAlumno extends React.Component{
                     </tbody>
                     <tbody>
                         <tr>
-                            <td className="table_lista">{this.state.alumno.nombre}</td>
-                            <td className="table_lista">{this.state.alumno.apellidoPaterno}</td>
-                            <td className="table_lista">{this.state.alumno.apellidoMaterno}</td>
+                            <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
                             <td className="table_lista">{this.state.alumno.boleta}</td>
                             <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                             <td className="table_lista">{this.state.email}</td>
@@ -66,7 +62,6 @@ class MisDatosAlumno extends React.Component{
                         </tbody>
                 </div>
             );
-  
 }//Fin de Render ()
 }//Fin de Classs MisDatosAlumno
 

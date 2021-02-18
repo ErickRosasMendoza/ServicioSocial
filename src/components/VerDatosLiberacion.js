@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Global from '../Global';
 import Cookies from 'universal-cookie';
+import PdfLiberacionAlumno from './PdfLiberacionAlumno';
 
 const cookies = new Cookies();
 
@@ -12,6 +13,7 @@ class VerDatosLiberacion extends React.Component{
     state = {
         liberacionExtemporanea: {},
         idAlumno: cookies.get('idAlumno'),
+        email: cookies.get('email'),
         status: null
     };
         componentWillMount() {
@@ -59,7 +61,17 @@ class VerDatosLiberacion extends React.Component{
                                     Semestre: {this.state.liberacionExtemporanea.semestre}
                                 </div>
                                 <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
+                                <PdfLiberacionAlumno
+                                registroSS={this.state.liberacionExtemporanea.registroSS}
+                                programaSS={this.state.liberacionExtemporanea.programaSS}
+                                prestatario={this.state.liberacionExtemporanea.prestatario}
+                                fechaInicio={this.state.liberacionExtemporanea.fechaInicio}
+                                fechaTermino={this.state.liberacionExtemporanea.fechaTermino}
+                                redaccion={" alumno del " + this.state.liberacionExtemporanea.semestre + " semestre "}
+                                telefono={this.state.liberacionExtemporanea.telefono}
+                                email={this.state.email}
+                                idAlumno={this.state.idAlumno}
+                                />
                             </div>          
                 </div>
                 );
@@ -89,7 +101,17 @@ class VerDatosLiberacion extends React.Component{
                                     Egresado: Sí, Sí soy EGRESADO
                                 </div>
                                 <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
+                                <PdfLiberacionAlumno
+                                registroSS={this.state.liberacionExtemporanea.registroSS}
+                                programaSS={this.state.liberacionExtemporanea.programaSS}
+                                prestatario={this.state.liberacionExtemporanea.prestatario}
+                                fechaInicio={this.state.liberacionExtemporanea.fechaInicio}
+                                fechaTermino={this.state.liberacionExtemporanea.fechaTermino}
+                                telefono={this.state.liberacionExtemporanea.telefono}
+                                redaccion={" egresado "}
+                                email={this.state.email}
+                                idAlumno={this.state.idAlumno}
+                                />  
                             </div>          
                 </div>
                 );
