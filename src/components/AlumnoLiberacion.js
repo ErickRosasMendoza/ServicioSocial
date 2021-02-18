@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import DirectorioAdmin from './DirectorioAdmin';
 import Slider from './Slider';
+import DirectorioArchivosAlumno from './DirectorioArchivosAlumno';
+import BorrarDoc from './BorrarDoc';
 import Global from '../Global';
 
 class AlumnoLiberacion extends React.Component{
@@ -14,7 +16,8 @@ class AlumnoLiberacion extends React.Component{
         idAlumno: "",
         liberacion: {},
         alumno: {},
-        status: null
+        statusLiberacion: null,
+        statusLista: null
     };
         componentWillMount() {
             const { match: { params } } = this.props;
@@ -45,6 +48,7 @@ class AlumnoLiberacion extends React.Component{
         .then(response => {
         this.setState({
             liberacion: response.data,
+            statusLiberacion: 'success'
         });
         } );   
     }//Fin de getLiberacion()
@@ -54,88 +58,176 @@ class AlumnoLiberacion extends React.Component{
             .then(response => {
                 this.setState({
                     listar: response.data,
+                    statusLista: 'success'
                 });
             });
     }//Fin de getLista
     
     render(){
-        if(this.state.liberacion.idAlumno && this.state.liberacion.idAlumno != null && this.state.liberacion.idAlumno != undefined){
-            return(
-                <div className="center">
-                <DirectorioAdmin />
-                    <div id="sidebar" className="infoAdminLeft">
-                        <div className="text_login">
-                            <strong>Nombre:</strong> {this.state.alumno.nombre}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Paterno:</strong> {this.state.alumno.apellidoPaterno}
-                        </div>
-                        <div className="text_login">
-                            <strong>Apellido Materno:</strong> {this.state.alumno.apellidoMaterno} 
-                        </div>
-                        <div className="text_login">
-                            <strong>Boleta:</strong> {this.state.alumno.boleta}
-                        </div>
-                        <div className="text_login">
-                            <strong>Programa Academico:</strong> {this.state.alumno.programaAcademico} 
-                        </div>
-                    </div>
-                    <div id="sidebar" className="infoAdminCenter">
-                        <div className="text_login">
-                            <strong>Registro de Servicio Social:</strong> {this.state.liberacion.registroSS}
-                        </div>
-                        <div className="text_login">
-                            <strong>Programa de ServicioSocial:</strong> {this.state.liberacion.programaSS}
-                        </div>
-                        <div className="text_login">
-                            <strong>Prestatario:</strong> {this.state.liberacion.prestatario}
-                        </div>
-                        <div className="text_login">
-                            Número Telefónico: {this.state.liberacion.telefono}
-                        </div>
-                        <div className="text_login">
-                            <strong>Fecha de Inicio:</strong> {this.state.liberacion.fechaInicio}
-                        </div>
-                        <div className="text_login">
-                            <strong>Fecha de Término:</strong> {this.state.liberacion.fechaTermino}
-                        </div>
-                        <div className="text_login">
-                            <strong>Egresado:</strong> No, No soy EGRESADO
-                        </div>
-                        <div className="text_login">
-                            <strong>Semestre:</strong> {this.state.liberacion.semestre}
-                        </div>
-                    </div>
-                    <div id="sidebar" className="liberacionAdminRight">
-                        {this.state.listar.map((lista1, i) =>
-                            <tbody key={i}>
-                                <tr>
-                                    <td>{lista1.nombreDoc}</td>
-                                    <td><Link to={'/PdfLiberacion/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
-                                    <td><Link to={'/DocLiberacion/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
-                                    <td><button id="btn_delete"  onClick = "">Eliminar</button></td>
-                                </tr>
-                            </tbody>
-                        )}
-                    </div>
+        if(this.state.listar.length >=1 && this.state.statusLiberacion == 'success' && this.state.statusLista == 'success' ){
+        return(
+            <div className="center">
+            <DirectorioAdmin />
+                <tbody>
+                    <tr >
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+                        <th className="table_lista">Semestre</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td> 
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        <td className="table_lista">{this.state.liberacion.semestre}</td>
+                        <td className="table_lista">{this.state.liberacion.registroSS}</td>
+                    </tr>
+                </tbody>
+                <div id="sidebar" className="dictamenAdminCenter">
+                    {this.state.listar.map((lista1, i) =>
+                        <tbody key={i}>
+                            <tr>
+                                <td>{lista1.nombreDoc}</td>
+                                <td><Link to={'/PdfDictamen/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
+                                <td><Link to={'/DocDictamen/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
+                                <td><BorrarDoc
+                                    idLista={lista1.idLista}
+                                    idDoc={lista1.idDoc}
+                                    url= "docLiberacion/deleteDoc/"
+                                    redirect={lista1.idAlumno}
+                                    /></td>
+                            </tr>
+                        </tbody>
+                    )}
                 </div>
-            );
-        }else{
-            return(
-                <div className="center">
-                        <div id="sidebar" className="dictamenCenter">
-                            <div className="text_login">
-                                No tienes datos disponibles, registralos para empezar con tu documentación de DICTAMEN DE MENOS DE 70% DE CREDITOS.
-                            </div>
-                        </div>          
-                        <div id="sidebar" className="dictamenRicht">
-                            <div className="text_login">
-                                No tienes datos disponibles, registralos para empezar con tu documentación de DICTAMEN DE MENOS DE 70% DE CREDITOS.
-                            </div>
-                        </div>          
             </div>
-            );
-        }
+        );
+    }else if(this.state.listar.length == 0 && this.state.statusLiberacion == 'success'){
+        return(
+            <div className="center">
+            <DirectorioAdmin />
+                <tbody>
+                    <tr >
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+                        <th className="table_lista">Semestre</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td> 
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        <td className="table_lista">{this.state.liberacion.semestre}</td>
+                        <td className="table_lista">{this.state.liberacion.registroSS}</td>
+                    </tr>
+                </tbody>
+                <div id="sidebar" className="dictamenAdminCenter">
+                        Este alumno aun no tiene archivos registrados
+                    </div>
+            </div>
+        );
+    }else if(this.state.listar.length != 0 && this.state.statusLiberacion != 'success'){
+        return(
+            <div className="center">
+            <DirectorioAdmin />
+                <tbody>
+                    <tr >
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+                        <th className="table_lista">Semestre</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td> 
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        <td className="table_lista">SIN REGISTRO</td>
+                        <td className="table_lista">SIN REGISTRO</td>
+                    </tr>
+                </tbody>
+                <div id="sidebar" className="dictamenAdminCenter">
+                    {this.state.listar.map((lista1, i) =>
+                        <tbody key={i}>
+                            <tr>
+                                <td>{lista1.nombreDoc}</td>
+                                <td><Link to={'/PdfDictamen/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
+                                <td><Link to={'/DocDictamen/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
+                                <td><BorrarDoc
+                                    idLista={lista1.idLista}
+                                    idDoc={lista1.idDoc}
+                                    url= "docLiberacion/deleteDoc/"
+                                    redirect={lista1.idAlumno}
+                                    /></td>
+                            </tr>
+                        </tbody>
+                    )}
+                </div>
+            </div>
+        );   
+    }else if(this.state.listar.length == 0 && this.state.statusLiberacion != 'success'){
+        return(
+            <div className="center">
+            <DirectorioAdmin />
+                <tbody>
+                    <tr >
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+                        <th className="table_lista">Semestre</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td> 
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        <td className="table_lista">SIN REGISTRO</td>
+                        <td className="table_lista">SIN REGISTRO</td>
+                    </tr>
+                </tbody>
+                <div id="sidebar" className="dictamenAdminCenter">
+                        Este alumno aun no tiene archivos registrados
+                    </div>
+            </div>
+        );
+    }else{
+        return(
+            <div className="center">
+            <DirectorioAdmin />
+                <tbody>
+                    <tr >
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+                        <th className="table_lista">Semestre</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td> 
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        <td className="table_lista">Cargando...</td>
+                        <td className="table_lista">Cargando...</td>
+                    </tr>
+                </tbody>
+                <div id="sidebar" className="dictamenAdminCenter">
+                        Cargando... Espere un momento...
+                    </div>
+            </div>
+        );
+    }
 }//Fin de Render ()
 }//Fin de Classs AlumnoLiberacion
 export default AlumnoLiberacion;

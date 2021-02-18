@@ -295,10 +295,9 @@ div {
   height: auto;
   max-width: 24%;
 }
-#sidebar.dictamenAdminRight{
-  float: right;
-  margin-top: -112px;
-  margin-right: 5px;
+#sidebar.dictamenAdminCenter{
+  float: center;
+  margin-top: -240px;
   height: auto;
   max-width: 40%;
 }

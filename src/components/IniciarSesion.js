@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import Global from '../Global';
 import Slider from './Slider';
-import HeaderDEyAE from './HeaderDEyAE';
 import md5 from 'md5';
 
 
@@ -66,6 +65,7 @@ class IniciarSesion extends React.Component{
                     window.location.href = "./MisDatosAdmin";
                 }else{
                      alert("VERIFIQUE SU CONTRASEÑA");
+                     window.location.href = "./IniciarSesion";
                  }
             }else{
                 window.location.href = "./IniciarSesion";
@@ -74,6 +74,7 @@ class IniciarSesion extends React.Component{
         .catch(error=>{
             console.log(error +" error en consulta");
             alert( "VERIFIQUE SU CORREO");
+            window.location.href = "./IniciarSesion";
         })
     }
         render(){
@@ -107,5 +108,4 @@ class IniciarSesion extends React.Component{
             );
         }
 }
-
 export default IniciarSesion;
