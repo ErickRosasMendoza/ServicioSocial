@@ -27,7 +27,6 @@ class MisDatosAlumno extends React.Component{
         getAlumno = () => {
             axios.get(this.url +"alumno/findIdUsuario/"+ this.state.idUsuario)
             .catch(error=>{
-                    alert("REGISTRA TUS DATOS PERSONALES")
                     window.location.href = '/DatosAlumno';
             })
             .then(res => {
