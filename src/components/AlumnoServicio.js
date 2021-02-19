@@ -39,7 +39,6 @@ class AlumnoServicio extends React.Component{
     }//Fin de getservicio()
     
     render(){
-
         if(this.state.statusServicio == 'success'){
         return(
             <div className="center">

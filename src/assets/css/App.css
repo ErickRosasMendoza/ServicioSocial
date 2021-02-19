@@ -306,7 +306,11 @@ div {
 }
 #sidebar.dictamenAdminCenter{
   float: center;
+<<<<<<< HEAD
   margin-top: -367px;
+=======
+  margin-top: -350px;
+>>>>>>> 75b277c2ac0b97dd4d32892b9e7db16636c5e88f
   margin-left: 265px;
   min-height: 350px;
   height: auto;

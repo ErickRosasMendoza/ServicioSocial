@@ -106,6 +106,10 @@ class AlumnoDictamen extends React.Component{
                             <td className="table_lista">Cargando...</td>
                         </tr>
                     </tbody>
+<<<<<<< HEAD
+=======
+                    <br/>
+>>>>>>> 75b277c2ac0b97dd4d32892b9e7db16636c5e88f
                 </div>
             );
         }
