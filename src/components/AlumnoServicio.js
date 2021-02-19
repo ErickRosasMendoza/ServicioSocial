@@ -39,7 +39,6 @@ class AlumnoServicio extends React.Component{
     }//Fin de getservicio()
     
     render(){
-
         if(this.state.statusServicio == 'success'){
         return(
             <div className="center">
@@ -107,9 +106,6 @@ class AlumnoServicio extends React.Component{
                         <td className="table_lista">Cargando...</td>
                     </tr>
                 </tbody>
-                <div id="sidebar" className="dictamenAdminCenter">
-                        Cargando... Espere un momento...
-                    </div>
             </div>
         );
     }

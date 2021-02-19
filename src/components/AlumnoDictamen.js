@@ -104,9 +104,6 @@ class AlumnoDictamen extends React.Component{
                         </tr>
                     </tbody>
                     <br/>
-                    <div id="sidebar" className="dictamenAdminCenter">
-                        Cargando... Espere un momento...
-                    </div>
                 </div>
             );
         }

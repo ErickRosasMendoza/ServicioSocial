@@ -87,12 +87,20 @@ class AdminServicioArchivos extends React.Component {
             return (
                 <div className="center">
                             <div id="sidebar" className="dictamenAdminCenter">
+                            <strong>DOCUMENTACIÓN DE LIBERACIÓN EXTEMPORANEA</strong>
                                 <div>
+                                <br/>
+                                    <tbody>
+                                        <tr>
+                                            <td className="table_lista"><strong>Archivo</strong></td>
+                                            <td className="table_lista"><strong>Comentario</strong></td>
+                                        </tr>
+                                    </tbody>
                                     {this.state.listar.map((lista1, i) =>
                                         <tbody key={i}>
                                             <tr>
-                                                <td>{lista1.nombreDoc}</td>
-                                                <td>{lista1.comentario}</td>
+                                                <td className="table_lista">{lista1.nombreDoc}</td>
+                                                <td className="table_lista">{lista1.comentario}</td>
                                                 <td><Link to={'/PdfServicio/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
                                                 <td><Link to={'/DocServicio/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
                                                 <td><BorrarDoc
@@ -104,12 +112,14 @@ class AdminServicioArchivos extends React.Component {
                                             </tr>
                                     </tbody>
                                     )}
+                                    <br/>
                                     <input type="file" name = "file" onChange={this.fileChange} />
                                 </div>
                                 <div>
                                     <label htmlFor="comentario" className="text_login">Comentario Informativo</label>
                                     <input type="text" className="input_login" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState}/>
                                 </div>
+                                <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
                             </div>
                 </div>
