@@ -82,7 +82,7 @@ render() {
                 {this.state.alumnos.map((alumno, i) =>
                     <tbody key={i}>
                     <tr>
-                        <td className="table_lista">{alumno.nombre} {alumno.apellidoPaterno} {alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{alumno.apellidoPaterno} {alumno.apellidoMaterno} {alumno.nombre}</td>
                         <td className="table_lista">{alumno.boleta}</td> 
                         <td className="table_lista">{alumno.programaAcademico}</td>
                         <td><Link to={'/DirectorioArchivosAlumno/' + alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>
