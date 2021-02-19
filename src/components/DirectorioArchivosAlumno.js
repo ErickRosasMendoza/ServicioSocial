@@ -9,8 +9,8 @@ import AlumnoDictamen from './AlumnoDictamen';
 import AlumnoBaja from './AlumnoBaja';
 import AlumnoServicio from './AlumnoServicio';
 import AlumnoLiberacion from './AlumnoLiberacion';
-import AdminDictamenArchivos from './AdminDictamenArchivos';
 import AdminBajaArchivos from './AdminBajaArchivos';
+import AdminDictamenArchivos from './AdminDictamenArchivos';
 import AdminLiberacionArchivos from './AdminLiberacionArchivos';
 import AdminServicioArchivos from './AdminServicioArchivos';
 const cookies = new Cookies();
@@ -25,11 +25,12 @@ class DirectorioArchivosAlumno extends Component{
 
     componentWillMount() {
         const { match: { params } } = this.props;
-        console.log(params.id)	
-        var id = params.id;	
-        this.setState({	       
-                idAlumno: id	            
+        console.log(params.id)
+        var id = params.id;
+        this.setState({
+                idAlumno: id
         })
+        console.log(this.state.idAlumno)
     }
 
     tramite1=()=>{
@@ -59,9 +60,10 @@ class DirectorioArchivosAlumno extends Component{
             return(
               <div className = "center">
                         <DirectorioAdmin />
+
                         {(() => {  
-                    switch (this.state.idTramite){
-                        case 1:
+                        switch (this.state.idTramite){
+                        /*case 1:
                             return (
                                 <AlumnoDictamen
                                 id = {this.state.idAlumno}/>
@@ -82,8 +84,7 @@ class DirectorioArchivosAlumno extends Component{
                             return(
                                 <AlumnoServicio
                                 id = {this.state.idAlumno}/>
-                            )
-                            break;
+                            )*/
                          default: 
                             return(
                                 <AlumnoDetalle
@@ -92,6 +93,7 @@ class DirectorioArchivosAlumno extends Component{
                             break;
                         }
                         })()}
+
                 <tbody>
                     <tr>
                         <tr>
@@ -108,6 +110,8 @@ class DirectorioArchivosAlumno extends Component{
                         </tr>
                      </tr>   
                 </tbody>
+               
+               
                 {(() => {  
                     switch (this.state.idTramite){
                         case 1:
@@ -133,10 +137,16 @@ class DirectorioArchivosAlumno extends Component{
                                 id = {this.state.idAlumno}/>
                             )
                          default: break;
-                        }
-                        })()}
+
+                    }
+
+
+                })()}
+
                  </div>
              );
+             
+
         }   
     }
 export default DirectorioArchivosAlumno; 
