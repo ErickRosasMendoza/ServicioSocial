@@ -87,7 +87,7 @@ class AdminDictamenArchivos extends React.Component {
             return (
                 <div className="center">
                             <div id="sidebar" className="dictamenAdminCenter">
-                                Documentación de dictamende menos de 70% de Creditos
+                               <strong>Documentación de dictamende menos de 70% de Creditos</strong> 
                                 <div>
                                     <br/>
                                     <tbody>
@@ -113,6 +113,7 @@ class AdminDictamenArchivos extends React.Component {
                                     </tbody>
                                     )}
                                     <br/>
+                                    <a className = "text_login"> Subir Archivo</a>
                                     <input type="file" name = "file" onChange={this.fileChange} />
                                 </div>
                                 <div>
@@ -131,6 +132,7 @@ class AdminDictamenArchivos extends React.Component {
                                 <div>
                                 <strong>SIN DOCUMENTACION PARA DICTAMEN DE 70%</strong>
                                 <br/>
+                                <a className = "text_login"> Subir Archivo</a>
                                     <input type="file" name = "file"  onChange={this.fileChange} />
                                 </div>
                                 <div>
