@@ -106,9 +106,6 @@ class AlumnoLiberacion extends React.Component{
                         <td className="table_lista">Cargando...</td>
                     </tr>
                 </tbody>
-                <div id="sidebar" className="dictamenAdminCenter">
-                        Cargando... Espere un momento...
-                    </div>
             </div>
         );
     }

@@ -24,19 +24,11 @@ class DirectorioArchivosAlumno extends Component{
     };
 
     componentWillMount() {
-<<<<<<< HEAD
-      /*  const { match: { params } } = this.props;
-        console.log(params.id)
-        var id = params.id; */
-        this.setState({
-                idAlumno: this.props.id
-=======
         const { match: { params } } = this.props;
         console.log(params.id)	
         var id = params.id;	
         this.setState({	       
                 idAlumno: id	            
->>>>>>> d87812358457cda8f14cb08bb41f4b9d21ffa10d
         })
     }
 
@@ -69,29 +61,7 @@ class DirectorioArchivosAlumno extends Component{
                         <DirectorioAdmin />
                         {(() => {  
                     switch (this.state.idTramite){
-                        case 1:
-                            return (
-                                <AlumnoDictamen
-                                id = {this.state.idAlumno}/>
-                              );
-                        break;
-                        case 2:
-                            return(
-                                <AlumnoLiberacion
-                                id = {this.state.idAlumno}/>
-                              ); 
-                              break;  
-                        case 3:
-                            return(
-                                <AlumnoBaja
-                                id = {this.state.idAlumno}/>    
-                            );
-                        case 4:
-                            return(
-                                <AlumnoServicio
-                                id = {this.state.idAlumno}/>
-                            )
-                            break;
+         
                          default: 
                             return(
                                 <AlumnoDetalle
@@ -103,7 +73,7 @@ class DirectorioArchivosAlumno extends Component{
                 <tbody>
                     <tr>
                         <tr>
-                        <td className="table_lista"> <button  class = "btn" onClick={this.tramite1} >Docuementacion Dictamen de 70%</button></td>
+                        <td className="table_lista" > <button  class = "btn lista" onClick={this.tramite1} >Docuementacion Dictamen de 70%</button></td>
                         </tr>
                         <tr> 
                         <td className="table_lista"><button  class = "btn" onClick={this.tramite2} >Docuementacion Liberacion Extemporanea</button></td>
