@@ -19,7 +19,7 @@ class BuscarAlumno extends React.Component {
 
     changeState = () => {
         this.setState({
-                nombre: this.nombreRef.current.value
+                nombre: this.nombreRef.current.value.toUpperCase()
         });
     }
 
