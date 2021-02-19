@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Slider from './Slider';
+import HeaderDEyAE from './HeaderDEyAE';
 import DirectorioAlumno from './DirectorioAlumno';
 import Global from '../Global';
 import Cookies from 'universal-cookie';
@@ -96,6 +96,7 @@ class Liberacion extends React.Component {
 
         return (
             <div className="center">
+            <HeaderDEyAE/>
                 <DirectorioAlumno />
                         <div id="sidebar" className="liberacionLeft">
                             <div>

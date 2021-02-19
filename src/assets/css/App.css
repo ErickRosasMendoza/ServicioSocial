@@ -4,10 +4,11 @@ body{
   padding: 0px;
   border: 0px;
   max-width: 100%;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -moz-font-feature-settings: initial;
   -webkit-font-feature-settings: normal;
-  background: rgb(241, 241, 241);
+ 
   background: rgb(235,255,243);
 background: linear-gradient(308deg, rgba(235,255,243,1) 0%, rgba(232,232,232,1) 52%, rgba(255,233,233,1) 100%);
 }
@@ -93,16 +94,16 @@ div {
   margin-left: 0px;
 }
 #logo2{
-  margin-top: 36px;
+  margin-top: 30px;
   width: 27%;
   float: left;
-  margin-left: 5px;
+  margin-left: 0px;
   
 }
 .text-logo{
-  margin-top: 7px;
+  margin-top: 4px;
   font-size: 20px;
-  color: rgb(95, 95, 95);
+  color: rgb(126, 5, 5);
   float: left;
  
 
@@ -160,10 +161,10 @@ div {
 }
 .active{
   text-decoration: none;
-  padding: 10px;
+  padding: 6px;
   color: #e0e0e0;
   font-weight: 100;
-  font-size: 18px;
+  font-size: 15px;
   transition: 300ms;
 }
 .active:hover{
@@ -175,23 +176,17 @@ div {
 }
 
 #slider{
-  background: #343a40;
+  background: #9e9e9e60;
   max-width: 100%;
-  height: 200px;
+  height: 100px;
   line-height: 60px;
-  color: #a7a7a7;
+  color: #474646;
   font-weight:100;
   font-size: 20px;
   border: 0px;
+  
 }
-#slider h1{
 
-  border: 0px;
-  padding: 0px;
-  padding-top: 0px;
-  text-align: center;
-  margin-bottom:0px;
-}
 .btn-white{
   display: block;
   background: white;
@@ -216,18 +211,34 @@ div {
   color: white;
 }
 #slider.slider-small{
-  height: 60px;
+  height: 50px;
   padding-top: 0px;
   margin-top: 0px;
   margin-bottom: 0px;
+  text-align: center;
  
 }
 #slider.slider-small h1{
 
   margin-top: 0px;
   margin-bottom: 0px;
-  padding-top: 0px;
+  padding-top: 8px;
   border: 0px;
+  font-size: 22px;
+  font-weight: 200;
+  text-align:center;
+ 
+}
+#slider.slider-small h2{
+
+  margin-top: -29px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  border: 0px;
+  margin-left: 20px;
+  font-size: 22px;
+  font-weight: 200;
+  text-align:left;
  
 }
 #content{
@@ -243,8 +254,8 @@ div {
   border: 0px;
 }
 #sidebar{
-  width: 28%;
-  height: 440px;
+  width: 30%;
+  height: 460px;
   margin-top: 25px;
   margin-left:  480px;
   margin-bottom: 32px;
@@ -297,7 +308,7 @@ div {
 }
 #sidebar.dictamenAdminCenter{
   float: center;
-  margin-top: -240px;
+  margin-top: -360px;
   height: auto;
   max-width: 40%;
 }
@@ -347,14 +358,14 @@ div {
 }
 #sidebar.bajaRight{
   float: right;
-  margin-top: -830px;
+  margin-top: -862px;
   margin-right: 5px;
   height: 250px;
   max-width: 40%;
 }
 #sidebar.bajaCenter{
   margin-left: 580px;
-  margin-top: -848px;
+  margin-top: -863px;
   height: 685px;
   max-width: 24%;
 }
@@ -376,8 +387,17 @@ div {
   height: 250px;
   max-width: 24%;
 }
+.warning{
+  display: block;
+  color:red;
+  font-weight: 400;
+  font-size: 15px;
+  text-align: left;
+  margin-left: 30px;
+  
+}
 .registrarse{
-  color: #ffffff;
+  color: #666666;
   font-size: 20px;
   float: right;
   margin-right: 70px;
@@ -386,7 +406,7 @@ div {
   transition: 200ms;
 }
 .registrarse:hover{
-  color:#e4d7d7;
+  color:#131313;
 
 }
 .btn{
@@ -445,7 +465,7 @@ textarea:focus{
 .text_login{
   width: 200px;
   margin-top: 18px;
-  margin-left: 50px;
+  margin-left: 28px;
   margin-bottom: 10px;
   display: block;
   text-align: left;
@@ -602,7 +622,7 @@ input[type="radio"]{
   margin-top: 1px;
   text-align: center;
   background: #343a40;
-  width: 270px; bottom: 1px solid #000000;
+  width: 280px; bottom: 1px solid #000000;
   padding-bottom: 10px;
 }
 .table_lista{
@@ -610,6 +630,7 @@ input[type="radio"]{
   border-width: 1px;
   border-style: dotted;
   border-color: #bbbbbb;
+  background-color: #ffffff;
   color: #135081;
   text-align: center;
   width: 250px; bottom: 1px solid #000000;
