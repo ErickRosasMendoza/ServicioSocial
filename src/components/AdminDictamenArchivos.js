@@ -72,11 +72,9 @@ class AdminDictamenArchivos extends React.Component {
                             }
                         })
                         this.guardarLista();
-                        alert("DOCUMENTO GUARDADO CON EXITO")
                     });
         }else{
             alert("SELECCIONA UN ARCHIVO PARA SUBIR")
-            window.location.href = './' + this.props.id;
         }//Fin de else file
     }//Fin de funcion upLoad
     render() {
@@ -113,6 +111,7 @@ class AdminDictamenArchivos extends React.Component {
                                     </tbody>
                                     )}
                                     <br/>
+                                    <a className="text_login">Subir Archivo</a>
                                     <input type="file" name = "file" onChange={this.fileChange} />
                                 </div>
                                 <div>
@@ -131,6 +130,7 @@ class AdminDictamenArchivos extends React.Component {
                                 <div>
                                 <strong>SIN DOCUMENTACION PARA DICTAMEN DE 70%</strong>
                                 <br/>
+                                <a className="text_login">Subir Archivo</a>
                                     <input type="file" name = "file"  onChange={this.fileChange} />
                                 </div>
                                 <div>
