@@ -4,28 +4,32 @@ import Slider from './Slider';
 import { Link, Switch } from 'react-router-dom';
 import DirectorioAdmin from './DirectorioAdmin';
 import Cookies from 'universal-cookie';
+import AlumnoDetalle from './AlumnoDetalle';
 import AlumnoDictamen from './AlumnoDictamen';
 import AlumnoBaja from './AlumnoBaja';
 import AlumnoServicio from './AlumnoServicio';
 import AlumnoLiberacion from './AlumnoLiberacion';
+import AdminDictamenArchivos from './AdminDictamenArchivos';
+import AdminBajaArchivos from './AdminBajaArchivos';
+import AdminLiberacionArchivos from './AdminLiberacionArchivos';
+import AdminServicioArchivos from './AdminServicioArchivos';
 const cookies = new Cookies();
 
 class DirectorioArchivosAlumno extends Component{
 
     state = {
         idAlumno: "",
-        idTramite: 0,
+        idTramite: "",
         status: null
     };
 
     componentWillMount() {
         const { match: { params } } = this.props;
-        console.log(params.id)
-        var id = params.id;
-        this.setState({
-                idAlumno: id
+        console.log(params.id)	
+        var id = params.id;	
+        this.setState({	       
+                idAlumno: id	            
         })
-        console.log(this.state.idAlumno)
     }
 
     tramite1=()=>{
@@ -55,32 +59,7 @@ class DirectorioArchivosAlumno extends Component{
             return(
               <div className = "center">
                         <DirectorioAdmin />
-               
-                <tbody>
-                    <tr>
-                        <tr>
-                        <td>{this.state.idAlumno}</td>
-                        </tr>
-                        <tr>
-                        <td>{this.state.idTramite}</td>
-                        </tr>
-                        <tr>
-                        <td className="table_lista"> <button  class = "btn" onClick={this.tramite1} >Docuementacion Dictamen de 70%</button></td>
-                        </tr>
-                        <tr> 
-                        <td className="table_lista"><button  class = "btn" onClick={this.tramite2} >Docuementacion Liberacion Extemporanea</button></td>
-                        </tr>
-                        <tr>
-                        <td className="table_lista"><button  class = "btn" onClick={this.tramite3} >Documentacion Baja de Servicio Social</button></td> 
-                        </tr>
-                        <tr>
-                        <td className="table_lista"><button  class = "btn" onClick={this.tramite4} >Docuementacion Servicio Social</button></td>
-                        </tr>
-                     </tr>   
-                </tbody>
-               
-               
-                {(() => {  
+                        {(() => {  
                     switch (this.state.idTramite){
                         case 1:
                             return (
@@ -104,17 +83,60 @@ class DirectorioArchivosAlumno extends Component{
                                 <AlumnoServicio
                                 id = {this.state.idAlumno}/>
                             )
+                            break;
+                         default: 
+                            return(
+                                <AlumnoDetalle
+                                id = {this.state.idAlumno}/>
+                            )
+                            break;
+                        }
+                        })()}
+                <tbody>
+                    <tr>
+                        <tr>
+                        <td className="table_lista"> <button  class = "btn" onClick={this.tramite1} >Docuementacion Dictamen de 70%</button></td>
+                        </tr>
+                        <tr> 
+                        <td className="table_lista"><button  class = "btn" onClick={this.tramite2} >Docuementacion Liberacion Extemporanea</button></td>
+                        </tr>
+                        <tr>
+                        <td className="table_lista"><button  class = "btn" onClick={this.tramite3} >Documentacion Baja de Servicio Social</button></td> 
+                        </tr>
+                        <tr>
+                        <td className="table_lista"><button  class = "btn" onClick={this.tramite4} >Docuementacion Servicio Social</button></td>
+                        </tr>
+                     </tr>   
+                </tbody>
+                {(() => {  
+                    switch (this.state.idTramite){
+                        case 1:
+                            return (
+                                <AdminDictamenArchivos
+                                id = {this.state.idAlumno}/>
+                              );
+                        break;
+                        case 2:
+                            return(
+                                <AdminLiberacionArchivos
+                                id = {this.state.idAlumno}/>
+                              ); 
+                              break;  
+                        case 3:
+                            return(
+                                <AdminBajaArchivos
+                                id = {this.state.idAlumno}/>    
+                            );
+                        case 4:
+                            return(
+                                <AdminServicioArchivos
+                                id = {this.state.idAlumno}/>
+                            )
                          default: break;
-
-                    }
-
-
-                })()}
-
+                        }
+                        })()}
                  </div>
              );
-             
-
         }   
     }
 export default DirectorioArchivosAlumno; 
