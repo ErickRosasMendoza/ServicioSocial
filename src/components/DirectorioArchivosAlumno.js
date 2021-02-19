@@ -19,11 +19,11 @@ class DirectorioArchivosAlumno extends Component{
     };
 
     componentWillMount() {
-        const { match: { params } } = this.props;
+      /*  const { match: { params } } = this.props;
         console.log(params.id)
-        var id = params.id;
+        var id = params.id; */
         this.setState({
-                idAlumno: id
+                idAlumno: this.props.id
         })
         console.log(this.state.idAlumno)
     }

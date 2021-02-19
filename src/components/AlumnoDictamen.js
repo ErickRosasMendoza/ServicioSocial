@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import DirectorioAdmin from './DirectorioAdmin';
-import Slider from './Slider';
+
 import Global from '../Global';
 import DirectorioArchivosAlumno from './DirectorioArchivosAlumno';
 import BorrarDoc from './BorrarDoc';
@@ -20,21 +20,14 @@ class AlumnoDictamen extends React.Component{
         statusLista: null
     };
         componentWillMount() {
-            const { match: { params } } = this.props;
-            console.log(params.id)
-            var id = params.id;
-            this.setState({
-                    idAlumno: id
-            })
-        }
-        componentDidMount(){
-            console.log(this.state.idAlumno);
             this.getDictamen();
             this.getLista();
             this.getAlumno();
         }
+       
+        
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.state.idAlumno)
+            axios.get(this.url +"alumno/find/"+ this.props.id)
             .then(response => {
             this.setState({
                 alumno: response.data,
@@ -44,7 +37,7 @@ class AlumnoDictamen extends React.Component{
         }//Fin de getAlumno()
     
     getDictamen = () => {
-        axios.get(this.url +"dictamen/findIdAlumno/"+ this.state.idAlumno)
+        axios.get(this.url +"dictamen/findIdAlumno/"+ this.props.id)
         .then(response => {
         this.setState({
             dictamen: response.data,
@@ -54,7 +47,7 @@ class AlumnoDictamen extends React.Component{
     }//Fin de getDictamen()
 
     getLista = () => {
-        axios.get(this.url+"/lista/findDictamen/" + this.state.idAlumno)
+        axios.get(this.url+"/lista/findDictamen/" + this.props.id)
             .then(response => {
                 this.setState({
                     listar: response.data,
@@ -67,7 +60,6 @@ class AlumnoDictamen extends React.Component{
         if(this.state.listar.length >=1 && this.state.statusDictamen == 'success' && this.state.statusLista == 'success'){
             return(
                 <div className="center">
-                <DirectorioAdmin />
                     <tbody>
                         <tr >
                             <th className="table_lista">Alumno</th>
@@ -108,7 +100,6 @@ class AlumnoDictamen extends React.Component{
         }else if(this.state.listar.length == 0 && this.state.statusDictamen == 'success'){
             return(
                 <div className="center">
-                <DirectorioAdmin />
                     <tbody>
                         <tr >
                             <th className="table_lista">Alumno</th>
@@ -135,7 +126,7 @@ class AlumnoDictamen extends React.Component{
         }else if(this.state.listar.length != 0 && this.state.statusDictamen != 'success'){
             return(
                 <div className="center">
-                <DirectorioAdmin />
+             
                     <tbody>
                         <tr >
                             <th className="table_lista">Alumno</th>
@@ -176,7 +167,6 @@ class AlumnoDictamen extends React.Component{
         }else if(this.state.listar.length == 0 && this.state.statusDictamen != 'success'){
             return(
                 <div className="center">
-                <DirectorioAdmin />
                     <tbody>
                         <tr >
                             <th className="table_lista">Alumno</th>
@@ -195,10 +185,6 @@ class AlumnoDictamen extends React.Component{
                             <td className="table_lista">SIN REGISTRO</td>
                         </tr>
                     </tbody>
-                    <br/>
-                    <DirectorioArchivosAlumno
-                    idAlumno={this.state.idAlumno}
-                    />
                     <div id="sidebar" className="dictamenAdminCenter">
                         Este alumno aun no tiene archivos registrados
                     </div>
@@ -207,7 +193,6 @@ class AlumnoDictamen extends React.Component{
         }else{
             return(
                 <div className="center">
-                <DirectorioAdmin />
                     <tbody>
                         <tr >
                             <th className="table_lista">Alumno</th>
@@ -226,10 +211,6 @@ class AlumnoDictamen extends React.Component{
                             <td className="table_lista">Cargando...</td>
                         </tr>
                     </tbody>
-                    <br/>
-                    <DirectorioArchivosAlumno
-                    idAlumno={this.state.idAlumno}
-                    />
                     <div id="sidebar" className="dictamenAdminCenter">
                         Cargando... Espere un momento...
                     </div>
