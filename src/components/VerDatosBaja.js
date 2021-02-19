@@ -56,9 +56,6 @@ class VerDatosBaja extends React.Component{
                                     Tipo de Baja: {this.state.tipoBaja.tipoDeBaja}
                                 </div>
                                 <div className="text_login">
-                                    Egresado: No, No soy EGRESADO
-                                </div>
-                                <div className="text_login">
                                     Semestre: {this.state.tipoBaja.semestre}
                                 </div>
                                 <br/>
@@ -100,7 +97,7 @@ class VerDatosBaja extends React.Component{
                                     Tipo de Baja: {this.state.tipoBaja.tipoDeBaja}
                                 </div>
                                 <div className="text_login">
-                                    Egresado: Sí, Sí soy EGRESADO
+                                    Egresado
                                 </div>
                                 <br/>
                                 <PdfBajaAlumno

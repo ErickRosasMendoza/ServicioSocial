@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+<<<<<<< HEAD
 import DirectorioAdmin from './DirectorioAdmin';
 
+=======
+>>>>>>> d87812358457cda8f14cb08bb41f4b9d21ffa10d
 import Global from '../Global';
-import DirectorioArchivosAlumno from './DirectorioArchivosAlumno';
-import BorrarDoc from './BorrarDoc';
 
 class AlumnoDictamen extends React.Component{
 
     url = Global.url;
 
     state = {
-        listar: [],
-        idAlumno: "",
+        idAlumno: this.props.id,
         dictamen: {},
         alumno: {},
         statusDictamen: null,
-        statusLista: null
     };
         componentWillMount() {
             this.getDictamen();
-            this.getLista();
             this.getAlumno();
         }
        
@@ -32,7 +30,6 @@ class AlumnoDictamen extends React.Component{
             this.setState({
                 alumno: response.data,
             });
-            console.log(this.state.alumno.idAlumno + "<--- idAlumno despues de getalumno en AD")
             } );   
         }//Fin de getAlumno()
     
@@ -45,6 +42,7 @@ class AlumnoDictamen extends React.Component{
         });
         } );   
     }//Fin de getDictamen()
+<<<<<<< HEAD
 
     getLista = () => {
         axios.get(this.url+"/lista/findDictamen/" + this.props.id)
@@ -56,8 +54,10 @@ class AlumnoDictamen extends React.Component{
             });
     }//Fin de getLista
     
+=======
+>>>>>>> d87812358457cda8f14cb08bb41f4b9d21ffa10d
     render(){
-        if(this.state.listar.length >=1 && this.state.statusDictamen == 'success' && this.state.statusLista == 'success'){
+        if(this.state.statusDictamen == 'success'){
             return(
                 <div className="center">
                     <tbody>
@@ -78,28 +78,12 @@ class AlumnoDictamen extends React.Component{
                             <td className="table_lista">{this.state.dictamen.porcentajeCreditos}</td>
                         </tr>
                     </tbody>
-                    <div id="sidebar" className="dictamenAdminCenter">
-                        {this.state.listar.map((lista1, i) =>
-                            <tbody key={i}>
-                                <tr>
-                                    <td>{lista1.nombreDoc}</td>
-                                    <td><Link to={'/PdfDictamen/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
-                                    <td><Link to={'/DocDictamen/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
-                                    <td><BorrarDoc
-                                        idLista={lista1.idLista}
-                                        idDoc={lista1.idDoc}
-                                        url= "docDictamen/deleteDoc/"
-                                        redirect={lista1.idAlumno}
-                                    /></td>
-                                </tr>
-                            </tbody>
-                        )}
-                    </div>
                 </div>
             );
-        }else if(this.state.listar.length == 0 && this.state.statusDictamen == 'success'){
+        }else if(this.state.statusDictamen != 'success'){
             return(
                 <div className="center">
+<<<<<<< HEAD
                     <tbody>
                         <tr >
                             <th className="table_lista">Alumno</th>
@@ -127,6 +111,8 @@ class AlumnoDictamen extends React.Component{
             return(
                 <div className="center">
              
+=======
+>>>>>>> d87812358457cda8f14cb08bb41f4b9d21ffa10d
                     <tbody>
                         <tr >
                             <th className="table_lista">Alumno</th>
@@ -145,6 +131,7 @@ class AlumnoDictamen extends React.Component{
                             <td className="table_lista">SIN REGISTRO</td>
                         </tr>
                     </tbody>
+<<<<<<< HEAD
                     <div id="sidebar" className="dictamenAdminCenter">
                         {this.state.listar.map((lista1, i) =>
                             <tbody key={i}>
@@ -188,6 +175,8 @@ class AlumnoDictamen extends React.Component{
                     <div id="sidebar" className="dictamenAdminCenter">
                         Este alumno aun no tiene archivos registrados
                     </div>
+=======
+>>>>>>> d87812358457cda8f14cb08bb41f4b9d21ffa10d
                 </div>
             );
         }else{
@@ -211,6 +200,10 @@ class AlumnoDictamen extends React.Component{
                             <td className="table_lista">Cargando...</td>
                         </tr>
                     </tbody>
+<<<<<<< HEAD
+=======
+                    <br/>
+>>>>>>> d87812358457cda8f14cb08bb41f4b9d21ffa10d
                     <div id="sidebar" className="dictamenAdminCenter">
                         Cargando... Espere un momento...
                     </div>
