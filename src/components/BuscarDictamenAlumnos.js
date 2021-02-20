@@ -50,7 +50,7 @@ render() {
                 }
         </React.Fragment>
     );
-    }else if(this.state.dictamenes.length === 0 && this.state.status === 'success'){
+    }else if(this.state.dictamenes.length == 0 && this.state.status == 'success'){
         return(
             <div>
                 <h1>No hay alumnos registrados para esta solicitud</h1>

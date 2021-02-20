@@ -64,7 +64,7 @@ class SubirLiberacion extends React.Component {
                                 nombreDoc: res.data,
                                 idTramite: 2,
                                 idDoc: res.data + this.state.idLiberacion,
-                                comentario: ""
+                                comentario: "NUEVO"
                             }
                         })
                         this.guardarLista();
@@ -96,12 +96,21 @@ class SubirLiberacion extends React.Component {
         return (
             <div className="center">
                         <div id="sidebar" className="liberacionRight">
-                            <div>
+                        <strong>DOCUMENTACIÓN LIBERACIÓN EXTEMPORANEA</strong>
+                                <div>
+                                <br/>
+                                    <tbody>
+                                        <tr>
+                                            <td className="table_lista"><strong>Archivo</strong></td>
+                                            <td className="table_lista"><strong>Comentario</strong></td>
+                                        </tr>
+                                    </tbody>
                                     {this.state.listar.map((lista1, i) =>
                                         <tbody key={i}>
                                             <tr>
-                                                <td>{lista1.nombreDoc}</td>
-                                                <td><Link to={'/PdfLiberacion/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
+                                                <td className="table_lista">{lista1.nombreDoc}</td>
+                                                <td className="table_lista">{lista1.comentario}</td>
+                                                <td><Link to={'/PdfLiberacion/' + lista1.idDoc}target="_blank" id="btn_watch">Visualizar</Link></td>
                                                 <td><Link to={'/DocLiberacion/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
                                                 <td><BorrarDoc
                                                 idLista={lista1.idLista}
@@ -124,7 +133,9 @@ class SubirLiberacion extends React.Component {
             <div className="center">
                         <div id="sidebar" className="liberacionRight">
                             <div>
-                                Aun no hay archivos guardados
+                                <strong>Aun no hay archivos guardados</strong>
+                                <br/>
+                                <a className="text_login">Subir Archivo</a>
                                 <input type="file" name = "file" onChange={this.fileChange} />
                             </div>
                             <br/>

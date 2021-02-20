@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Global from '../Global';
+import PdfServicioAlumno from './PdfServicioAlumno';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -12,6 +13,7 @@ class VerDatosServicio extends React.Component{
     state = {
         servicio: {},
         idAlumno: cookies.get('idAlumno'),
+        email: cookies.get('email'),
         status: null
     };
         componentWillMount() {
@@ -30,20 +32,48 @@ class VerDatosServicio extends React.Component{
         
     render() {
         if(this.state.status == 'success'){
-            return(
-                <div className="center">
-                        <div id="sidebar" className="servicioCenter">
-                            <div className="text_login">
-                                Responsable Directo: {this.state.servicio.responsableDirecto}
+            if(this.state.servicio.semestre != "EGRESADO")
+            {
+                return(
+                    <div className="center">
+                            <div id="sidebar" className="servicioCenter">
+                                <div className="text_login">
+                                    Responsable Directo: {this.state.servicio.responsableDirecto}
+                                </div>
+                                <div className="text_login">
+                                    Semestre: {this.state.servicio.semestre}
+                                </div>
+                                <br/>
+                                <PdfServicioAlumno
+                                    responsable={this.state.servicio.responsableDirecto}
+                                    redaccion={" alumno del " + this.state.servicio.semestre + " semestre "}
+                                    email={this.state.email}
+                                    idAlumno={this.state.idAlumno}
+                                    />
+                            </div>          
+                </div>
+                );
+            }else{
+                return(
+                    <div className="center">
+                            <div id="sidebar" className="servicioCenter">
+                                <div className="text_login">
+                                    Responsable Directo: {this.state.servicio.responsableDirecto}
+                                </div>
+                                <div className="text_login">
+                                    Semestre: {this.state.servicio.semestre}
+                                </div>
+                                <br/>
+                                <PdfServicioAlumno
+                                    responsable={this.state.servicio.responsableDirecto}
+                                    redaccion={" egresado "}
+                                    email={this.state.email}
+                                    idAlumno={this.state.idAlumno}
+                                    />
                             </div>
-                            <div className="text_login">
-                                Semestre: {this.state.servicio.semestre}
-                            </div>
-                            <br/>
-                            <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
-                        </div>          
-            </div>
-            );
+                </div>
+                );
+            }
         }else{ 
             return(
                 <div className="center">

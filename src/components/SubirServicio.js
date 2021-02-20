@@ -62,7 +62,7 @@ class SubirServicio extends React.Component {
                                 nombreDoc: res.data,
                                 idTramite: 4,
                                 idDoc: res.data + this.state.idServicio,
-                                comentario: ""
+                                comentario: "NUEVO"
                             }
                         })
                         this.guardarLista();
@@ -93,12 +93,21 @@ class SubirServicio extends React.Component {
         return (
             <div className="center">
                         <div id="sidebar" className="servicioRight">
-                        <div>
+                        <strong>DOCUMENTACIÓN SERVICIO SOCIAL</strong>
+                                <div>
+                                <br/>
+                                    <tbody>
+                                        <tr>
+                                            <td className="table_lista"><strong>Archivo</strong></td>
+                                            <td className="table_lista"><strong>Comentario</strong></td>
+                                        </tr>
+                                    </tbody>
                                     {this.state.listar.map((lista1, i) =>
                                         <tbody key={i}>
                                             <tr>
-                                                <td>{lista1.nombreDoc}</td>
-                                                <td><Link to={'/PdfServicio/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
+                                                <td className="table_lista">{lista1.nombreDoc}</td>
+                                                <td className="table_lista">{lista1.comentario}</td>
+                                                <td><Link to={'/PdfServicio/' + lista1.idDoc}target="_blank" id="btn_watch">Visualizar</Link></td>
                                                 <td><Link to={'/DocServicio/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
                                                 <td><BorrarDoc
                                                 idLista={lista1.idLista}
@@ -121,7 +130,9 @@ class SubirServicio extends React.Component {
             <div className="center">
                         <div id="sidebar" className="servicioRight">
                             <div>
-                                Aun no hay archivos guardados
+                                <strong>Aun no hay archivos guardados</strong>
+                                <br/>
+                                <a className="text_login">Subir Archivo</a>
                                 <input type="file" name = "file" onChange={this.fileChange} />
                             </div>
                             <br/>
