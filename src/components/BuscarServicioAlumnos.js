@@ -3,54 +3,54 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Global from '../Global';
 import DirectorioAdmin from './DirectorioAdmin';
-class BuscarDictamenAlumnos extends Component{
+class BuscarServicioAlumnos extends Component{
 
     url = Global.url;
 
     state = {
         alumno: {},
-        dictamenes: [],
+        servicios: [],
         status: null
     };
 
     componentWillMount() {
-        this.getDictamenes();
+        this.getServicios();
     }
 
-    getDictamenes = () => {
-        axios.get(this.url+"dictamen/findAll")
+    getServicios = () => {
+        axios.get(this.url+"servicioSocial/findAll")
             .then(response => {
                 this.setState({
-                    dictamenes: response.data,
+                    servicios: response.data,
                     status: 'success'
                 });
             });
-    }//Fin de getDictamenes
+    }//Fin de getServicios
     
 render() {
-    if(this.state.dictamenes.length >=0){        
+    if(this.state.servicios.length >=0){        
        return (
         <React.Fragment>
             <DirectorioAdmin />
                 <tbody>
                     <tr >
                         <th className="table_lista">Semestre</th>
-                        <th className="table_lista">Porcentaje de Creditos</th>
+                        <th className="table_lista">Responsable Directo</th>
                     </tr>
                 </tbody>
-                {this.state.dictamenes.map((dictamen, i) =>
+                {this.state.servicios.map((servicio, i) =>
                     <tbody key={i}>
                     <tr>
-                        <td className="table_lista">{dictamen.semestre}</td>
-                        <td className="table_lista">{dictamen.porcentajeCreditos}</td>
-                        <td><Link to={'/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                        <td className="table_lista">{servicio.semestre}</td>
+                        <td className="table_lista">{servicio.responsableDirecto}</td>
+                        <td><Link to={'/DirectorioArchivosAlumno/' + servicio.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                     </tr>
                 </tbody>
                 )
                 }
         </React.Fragment>
     );
-    }else if(this.state.dictamenes.length === 0 && this.state.status === 'success'){
+    }else if(this.state.servicios.length === 0 && this.state.status === 'success'){
         return(
             <div>
                 <h1>No hay alumnos registrados para esta solicitud</h1>
@@ -64,5 +64,5 @@ render() {
         );
     }
     }//Fin de Render
-}//Fin de Class BuscarDictamenAlumnos
-export default BuscarDictamenAlumnos;
+}//Fin de Class BuscarServicioAlumnos
+export default BuscarServicioAlumnos;

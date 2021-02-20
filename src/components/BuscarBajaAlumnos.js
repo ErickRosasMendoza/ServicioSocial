@@ -3,54 +3,54 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Global from '../Global';
 import DirectorioAdmin from './DirectorioAdmin';
-class BuscarDictamenAlumnos extends Component{
+class BuscarBajaAlumnos extends Component{
 
     url = Global.url;
 
     state = {
         alumno: {},
-        dictamenes: [],
+        bajas: [],
         status: null
     };
 
     componentWillMount() {
-        this.getDictamenes();
+        this.getBajas();
     }
 
-    getDictamenes = () => {
-        axios.get(this.url+"dictamen/findAll")
+    getBajas = () => {
+        axios.get(this.url+"solicitudBaja/findAll")
             .then(response => {
                 this.setState({
-                    dictamenes: response.data,
+                    bajas: response.data,
                     status: 'success'
                 });
             });
-    }//Fin de getDictamenes
+    }//Fin de getBajas
     
 render() {
-    if(this.state.dictamenes.length >=0){        
+    if(this.state.bajas.length >=0){        
        return (
         <React.Fragment>
             <DirectorioAdmin />
                 <tbody>
                     <tr >
                         <th className="table_lista">Semestre</th>
-                        <th className="table_lista">Porcentaje de Creditos</th>
+                        <th className="table_lista">Registro de Servicio Social</th>
                     </tr>
                 </tbody>
-                {this.state.dictamenes.map((dictamen, i) =>
+                {this.state.bajas.map((baja, i) =>
                     <tbody key={i}>
                     <tr>
-                        <td className="table_lista">{dictamen.semestre}</td>
-                        <td className="table_lista">{dictamen.porcentajeCreditos}</td>
-                        <td><Link to={'/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                        <td className="table_lista">{baja.semestre}</td>
+                        <td className="table_lista">{baja.registroSS}</td>
+                        <td><Link to={'/DirectorioArchivosAlumno/' + baja.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                     </tr>
                 </tbody>
                 )
                 }
         </React.Fragment>
     );
-    }else if(this.state.dictamenes.length === 0 && this.state.status === 'success'){
+    }else if(this.state.bajas.length === 0 && this.state.status === 'success'){
         return(
             <div>
                 <h1>No hay alumnos registrados para esta solicitud</h1>
@@ -64,5 +64,5 @@ render() {
         );
     }
     }//Fin de Render
-}//Fin de Class BuscarDictamenAlumnos
-export default BuscarDictamenAlumnos;
+}//Fin de Class BuscarBajaAlumnos
+export default BuscarBajaAlumnos;

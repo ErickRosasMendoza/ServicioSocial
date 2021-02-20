@@ -79,6 +79,9 @@ h3 {
 div {
   display: block;
 }
+.oculto{
+  display: none;
+}
 .center{
   width: 100%;
 }
