@@ -28,7 +28,7 @@ class BuscarBajaAlumnos extends Component{
     }//Fin de getBajas
     
 render() {
-    if(this.state.bajas.length >=0){        
+    if(this.state.bajas.length >=1){        
        return (
         <React.Fragment>
             <DirectorioAdmin />
@@ -50,15 +50,17 @@ render() {
                 }
         </React.Fragment>
     );
-    }else if(this.state.bajas.length === 0 && this.state.status === 'success'){
+    }else if(this.state.bajas.length == 0 && this.state.status == 'success'){
         return(
-            <div>
+            <div className="center">
+            <DirectorioAdmin />
                 <h1>No hay alumnos registrados para esta solicitud</h1>
             </div>
         );
     }else{
         return(
-            <div>
+            <div className="center">
+            <DirectorioAdmin />
                 <h1>Cargando... Espere un momento...</h1>
             </div>
         );

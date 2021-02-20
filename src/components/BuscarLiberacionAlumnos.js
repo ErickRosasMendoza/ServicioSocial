@@ -28,7 +28,7 @@ class BuscarLiberacionAlumnos extends Component{
     }//Fin de getLiberaciones
     
 render() {
-    if(this.state.liberaciones.length >=0){        
+    if(this.state.liberaciones.length >=1){        
        return (
         <React.Fragment>
             <DirectorioAdmin />
@@ -50,16 +50,18 @@ render() {
                 }
         </React.Fragment>
     );
-    }else if(this.state.liberaciones.length === 0 && this.state.status === 'success'){
+    }else if(this.state.liberaciones.length == 0 && this.state.status == 'success'){
         return(
-            <div>
+            <div className="center">
+            <DirectorioAdmin />
                 <h1>No hay alumnos registrados para esta solicitud</h1>
             </div>
         );
     }else{
         return(
-            <div>
-                <h1>Cargando... Espere un momento...</h1>
+            <div className="center">
+            <DirectorioAdmin />
+                <h1>Cargando... espere un momento</h1>
             </div>
         );
     }

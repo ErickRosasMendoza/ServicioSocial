@@ -92,7 +92,7 @@ render() {
                 }
         </React.Fragment>
     );
-    }else if(this.state.alumnos.length === 0 && this.state.status === 'success'){
+    }else if(this.state.alumnos.length == 0 && this.state.status == 'success'){
         return(
             <div>
                 <h1>No hay Alumnos para mostrar</h1>
