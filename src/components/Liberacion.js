@@ -136,7 +136,7 @@ class Liberacion extends React.Component {
                                     <option value="SEPTIMO">SEPTIMO</option>
                                     <option value="OCTAVO">OCTAVO</option>
                                     <option value="NOVENO">NOVENO</option>
-                                    <option value="null">SOY EGRESADO</option>
+                                    <option value="EGRESADO">SOY EGRESADO</option>
                                     </select>
                             </div>
                             <br/>

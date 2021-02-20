@@ -36,7 +36,7 @@ class AlumnoBaja extends React.Component{
                 </tbody>
                 <tbody>
                     <tr>
-                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
                         <td className="table_lista">{this.state.alumno.boleta}</td> 
                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                     </tr>

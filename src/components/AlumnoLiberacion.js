@@ -53,7 +53,7 @@ class AlumnoLiberacion extends React.Component{
                 </tbody>
                 <tbody>
                     <tr>
-                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
                         <td className="table_lista">{this.state.alumno.boleta}</td> 
                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                         <td className="table_lista">{this.state.liberacion.semestre}</td>
@@ -76,7 +76,7 @@ class AlumnoLiberacion extends React.Component{
                 </tbody>
                 <tbody>
                     <tr>
-                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
                         <td className="table_lista">{this.state.alumno.boleta}</td> 
                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                         <td className="table_lista">SIN REGISTRO</td>
@@ -99,7 +99,7 @@ class AlumnoLiberacion extends React.Component{
                 </tbody>
                 <tbody>
                     <tr>
-                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
                         <td className="table_lista">{this.state.alumno.boleta}</td> 
                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                         <td className="table_lista">Cargando...</td>

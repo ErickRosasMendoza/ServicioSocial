@@ -79,6 +79,9 @@ h3 {
 div {
   display: block;
 }
+.oculto{
+  display: none;
+}
 .center{
   width: 100%;
 }
@@ -395,6 +398,14 @@ div {
   text-align: left;
   margin-left: 30px;
   
+}
+.warning_search{
+  display: block;
+  color:red;
+  font-weight: 400;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 30px;
 }
 .registrarse{
   color: #666666;

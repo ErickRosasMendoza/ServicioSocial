@@ -73,6 +73,7 @@ class ServicioSocial extends React.Component {
                                     <option value="SEPTIMO">SEPTIMO</option>
                                     <option value="OCTAVO">OCTAVO</option>
                                     <option value="NOVENO">NOVENO</option>
+                                    <option value="EGRESADO">EGRESADO</option>
                                     </select>
                             </div>
                             <br/>

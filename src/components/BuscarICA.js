@@ -45,7 +45,7 @@ class BuscarICA extends React.Component {
                                 {this.state.programas.map((programa1, i) =>
                                     <tbody key={i}>
                                         <tr>
-                                            <td className="table_lista">{programa1.nombre} {programa1.apellidoPaterno} {programa1.apellidoMaterno}</td>
+                                            <td className="table_lista">{programa1.apellidoPaterno} {programa1.apellidoMaterno} {programa1.nombre}</td>
                                             <td className="table_lista">{programa1.boleta}</td>
                                             <td className="table_lista">{programa1.programaAcademico}</td>
                                             <td><Link to={'/DirectorioArchivosAlumno/' + programa1.idAlumno} id="btn_watch">Ver Archivos</Link></td>
@@ -58,32 +58,18 @@ class BuscarICA extends React.Component {
             return (
                 <div className="center">
                     <DirectorioAdmin />
-                                    <tbody >
-                                        <tr >
-                                            <th className="table_lista">Alumno</th>
-                                            <th className="table_lista">Boleta</th>
-                                            <th className="table_lista">Programa Academico</th>
-                                        </tr>
-                                    </tbody>
-                                <div>
-                                    <h1>Aun no existen alumnos registrados de este Programa Academico</h1>
-                            </div>
+                    <div>
+                        <h1>Aun no existen alumnos registrados de este Programa Academico</h1>
+                    </div>
                 </div>
             );
         }else{
             return(
                 <div className="center">
                     <DirectorioAdmin />
-                                    <tbody >
-                                        <tr >
-                                            <th className="table_lista">Alumno</th>
-                                            <th className="table_lista">Boleta</th>
-                                            <th className="table_lista">Programa Academico</th>
-                                        </tr>
-                                    </tbody>
-                                    <div>
-                                    <h1>Cargando... Espere un momento</h1>
-                                </div>
+                    <div>
+                        <h1>Cargando... Espere un momento...</h1>
+                    </div>
                 </div>
             );
         }

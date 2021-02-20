@@ -31,9 +31,9 @@ class DatosAlumno extends React.Component {
     changeState = () => {
         this.setState({
             alumno: {
-                nombre: this.nombreRef.current.value,
-                apellidoPaterno: this.apellidoPaternoRef.current.value,
-                apellidoMaterno: this.apellidoMaternoRef.current.value,
+                nombre: this.nombreRef.current.value.toUpperCase(),
+                apellidoPaterno: this.apellidoPaternoRef.current.value.toUpperCase(),
+                apellidoMaterno: this.apellidoMaternoRef.current.value.toUpperCase(),
                 boleta: this.boletaRef.current.value,
                 programaAcademico: this.programaAcademicoRef.current.value,
                 sexo: this.sexoRef.current.value,
@@ -54,7 +54,6 @@ class DatosAlumno extends React.Component {
                                 status: "true"
                                 });
                             });
-                            alert("DATOS PERSONALES GUARDADOS")
                     }else{
                         alert("LLENA EL CAMPO DE BOLETA CON NUMEROS")
                         window.location.href = './DatosAlumno';
