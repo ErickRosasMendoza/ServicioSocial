@@ -78,8 +78,7 @@ class AlumnoDictamen extends React.Component{
                             <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
                             <td className="table_lista">{this.state.alumno.boleta}</td> 
                             <td className="table_lista">{this.state.alumno.programaAcademico}</td>
-                            <td className="table_lista">SIN REGISTRO
-                                gggggggggggggggggggggggggggggggggg</td>
+                            <td className="table_lista">SIN REGISTRO</td>
                             <td className="table_lista">SIN REGISTRO</td>
                         </tr>
                     </tbody>
@@ -106,10 +105,6 @@ class AlumnoDictamen extends React.Component{
                             <td className="table_lista">Cargando...</td>
                         </tr>
                     </tbody>
-<<<<<<< HEAD
-=======
-                    <br/>
->>>>>>> 75b277c2ac0b97dd4d32892b9e7db16636c5e88f
                 </div>
             );
         }

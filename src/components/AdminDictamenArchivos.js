@@ -85,34 +85,20 @@ class AdminDictamenArchivos extends React.Component {
             return (
                 <div className="center">
                             <div id="sidebar" className="dictamenAdminCenter">
-<<<<<<< HEAD
-                               <strong>Documentación de dictamende menos de 70% de Creditos</strong> 
-=======
                                 <strong>DOCUMENTACIÓN DE DICTAMEN MENOS DE 70% DE CREDITOS</strong>
->>>>>>> 75b277c2ac0b97dd4d32892b9e7db16636c5e88f
                                 <div>
                                     <br/>
                                     <tbody>
                                         <tr>
-<<<<<<< HEAD
-                                            <td className = "table_lista">Archivo</td>
-                                            <td className = "table_lista">Comentario</td>
-=======
                                             <td className="table_lista"><strong>Archivo</strong></td>
                                             <td className="table_lista"><strong>Comentario</strong></td>
->>>>>>> 75b277c2ac0b97dd4d32892b9e7db16636c5e88f
                                         </tr>
                                     </tbody>
                                     {this.state.listar.map((lista1, i) =>
                                         <tbody key={i}>
                                             <tr>
-<<<<<<< HEAD
-                                                <td className = "table_lista">{lista1.nombreDoc}</td>
-                                                <td className = "table_lista">{lista1.comentario}</td>
-=======
                                                 <td className="table_lista">{lista1.nombreDoc}</td>
                                                 <td className="table_lista">{lista1.comentario}</td>
->>>>>>> 75b277c2ac0b97dd4d32892b9e7db16636c5e88f
                                                 <td><Link to={'/PdfDictamen/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
                                                 <td><Link to={'/DocDictamen/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
                                                 <td> <BorrarDoc
@@ -125,11 +111,7 @@ class AdminDictamenArchivos extends React.Component {
                                     </tbody>
                                     )}
                                     <br/>
-<<<<<<< HEAD
-                                    <a className = "text_login"> Subir Archivo</a>
-=======
                                     <a className="text_login">Subir Archivo</a>
->>>>>>> 75b277c2ac0b97dd4d32892b9e7db16636c5e88f
                                     <input type="file" name = "file" onChange={this.fileChange} />
                                 </div>
                                 <div>
@@ -148,11 +130,7 @@ class AdminDictamenArchivos extends React.Component {
                                 <div>
                                 <strong>SIN DOCUMENTACION PARA DICTAMEN DE 70%</strong>
                                 <br/>
-<<<<<<< HEAD
-                                <a className = "text_login"> Subir Archivo</a>
-=======
                                 <a className="text_login">Subir Archivo</a>
->>>>>>> 75b277c2ac0b97dd4d32892b9e7db16636c5e88f
                                     <input type="file" name = "file"  onChange={this.fileChange} />
                                 </div>
                                 <div>
