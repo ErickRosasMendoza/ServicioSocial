@@ -26,7 +26,9 @@ class CrearAlumno extends React.Component {
         statusContraseña: null,
         statusConfirmar: null,
         usuario: {},
-        status: "null"
+        searchEmail: {},
+        status: "null",
+        emailExist: null
     };
 
     changeState = async (e) => {
@@ -45,12 +47,30 @@ class CrearAlumno extends React.Component {
        
     }
 
+    searchEmail = () => {
+        axios.get(this.url + "usuario/findEmail/" + this.emailRef.current.value)
+        .then(res => {
+            this.setState({
+                searchEmail: res.data
+            })
+        })
+        .then(res => {
+            this.setState({
+                emailExist: "false"
+            })
+        })
+        .catch(error => {
+            this.setState({
+                emailExist: "true"
+            })
+        })
+    }//Fin de SearchEmail
 
     saveUsuario = (e) => {
         this.changeState();
-  
-        
+        this.searchEmail();
         if(this.state.usuario.email && this.state.usuario.email != null && this.state.usuario.email != undefined){
+            if(this.state.searchEmail == null || this.state.searchEmail == undefined){
                 if(this.contraseñaRef.current.value && this.contraseñaRef.current.value != null && this.contraseñaRef.current.value != undefined){
                     if(this.state.usuario.contraseña === this.state.confirmarContraseña){
                         axios.post(this.url+"usuario/save", this.state.usuario)
@@ -75,6 +95,13 @@ class CrearAlumno extends React.Component {
                         }
                     );
                 }//Fin de else Contraseña
+            }else{
+                this.setState(
+                    {
+                        emailExist: "false"
+                    }
+                );
+            }//Fin de else email existente
         }else{
             this.setState(
                 {
@@ -112,6 +139,17 @@ class CrearAlumno extends React.Component {
                                     case "false":
                                     return (
                                     <a className="warning">¡Ingresa un correo electronico valido!</a>
+                                    );
+                                    break;
+                                    default:
+                                        break;
+                                }
+                            })()}
+                            {(() => {
+                                switch(this.state.emailExist){   
+                                    case "false":
+                                    return (
+                                    <a className="warning">¡Este correo ya fue registrado!</a>
                                     );
                                     break;
                                     default:
