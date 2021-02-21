@@ -17,7 +17,9 @@ class CrearAdmin extends React.Component {
         usuario: {},
         statusEmail: null,
         statusContraseña: null,
-        status: "null"
+        status: "null",
+        searchEmail: {},
+        emailExist: null
     };
 
     changeState = () => {
@@ -31,22 +33,51 @@ class CrearAdmin extends React.Component {
        // console.log(this.state + "Cambiando datos a usuario");
     }
 
+    searchEmail = () => {
+        axios.get(this.url + "usuario/findEmail/" + this.emailRef.current.value)
+        .then(res => {
+            this.setState({
+                searchEmail: res.data
+            })
+        })
+        .then(res => {
+            this.setState({
+                emailExist: "false"
+            })
+        })
+        .catch(error => {
+            this.setState({
+                emailExist: "true"
+            })
+        })
+    }//Fin de SearchEmail
+
     saveUsuario = (e) => {
+        this.changeState();
+        this.searchEmail();
         if(this.state.usuario.email && this.state.usuario.email != null && this.state.usuario.email != undefined){
-            if(this.contraseñaRef.current.value && this.contraseñaRef.current.value != null && this.contraseñaRef.current.value != undefined){
-                axios.post(this.url+"usuario/save", this.state.usuario)
-                .then(res => {
-                    this.setState({
-                                status: "true"
-                            });
-                        })
-                }else{
-                    this.setState(
-                        {
-                            statusContraseña: "false"
-                        }
-                    );
-                }//Fin de else Contraseña
+            if(this.state.searchEmail == null || this.state.searchEmail == undefined){
+                if(this.contraseñaRef.current.value && this.contraseñaRef.current.value != null && this.contraseñaRef.current.value != undefined){
+                    axios.post(this.url+"usuario/save", this.state.usuario)
+                    .then(res => {
+                        this.setState({
+                                    status: "true"
+                                });
+                            })
+                    }else{
+                        this.setState(
+                            {
+                                statusContraseña: "false"
+                            }
+                        );
+                    }//Fin de else Contraseña
+            }else{
+                this.setState(
+                    {
+                        emailExist: "false"
+                    }
+                );
+            }//Fin de else email existente
         }else{
             this.setState(
                 {
@@ -77,7 +108,18 @@ class CrearAdmin extends React.Component {
                                         default:
                                             break;
                                     }
-                                })()}    
+                                })()}  
+                                {(() => {
+                                    switch(this.state.emailExist){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Este correo ya fue registrado!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()}  
                             </div>
                             <div>
                                 <label htmlFor="contraseña" className="text_login">Contraseña</label>
