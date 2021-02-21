@@ -35,6 +35,30 @@ class VerDatosDictamen extends React.Component{
             return(
                 <div className="center">
                         <div id="sidebar" className="dictamenCenter">
+                        {(() => {  
+                        switch (this.state.dictamen.estado){
+                        case "NUEVO":
+                            return (
+                                <a id="state_new">NUEVO</a>
+                              );
+                        break;
+                        case "PROCESANDO":
+                            return(
+                                <a id="state_processing">EN PROCESO</a>
+                              ); 
+                              break;  
+                        case "FINALIZADO":
+                            return(
+                                <a id="state_finished">TERMINADO</a>   
+                            );
+                        case "RECHAZADO":
+                            return(
+                                <a id="state_rejected">RECHAZADO</a>
+                            )
+                         default: 
+                            break;
+                        }
+                        })()}
                             <div className="text_login">
                                 Procentaje de creditos: {this.state.dictamen.porcentajeCreditos}
                             </div>

@@ -5,6 +5,8 @@ import axios from 'axios';
 import Global from '../Global';
 import DirectorioAlumno from './DirectorioAlumno';
 import Cookies from 'universal-cookie';
+import DatosActualizadosAlumno from './DatosActualizadosAlumno';
+import DatosActualizadosEmailAlumno from './DatosActualizadosEmailAlumno';
 
 const cookies = new Cookies();
 
@@ -18,6 +20,7 @@ class MisDatosAlumno extends React.Component{
         idUsuario: cookies.get('idUsuario'),
         idAlumno: cookies.get('idAlumno'),
         email: cookies.get('email'),
+        actualizar: null,
         status: null
     };
         componentWillMount() {
@@ -37,6 +40,22 @@ class MisDatosAlumno extends React.Component{
                        cookies.set('idAlumno', this.state.alumno.idAlumno, {path:"/"})
             })
         }//Fin de funcion getAlumno()
+
+        updateDatos=()=>{
+            this.setState({
+                actualizar: "DATOS"
+            })
+        }
+        updateEmail=()=>{
+            this.setState({
+                actualizar: "EMAIL"
+            })
+        }
+        cancel=()=>{
+            this.setState({
+                actualizar: "false"
+            })
+        }
         
     render() {
             return(
@@ -58,8 +77,36 @@ class MisDatosAlumno extends React.Component{
                             <td className="table_lista">{this.state.alumno.boleta}</td>
                             <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                             <td className="table_lista">{this.state.email}</td>
+                            <td><button  className = "btn" onClick={this.updateDatos} >Actualizar Información Personal</button></td>
+                            <td><button  className = "btn" onClick={this.updateEmail} >Actualizar Email ó Contraseña</button></td>
                         </tr>
                         </tbody>
+                        {(() => {  
+                        switch (this.state.actualizar){
+                        case "DATOS":
+                            return (
+                                <div>
+                                <DatosActualizadosAlumno
+                                nombre = {this.state.alumno.nombre}
+                                apellidoPaterno = {this.state.alumno.apellidoPaterno}
+                                apellidoMaterno = {this.state.alumno.apellidoMaterno}
+                                boleta = {this.state.alumno.boleta}
+                                />
+                                <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
+                                </div>
+                              );
+                        break;
+                        case "EMAIL":
+                            return (
+                                <div>
+                                <DatosActualizadosEmailAlumno/>
+                                <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
+                                </div>
+                              );
+                            break;
+                         default: break;
+                        }
+                        })()}
                 </div>
             );
 }//Fin de Render ()

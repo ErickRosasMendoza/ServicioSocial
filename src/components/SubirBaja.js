@@ -13,6 +13,7 @@ class SubirBaja extends React.Component {
     
     state = {
         idSolicitud: cookies.get('idAlumno'),
+        statusArchivo: null,
         file: null,
         status: null,
         lista: {},
@@ -66,11 +67,13 @@ class SubirBaja extends React.Component {
                             }
                         })
                         this.guardarLista();
-                        alert("DOCUMENTO GUARDADO CON EXITO")
                     });
         }else{
-            alert("SELECCIONA UN ARCHIVO PARA SUBIR")
-            window.location.href = './CrearBaja';
+            this.setState(
+                {
+                    statusArchivo: "false"
+                }
+            );
         }//Fin de else file
         
     }//Fin de funcion upLoad
@@ -122,6 +125,17 @@ class SubirBaja extends React.Component {
                                     <br/>
                                     <a className="text_login">Subir Archivo</a>
                                     <input type="file" name = "file" onChange={this.fileChange} />
+                                    {(() => {
+                                    switch(this.state.statusArchivo){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Seleccione un Archivo para Registrar!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                    })()}  
                                 </div>
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>
@@ -137,6 +151,17 @@ class SubirBaja extends React.Component {
                                 <br/>
                                 <a className="text_login">Subir Archivo</a>
                                 <input type="file" name = "file" onChange={this.fileChange} />
+                                {(() => {
+                                    switch(this.state.statusArchivo){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Seleccione un Archivo para Registrar!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()}  
                             </div>
                             <br/>
                             <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>
@@ -149,7 +174,18 @@ class SubirBaja extends React.Component {
                         <div id="sidebar" className="bajaRight">
                             <div>
                                 Cargando... Espere un momento
-                                    <input type="file" name = "file" onChange={this.fileChange} />
+                                <input type="file" name = "file" onChange={this.fileChange} />
+                                {(() => {
+                                    switch(this.state.statusArchivo){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Seleccione un Archivo para Registrar!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()}    
                             </div>
                             <br/>
                             <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>

@@ -27,6 +27,12 @@ class Liberacion extends React.Component {
 
     state = {
         idAlumno: cookies.get('idAlumno'),
+        statusRegistro: null,
+        statusPrograma: null,
+        statusPrestatario: null,
+        statusFechaInicio: null,
+        statusFechaTermino: null,
+        statusTelefono: null,
         liberacion: {},
         status: "null"
     };
@@ -42,6 +48,7 @@ class Liberacion extends React.Component {
                 fechaInicio: this.fechaInicioRef.current.value,
                 fechaTermino: this.fechaTerminoRef.current.value,
                 telefono: this.telefonoRef.current.value,
+                estado: "NUEVO",
                 idAlumno: this.state.idAlumno,
                 idLiberacion: this.state.idAlumno
             }
@@ -56,37 +63,54 @@ class Liberacion extends React.Component {
                 if(this.state.liberacion.prestatario && this.state.liberacion.prestatario != null && this.state.liberacion.prestatario != undefined){
                     if(this.state.liberacion.telefono && this.state.liberacion.telefono != null && this.state.liberacion.telefono != undefined){
                         if(this.state.liberacion.fechaInicio && this.state.liberacion.fechaInicio != null && this.state.liberacion.fechaInicio != undefined){
-                            if(this.state.liberacion.fechaInicio && this.state.liberacion.fechaInicio != null && this.state.liberacion.fechaInicio != undefined){
+                            if(this.state.liberacion.fechaTermino && this.state.liberacion.fechaTermino != null && this.state.liberacion.fechaTermino != undefined){
                                 axios.post(this.url + "liberacionExtemporanea/save", this.state.liberacion)
                                     .then(res => {
                                         this.setState({
                                                 status: "true"
                                             });
                                         })
-                                        alert("DOCUMENTO GENERADO")
                             }else{
-                                alert("LLENA EL CAMPO FECHA DE TERMINO")
-                                window.location.href = './CrearLiberacion';
+                                this.setState(
+                                    {
+                                        statusFechaTermino: "false"
+                                    }
+                                );
                             }//Fin de else Fecha de Termino
                         }else{
-                            alert("LLENA EL CAMPO FECHA DE INICIO")
-                            window.location.href = './CrearLiberacion';
-                        }
+                            this.setState(
+                                {
+                                    statusFechaInicio: "false"
+                                }
+                            );
+                        }//Fin de else Fecha de Inicio
                     }else{
-                        alert("LLENA EL CAMPO TELEFONO")
-                        window.location.href = './CrearLiberacion';
-                    }//Fin de else Fecha de Inicio
+                        this.setState(
+                            {
+                                statusTelefono: "false"
+                            }
+                        );
+                    }//Fin de else Telefono
                 }else{
-                    alert("LLENA EL CAMPO PRESTATARIO")
-                    window.location.href = './CrearLiberacion';
+                    this.setState(
+                        {
+                            statusPrestatario: "false"
+                        }
+                    );
                 }//Fin de else Prestatario
             }else{
-                alert("LLENA EL CAMPO PROGRAMA DE SERVICIO SOCIAL")
-                window.location.href = './CrearLiberacion';
+                this.setState(
+                    {
+                        statusPrograma: "false"
+                    }
+                );
             }//Fin de else Programa de SS
         }else{
-            alert("LLENA EL CAMPO NUMERO DE SERVICIO SOCIAL")
-            window.location.href = './CrearLiberacion';
+            this.setState(
+                {
+                    statusRegistro: "false"
+                }
+            );
         }//Fin de else Numero de Registro de SS
     }//Fin de funcion saveLiberacion()
     render() {
@@ -102,26 +126,92 @@ class Liberacion extends React.Component {
                             <div>
                                <label htmlFor="registroSS" className="text_login">Número de Registro Servicio Social</label>
                                 <input type="text" className="input_login" name="registroSS" placeholder="Ingresa el número de registro del servicio social" ref={this.registroSSRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusRegistro){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa tu número de registro de Servicio Social!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()}     
                             </div>
                             <div>
                                 <label htmlFor="programaSS" className="text_login">Programa de Servicio Social</label>
                                 <input type="text" className="input_login" name="programaSS" placeholder="Ingresa el nombre del programa de servicio social" ref={this.programaSSRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusPrograma){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa el programa al que perteneces!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()} 
                             </div>
                             <div>
                                 <label htmlFor="prestatario" className="text_login">Prestatario</label>
                                 <input type="text" className="input_login" className="input_login" name="prestatario" placeholder="Ingresa el nombre de la Institución/Empresa/etc. donde realizas tu servicio social" ref={this.prestatarioRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusPrestatario){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa el nombre de la unidad donde realizas Servicio Social!</a>
+                                        );
+                                        break;
+                                        default:
+                                        break;
+                                    }
+                                })()} 
                             </div>
                             <div>
                                 <label htmlFor="telefono" className="text_login">Número Telefónico</label>
                                 <input type="text"  className="input_login" name="telefono" placeholder="Ingresa tu número telefónico" ref={this.telefonoRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusTelefono){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa tu número Telefónico!</a>
+                                        );
+                                        break;
+                                        default:
+                                        break;
+                                    }
+                                })()} 
                             </div>
                             <div>
                                 <label htmlFor="fechaInicio" className="text_login">Fecha de Inicio</label>
                                 <input type="date" className="input_login" name="fechaInicio" ref={this.fechaInicioRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusFechaInicio){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa la Fecha de Inicio de tu Servicio Social!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()} 
                             </div>
                             <div>
                                 <label htmlFor="FechaTermino" className="text_login">Fecha de Término</label>
                                 <input type="date" className="input_login" name="fechaTermino" ref={this.fechaTerminoRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusFechaTermino){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa la Fecha de Término de tu Servicio Social!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()}
                             </div>
                             <div>
                                 <label htmlFor="egresado" className="text_login">Eres egresado?</label>
