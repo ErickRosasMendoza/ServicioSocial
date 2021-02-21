@@ -1,8 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import logo2 from '../assets/images/ipnLogo.png'
-import Slider from './Slider';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import Global from '../Global';
@@ -10,7 +6,7 @@ import md5 from 'md5';
 
 const cookies = new Cookies();
 
-class DatosActualizadosEmailAlumno extends React.Component {
+class DatosActualizadosEmail extends React.Component {
 
     url = Global.url;
 
@@ -42,7 +38,7 @@ class DatosActualizadosEmailAlumno extends React.Component {
             usuario: {
                 email: this.nuevoEmailRef.current.value,
                 contraseña: md5(this.nuevaContraseñaRef.current.value),
-                tipoUsuario: "false",
+                tipoUsuario: this.props.tipoUsuario,
                 idUsuario: this.state.idUsuario
             },
             confirmarContraseña: md5(this.confirmarNuevaContraseña.current.value),
@@ -114,7 +110,7 @@ class DatosActualizadosEmailAlumno extends React.Component {
 
     render() {
         if(this.state.status === 'true'){
-            window.location.href = './MisDatosAlumno'
+            window.location.href = './' + this.props.redirect
         }
 
         return (
@@ -201,5 +197,5 @@ class DatosActualizadosEmailAlumno extends React.Component {
 		    </div>
         );
     }
-}//Fin de classs DatosActualizadosEmailAlumno
-export default DatosActualizadosEmailAlumno;
+}//Fin de classs DatosActualizadosEmail
+export default DatosActualizadosEmail;

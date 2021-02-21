@@ -28,7 +28,6 @@ class DatosActualizadosAlumno extends React.Component {
         statusBoleta: null,
         statusApellidoPaterno: null,
         statusApellidoMaterno: null,
-        usuario: {},
         status: "null"
     };
 

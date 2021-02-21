@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import HeaderDEyAE from './HeaderDEyAE';
 import axios from 'axios';
 import Global from '../Global';
 import DirectorioAlumno from './DirectorioAlumno';
 import Cookies from 'universal-cookie';
 import DatosActualizadosAlumno from './DatosActualizadosAlumno';
-import DatosActualizadosEmailAlumno from './DatosActualizadosEmailAlumno';
+import DatosActualizadosEmail from './DatosActualizadosEmail';
 
 const cookies = new Cookies();
 
@@ -86,12 +86,7 @@ class MisDatosAlumno extends React.Component{
                         case "DATOS":
                             return (
                                 <div>
-                                <DatosActualizadosAlumno
-                                nombre = {this.state.alumno.nombre}
-                                apellidoPaterno = {this.state.alumno.apellidoPaterno}
-                                apellidoMaterno = {this.state.alumno.apellidoMaterno}
-                                boleta = {this.state.alumno.boleta}
-                                />
+                                <DatosActualizadosAlumno/>
                                 <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
                                 </div>
                               );
@@ -99,7 +94,10 @@ class MisDatosAlumno extends React.Component{
                         case "EMAIL":
                             return (
                                 <div>
-                                <DatosActualizadosEmailAlumno/>
+                                <DatosActualizadosEmail
+                                redirect="MisDatosAlumno"
+                                tipoUsuario="false"
+                                />
                                 <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
                                 </div>
                               );
