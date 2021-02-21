@@ -7,8 +7,10 @@ class BuscarDictamenAlumnos extends Component{
 
     url = Global.url;
 
+    idAlumnoRef = React.createRef();
+
     state = {
-        alumno: {},
+        alumnos: [],
         dictamenes: [],
         status: null
     };
@@ -26,6 +28,15 @@ class BuscarDictamenAlumnos extends Component{
                 });
             });
     }//Fin de getDictamenes
+
+    getAlumnos = () => {
+        axios.get(this.url + "alumno/findall")
+        .then(res =>{
+            this.setState({
+                alumnos: res.data
+            });
+        });
+    }//Fin de searchAlumno
     
 render() {
     if(this.state.dictamenes.length >=1){        
@@ -36,18 +47,43 @@ render() {
                     <tr >
                         <th className="table_lista">Semestre</th>
                         <th className="table_lista">Porcentaje de Creditos</th>
+                        <th className="table_lista">Estado de la Solicitud</th>
                     </tr>
                 </tbody>
-                {this.state.dictamenes.map((dictamen, i) =>
+                {this.state.dictamenes.map((dictamen, i) =>  
                     <tbody key={i}>
                     <tr>
                         <td className="table_lista">{dictamen.semestre}</td>
                         <td className="table_lista">{dictamen.porcentajeCreditos}</td>
+                        <td className="table_lista">{(() => {  
+                                switch (dictamen.estado){
+                                case "NUEVO":
+                                    return (
+                                        <a id="state_new">NUEVO</a>
+                                    );
+                                break;
+                                case "PROCESANDO":
+                                    return(
+                                        <a id="state_processing">EN PROCESO</a>
+                                    ); 
+                                    break;  
+                                case "FINALIZADO":
+                                    return(
+                                        <a id="state_finished">TERMINADO</a>   
+                                    );
+                                case "RECHAZADO":
+                                    return(
+                                        <a id="state_rejected">RECHAZADO</a>
+                                    )
+                                default: 
+                                    break;
+                                }
+                                })()}</td>
                         <td><Link to={'/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                     </tr>
                 </tbody>
                 )
-                }
+                }    
         </React.Fragment>
     );
     }else if(this.state.dictamenes.length == 0 && this.state.status == 'success'){

@@ -5,6 +5,8 @@ import Global from '../Global';
 import DirectorioAdmin from './DirectorioAdmin';
 import Slider from './Slider';
 import Cookies from 'universal-cookie';
+import DatosActualizadosAdmin from './DatosActualizadosAdmin';
+import DatosActualizadosEmail from './DatosActualizadosEmail';
 
 const cookies = new Cookies();
 
@@ -16,6 +18,7 @@ class MisDatosAdmin extends React.Component{
         admin: {},
         usuario: {},
         idUsuario: cookies.get('idUsuario'),
+        idAdmin: cookies.get('idAdmin'),
         email: cookies.get('email'),
         status: null
     };
@@ -34,8 +37,24 @@ class MisDatosAdmin extends React.Component{
                         admin: res.data,
                         status: 'success'
                        });
+                       cookies.set('idAdmin', this.state.admin.idAdmin, {path:"/"})
             })
         }//Fin de funcion getAdmin()
+        updateDatos=()=>{
+            this.setState({
+                actualizar: "DATOS"
+            })
+        }
+        updateEmail=()=>{
+            this.setState({
+                actualizar: "EMAIL"
+            })
+        }
+        cancel=()=>{
+            this.setState({
+                actualizar: "false"
+            })
+        }
         
     render() {
             return(
@@ -48,18 +67,44 @@ class MisDatosAdmin extends React.Component{
                 <br/>
                     <tbody >
                         <tr >
-                            <th className="table">Nombre</th>
-                            <th className="table">Telefono</th>
-                            <th className="table">Correo</th>
+                            <th className="table_lista">Nombre</th>
+                            <th className="table_lista">Telefono</th>
+                            <th className="table_lista">Correo</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
-                            <td className="table"> {this.state.admin.nombre} {this.state.admin.apellidos}</td>
-                            <td className="table"> {this.state.admin.telefono}</td>
-                            <td className="table"> {this.state.email}</td>
+                            <td className="table_lista"> {this.state.admin.nombre} {this.state.admin.apellidos}</td>
+                            <td className="table_lista"> {this.state.admin.telefono}</td>
+                            <td className="table_lista"> {this.state.email}</td>
+                            <td><button  className = "btn" onClick={this.updateDatos} >Actualizar Información Personal</button></td>
+                            <td><button  className = "btn" onClick={this.updateEmail} >Actualizar Email ó Contraseña</button></td>
                         </tr>
                         </tbody>
+                        {(() => {  
+                            switch (this.state.actualizar){
+                            case "DATOS":
+                                return (
+                                    <div>
+                                    <DatosActualizadosAdmin/>
+                                    <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
+                                    </div>
+                                  );
+                            break;
+                            case "EMAIL":
+                                return (
+                                    <div>
+                                    <DatosActualizadosEmail
+                                    redirect="MisDatosAdmin"
+                                    tipoUsuario="true"
+                                    />
+                                    <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
+                                    </div>
+                                  );
+                                break;
+                             default: break;
+                            }
+                            })()}
                 </div>
             );
   
