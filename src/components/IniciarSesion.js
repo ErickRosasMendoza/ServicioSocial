@@ -118,8 +118,8 @@ class IniciarSesion extends React.Component {
                                     }
                                     else if (this.state.usuario.tipoUsuario == true) {
                                              if (cookies.get('contraseña') == this.state.usuario.contraseña){
-                                                 cookies.set('idUsuario', this.state.usuario.idUsuario, { path: "/" })
-                                                  cookies.set('email', this.state.usuario.email, { path: "/" })
+                                                cookies.set('idUsuario', response.idUsuario, { path: "/" })
+                                                cookies.set('email', response.email, { path: "/" })
                                                  window.location.href = "./MisDatosAdmin";
                                                    
                                                   } 

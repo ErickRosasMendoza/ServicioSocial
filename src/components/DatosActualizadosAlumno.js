@@ -8,7 +8,7 @@ import Global from '../Global';
 
 const cookies = new Cookies();
 
-class DatosAlumno extends React.Component {
+class DatosActualizadosAlumno extends React.Component {
 
     url = Global.url;
 
@@ -22,13 +22,12 @@ class DatosAlumno extends React.Component {
 
     state = {
         alumno: {},
-        email: cookies.get('email'),
         idUsuario: cookies.get('idUsuario'),
+        idAlumno: cookies.get('idAlumno'),
         statusNombre: null,
         statusBoleta: null,
         statusApellidoPaterno: null,
         statusApellidoMaterno: null,
-        usuario: {},
         status: "null"
     };
 
@@ -41,7 +40,8 @@ class DatosAlumno extends React.Component {
                 boleta: this.boletaRef.current.value,
                 programaAcademico: this.programaAcademicoRef.current.value,
                 sexo: this.sexoRef.current.value,
-                idUsuario: this.state.idUsuario
+                idUsuario: this.state.idUsuario,
+                idAlumno: this.state.idAlumno
             }
         });
     }
@@ -52,7 +52,7 @@ class DatosAlumno extends React.Component {
             if(this.state.alumno.apellidoPaterno && this.state.alumno.apellidoPaterno != null && this.state.alumno.apellidoPaterno != undefined){
                 if(this.state.alumno.apellidoMaterno && this.state.alumno.apellidoMaterno != null && this.state.alumno.apellidoMaterno != undefined){
                     if(this.state.alumno.boleta && this.state.alumno.boleta != null && this.state.alumno.boleta != undefined){
-                        await axios.post(this.url+"alumno/save", this.state.alumno)
+                        await axios.patch(this.url+"alumno/update", this.state.alumno)
                         .then(res => {
                             this.setState({
                                 status: "true"
@@ -101,15 +101,11 @@ class DatosAlumno extends React.Component {
     }
     render() {
         if(this.state.status === 'true'){
-            return <Redirect to = "/MisDatosAlumno"></Redirect>
+            window.location.href = './MisDatosAlumno'
         }
 
         return (
             <div className = "center">
-                <Slider
-                    title="REGISTRARSE"
-                    size="slider-small"
-                />
                 <div id="sidebar" className="datosAlumno">
                     <div>
                         <label htmlFor="nombre" className="text_login">Nombre(s)</label>
@@ -194,4 +190,4 @@ class DatosAlumno extends React.Component {
         );
     }
 }
-export default DatosAlumno;
+export default DatosActualizadosAlumno;

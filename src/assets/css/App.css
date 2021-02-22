@@ -756,3 +756,19 @@ ul li ul li {
 }
 ul li ul li a {display:block !important;} 
 ul li ul li:hover {background: #343a40;}
+#state_new{
+  background-color: blue;
+  color: white;
+}
+#state_processing{
+  background-color: yellow;
+  color: white;
+}
+#state_finished{
+  background-color: green;
+  color: white;
+}
+#state_rejected{
+  background-color: red;
+  color: white;
+}

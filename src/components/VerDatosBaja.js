@@ -37,6 +37,30 @@ class VerDatosBaja extends React.Component{
                 return(
                     <div className="center">
                             <div id="sidebar" className="bajaCenter">
+                            {(() => {  
+                            switch (this.state.tipoBaja.estado){
+                            case "NUEVO":
+                                return (
+                                    <a id="state_new">NUEVO</a>
+                                );
+                            break;
+                            case "PROCESANDO":
+                                return(
+                                    <a id="state_processing">EN PROCESO</a>
+                                ); 
+                                break;  
+                            case "FINALIZADO":
+                                return(
+                                    <a id="state_finished">TERMINADO</a>   
+                                );
+                            case "RECHAZADO":
+                                return(
+                                    <a id="state_rejected">RECHAZADO</a>
+                                )
+                            default: 
+                                break;
+                            }
+                            })()}
                                 <div className="text_login">
                                    Registro de Servicio Social: {this.state.tipoBaja.registroSS}
                                 </div>
@@ -78,6 +102,30 @@ class VerDatosBaja extends React.Component{
                 return(
                     <div className="center">
                             <div id="sidebar" className="bajaCenter">
+                                {(() => {  
+                                switch (this.state.tipoBaja.estado){
+                                case "NUEVO":
+                                    return (
+                                        <a id="state_new">NUEVO</a>
+                                    );
+                                break;
+                                case "PROCESANDO":
+                                    return(
+                                        <a id="state_processing">EN PROCESO</a>
+                                    ); 
+                                    break;  
+                                case "FINALIZADO":
+                                    return(
+                                        <a id="state_finished">TERMINADO</a>   
+                                    );
+                                case "RECHAZADO":
+                                    return(
+                                        <a id="state_rejected">RECHAZADO</a>
+                                    )
+                                default: 
+                                    break;
+                                }
+                                })()}
                                 <div className="text_login">
                                    Registro de Servicio Social: {this.state.tipoBaja.registroSS}
                                 </div>
