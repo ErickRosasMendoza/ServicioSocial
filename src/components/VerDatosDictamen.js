@@ -80,7 +80,7 @@ class VerDatosDictamen extends React.Component{
                 <div className="center">
                         <div id="sidebar" className="dictamenCenter">
                             <div className="text_login">
-                                <strong>No tienes datos disponibles, registralos para empezar con tu documentación de DICTAMEN DE MENOS DE 70% DE CREDITOS.</strong>
+                                <strong>No tienes datos disponibles, registralos para empezar con tu documentación DICTAMEN DE 70%</strong>
                             </div>
                         </div>          
             </div>

@@ -279,14 +279,14 @@ div {
   height: 340px;
 }
 #sidebar.dictamenLeft{
-  min-height: 250px;
+  min-height: 160px;
   height: auto;
   margin-left: 15px;
   max-width: 40%;
 }
 #sidebar.dictamenRight{
   float: right;
-  margin-top: -282px;
+  margin-top: -192px;
   margin-right: 5px;
   min-height: 220px;
   height: auto;
@@ -294,8 +294,8 @@ div {
 }
 #sidebar.dictamenCenter{
   margin-left: 528px;
-  margin-top: -283px;
-  min-height: 180px;
+  margin-top: -193px;
+  min-height: 190px;
   height: auto;
   max-width: 24%;
 }
@@ -316,7 +316,7 @@ div {
   margin-left: 265px;
   min-height: 350px;
   height: auto;
-  width: 73%;
+  width: 78%;
 }
 #sidebar.archivosAdminRight{
   float: right;
@@ -444,14 +444,26 @@ div {
   color: white;
 }
 
-.btn-success{
-  background:  #126c85  ;
+.btn_join{
+  background: #0062b3;
+  color: rgb(255, 255, 255);
+  padding: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-left: 10px;
+  text-decoration: none;
+  max-width: 100px;
+  transition: 200ms;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  float: center;
 }
-.btn-success:hover{
-  background:  #084758;
-
+.btn_join:hover{
+  background: #02275e;
+  color: white;
 }
-
 /*input[type="text"],*/
 .text
 {
@@ -649,6 +661,14 @@ input[type="radio"]{
   width: 250px; bottom: 1px solid #000000;
   padding: 6px;
  
+}
+.table_watch{
+  padding-top: 5px;
+  margin-top: 1px;
+  text-align: center;
+  background: #c9c9c9;
+  width: 280px; bottom: 1px solid #000000;
+  padding-bottom: 10px;
 }
 #table-btn{
   background: #464c52;
