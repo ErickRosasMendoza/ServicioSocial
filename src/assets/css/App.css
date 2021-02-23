@@ -309,7 +309,7 @@ div {
 }
 #sidebar.dictamenAdminCenter{
   float: center;
-  margin-top: -350px;
+  margin-top: -290px;
   margin-left: 265px;
   min-height: 350px;
   height: auto;
@@ -429,13 +429,17 @@ div {
   text-transform: uppercase;
   font-size: 13px;
   text-decoration: none;
-  max-width: 120px;
+  max-width: 1220px;
   transition: 200ms;
   border: none;
-  border-radius: 1px;
+  border-radius: 2px;
   cursor: pointer;
   float: center;
-  
+}
+
+.datosAlumnos{
+  max-width: 120px;
+
 }
 .btn:hover{
   background: #02275e;
@@ -645,7 +649,8 @@ input[type="radio"]{
   color: #135081;
   text-align: center;
   width: 250px; bottom: 1px solid #000000;
-  padding-bottom: 10px;
+  padding: 6px;
+ 
 }
 #table-btn{
   background: #464c52;
