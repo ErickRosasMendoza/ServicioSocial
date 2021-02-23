@@ -3,6 +3,7 @@ import { Redirect,Link } from 'react-router-dom';
 import axios from 'axios';
 import Global from '../Global';
 import BorrarDoc from './BorrarDoc';
+import ActualizarComentario from './ActualizarComentario';
 
 class AdminDictamenArchivos extends React.Component {
 
@@ -106,6 +107,14 @@ class AdminDictamenArchivos extends React.Component {
                                                 idDoc={lista1.idDoc}
                                                 url= "docDictamen/deleteDoc/"
                                                 redirect={lista1.idAlumno}
+                                                /></td>
+                                                <td><ActualizarComentario
+                                                idLista={lista1.idLista}
+                                                idAlumno= {lista1.idAlumno}
+                                                idDoc={lista1.idDoc}
+                                                idTramite={lista1.idTramite}
+                                                nombreDoc={lista1.nombreDoc}
+                                                comentario={lista1.comentario}
                                                 /></td>
                                             </tr>
                                     </tbody>

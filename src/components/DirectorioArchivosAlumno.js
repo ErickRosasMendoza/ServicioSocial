@@ -1,164 +1,152 @@
-import React from 'react';
-import { Redirect,Link } from 'react-router-dom';
+ import React, {Component} from 'react';
 import axios from 'axios';
-import Global from '../Global';
-import BorrarDoc from './BorrarDoc';
+import Slider from './Slider';
+import { Link, Switch } from 'react-router-dom';
+import DirectorioAdmin from './DirectorioAdmin';
+import Cookies from 'universal-cookie';
+import AlumnoDetalle from './AlumnoDetalle';
+import AlumnoDictamen from './AlumnoDictamen';
+import AlumnoBaja from './AlumnoBaja';
+import AlumnoServicio from './AlumnoServicio';
+import AlumnoLiberacion from './AlumnoLiberacion';
+import AdminBajaArchivos from './AdminBajaArchivos';
+import AdminDictamenArchivos from './AdminDictamenArchivos';
+import AdminLiberacionArchivos from './AdminLiberacionArchivos';
+import AdminServicioArchivos from './AdminServicioArchivos';
+const cookies = new Cookies();
 
-class AdminLiberacionArchivos extends React.Component {
-
-    url = Global.url;
-    
-    comentarioRef=React.createRef();
+class DirectorioArchivosAlumno extends Component{
 
     state = {
-        idAlumno: this.props.id,
-        file: null,
-        status: null,
-        lista: {},
-        listar:[],
-        fileName: "",
-        comentar: ""
+        idAlumno: "",
+        idTramite: "",
+        status: null
     };
 
-    componentWillMount = () => {
-        this.getLista();
-    } 
-
-    changeState = () => {
+    componentWillMount() {
+        const { match: { params } } = this.props;
+        console.log(params.id)
+        var id = params.id;
         this.setState({
-            comentar: this.comentarioRef.current.value
-        });
+                idAlumno: id
+        })
+        console.log(this.state.idAlumno)
     }
 
-    fileChange = (event) => {
-       this.setState({
-            file: event.target.files[0]
-        });
+    tramite1=()=>{
+        this.setState({
+            idTramite: 1
+        })
+    }
+    tramite2=()=>{
+        this.setState({
+            idTramite: 2
+        })
+    }
+    tramite3=()=>{
+        this.setState({
+            idTramite: 3
+        })
+    }
+    tramite4=()=>{
+        this.setState({
+            idTramite: 4
+        })
     }
 
-    getLista = () => {
-        axios.get(this.url + "lista/findLiberacion/" + this.props.id)
-            .then(response => {
-                this.setState({
-                    listar: response.data,
-                });
-            });
-    }
+    render(){
+       
 
-    guardarLista = async (e) => {
-        await axios.post(this.url + "lista/save", this.state.lista)
-        .then(res => {
-            this.setState({
-                status: "true"
-            });
-        });
-    }
+            return(
+              <div className = "center">
+                        <DirectorioAdmin />
 
-    upLoad = () => {
-        if(this.state.file && this.state.file != null && this.state.file != undefined){
-            const fd = new FormData();
-            console.log(this.state);
-            fd.append('file', this.state.file, this.state.file.name)
-            console.log(this.state.file.name)
-                axios.post(this.url + "docLiberacion/upload/" + this.state.file.name + this.props.id, fd)
-                    .then(res =>{
-                        this.setState({
-                            lista:{
-                                idAlumno: this.props.id,
-                                nombreDoc: res.data,
-                                idTramite: 2,
-                                idDoc: res.data + this.props.id,
-                                comentario: this.state.comentar
-                            }
-                        })
-                        this.guardarLista();
-                    });
-        }else{
-            alert("SELECCIONA UN ARCHIVO PARA SUBIR")
-        }//Fin de else file
-    }//Fin de funcion upLoad
-    render() {
-        if(this.state.status == "true"){
-            window.location.href = './' + this.props.id;
-        }
-        if(this.state.listar.length >=1){
-            return (
-                <div className="center">
-                            <div id="sidebar" className="archivosAdminCenter">
-                            <strong>DOCUMENTACIÓN DE LIBERACIÓN EXTEMPORANEA</strong>
-                                <div>
-                                <br/>
-                                    <tbody>
-                                        <tr>
-                                            <td className="table_lista"><strong>Archivo</strong></td>
-                                            <td className="table_lista"><strong>Comentario</strong></td>
-                                        </tr>
-                                    </tbody>
-                                    {this.state.listar.map((lista1, i) =>
-                                        <tbody key={i}>
-                                            <tr>
-                                                <td className="table_lista">{lista1.nombreDoc}</td>
-                                                <td className="table_lista">{lista1.comentario}</td>
-                                                <td><Link to={'/PdfLiberacion/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
-                                                <td><Link to={'/DocLiberacion/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
-                                                <td><BorrarDoc
-                                                idLista={lista1.idLista}
-                                                idDoc={lista1.idDoc}
-                                                url= "docLiberacion/deleteDoc/"
-                                                redirect={lista1.idAlumno}
-                                                /></td>
-                                            </tr>
-                                    </tbody>
-                                    )}
-                                    <br/>
-                                    <a className="text_login">Subir Archivo</a>
-                                    <input type="file" name = "file" onChange={this.fileChange} />
-                                </div>
-                                <div>
-                                    <label htmlFor="comentario" className="text_login">Comentario Informativo</label>
-                                    <input type="text" className="input_login" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState}/>
-                                </div>
-                                <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
-                            </div>
-                </div>
-            );
-        }else if(this.state.listar.length == 0){
-            return (
-                <div className="center">
-                            <div id="sidebar" className="archivosAdminCenter">
-                                <div>
-                                <strong>SIN DOCUMENTACION PARA LIBERACION EXTEMPORANEA</strong>
-                                <br/>
-                                <a className="text_login">Subir Archivo</a>
-                                    <input type="file" name = "file"  onChange={this.fileChange} />
-                                </div>
-                                <div>
-                                    <label htmlFor="comentario" className="text_login">Comentario Informativo</label>
-                                    <input type="text" className="input_login" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState}/>
-                                </div>
-                                <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
-                            </div>
-                </div>
-            );
-        }else{
-            return (
-            <div className="center">
-                        <div id="sidebar" className="archivosAdminCenter">
-                            <div>
-                                Cargando... Espere un momento
-                                <input type="file" name = "file" onChange={this.fileChange} />
-                            </div>
-                            <div>
-                                <label htmlFor="comentario" className="text_login">Comentario Informativo</label>
-                                <input type="text" className="input_login" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onClick={this.upLoad}/>
-                            </div>
-                            <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
-                        </div>
-            </div>
-        );
+                        {(() => {  
+                        switch (this.state.idTramite){
+                        /*case 1:
+                            return (
+                                <AlumnoDictamen
+                                id = {this.state.idAlumno}/>
+                              );
+                        break;
+                        case 2:
+                            return(
+                                <AlumnoLiberacion
+                                id = {this.state.idAlumno}/>
+                              ); 
+                              break;  
+                        case 3:
+                            return(
+                                <AlumnoBaja
+                                id = {this.state.idAlumno}/>    
+                            );
+                        case 4:
+                            return(
+                                <AlumnoServicio
+                                id = {this.state.idAlumno}/>
+                            )*/
+                         default: 
+                            return(
+                                <AlumnoDetalle
+                                id = {this.state.idAlumno}/>
+                            )
+                            break;
+                        }
+                        })()}
+
+                <tbody>
+                    <tr>
+                        <tr>
+                        <td className="table_lista"> <button  class = "btn" onClick={this.tramite1} >Docuementacion Dictamen de 70%</button></td>
+                        </tr>
+                        <tr> 
+                        <td className="table_lista"><button  class = "btn" onClick={this.tramite2} >Docuementacion Liberacion Extemporanea</button></td>
+                        </tr>
+                        <tr>
+                        <td className="table_lista"><button  class = "btn" onClick={this.tramite3} >Documentacion Baja de Servicio Social</button></td> 
+                        </tr>
+                        <tr>
+                        <td className="table_lista"><button  class = "btn" onClick={this.tramite4} >Docuementacion Servicio Social</button></td>
+                        </tr>
+                     </tr>   
+                </tbody>
+               
+               
+                {(() => {  
+                    switch (this.state.idTramite){
+                        case 1:
+                            return (
+                                <AdminDictamenArchivos
+                                id = {this.state.idAlumno}/>
+                              );
+                        break;
+                        case 2:
+                            return(
+                                <AdminLiberacionArchivos
+                                id = {this.state.idAlumno}/>
+                              ); 
+                              break;  
+                        case 3:
+                            return(
+                                <AdminBajaArchivos
+                                id = {this.state.idAlumno}/>    
+                            );
+                        case 4:
+                            return(
+                                <AdminServicioArchivos
+                                id = {this.state.idAlumno}/>
+                            )
+                         default: break;
+
+                    }
+
+
+                })()}
+
+                 </div>
+             );
+             
+
+        }   
     }
-    }//Fin de Render
-}//Fin de Class AdminLiberacionArchivos
-export default AdminLiberacionArchivos;
+export default DirectorioArchivosAlumno; 
