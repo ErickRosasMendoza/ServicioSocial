@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import DirectorioAdmin from './DirectorioAdmin';
-import DirectorioArchivosAlumno from './DirectorioArchivosAlumno';
-import BorrarDoc from './BorrarDoc';
-import Slider from './Slider';
 import Global from '../Global';
 
 class AlumnoServicio extends React.Component{
@@ -12,15 +8,12 @@ class AlumnoServicio extends React.Component{
     url = Global.url;
 
     state = {
-        listar: [],
-        idAlumno: "",
+        idAlumno: this.props.id,
         servicio: {},
         alumno: {},
         statusServicio: null,
-        statusLista: null
     };
      componentWillMount=()=> {
-            this.getLista();
             this.getServicio();
             this.getAlumno();            
         }
@@ -44,23 +37,16 @@ class AlumnoServicio extends React.Component{
         });
         } );   
     }//Fin de getservicio()
-
-    getLista = () => {
-        axios.get(this.url+"/lista/findServicio/" + this.props.id)
-            .then(response => {
-                this.setState({
-                    listar: response.data,
-                    statusLista: 'success'
-                });
-            });
-    }//Fin de getLista
     
     render(){
+<<<<<<< HEAD
         
         if(this.state.listar.length >=1 && this.state.statusServicio == 'success' && this.state.statusLista == 'success'){
+=======
+        if(this.state.statusServicio == 'success'){
+>>>>>>> 606a5068649145934465a3dc93964b724d453062
         return(
             <div className="center">
-            <DirectorioAdmin />
                 <tbody>
                     <tr >
                         <th className="table_lista">Alumno</th>
@@ -68,54 +54,63 @@ class AlumnoServicio extends React.Component{
                         <th className="table_lista">Programa Academico</th>
                         <th className="table_lista">Semestre</th>
                         <th className="table_lista">Responsable Directo</th>  
+                        <th className="table_lista">Estado de la Solicitud</th>  
                     </tr>
                 </tbody>
                 <tbody>
                     <tr>
-                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
                         <td className="table_lista">{this.state.alumno.boleta}</td> 
                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                         <td className="table_lista">{this.state.servicio.semestre}</td>
                         <td className="table_lista">{this.state.servicio.responsableDirecto}</td>
+                        <td className="table_lista">{(() => {  
+                                switch (this.state.servicio.estado){
+                                case "NUEVO":
+                                    return (
+                                        <a id="state_new">NUEVO</a>
+                                    );
+                                break;
+                                case "PROCESANDO":
+                                    return(
+                                        <a id="state_processing">EN PROCESO</a>
+                                    ); 
+                                    break;  
+                                case "FINALIZADO":
+                                    return(
+                                        <a id="state_finished">TERMINADO</a>   
+                                    );
+                                case "RECHAZADO":
+                                    return(
+                                        <a id="state_rejected">RECHAZADO</a>
+                                    )
+                                default: 
+                                    break;
+                                }
+                                })()}</td>
                     </tr>
                 </tbody>
-                <div id="sidebar" className="dictamenAdminCenter">
-                    {this.state.listar.map((lista1, i) =>
-                        <tbody key={i}>
-                            <tr>
-                                <td>{lista1.nombreDoc}</td>
-                                <td><Link to={'/PdfDictamen/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
-                                <td><Link to={'/DocDictamen/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
-                                <td><BorrarDoc
-                                    idLista={lista1.idLista}
-                                    idDoc={lista1.idDoc}
-                                    url= "docServicio/deleteDoc/"
-                                    redirect={lista1.idAlumno}
-                                    /></td>
-                            </tr>
-                        </tbody>
-                    )}
-                </div>
             </div>
         );
-    }else if(this.state.listar.length == 0 && this.state.statusServicio == 'success'){
+    }else if(this.state.statusServicio != 'success'){
         return(
             <div className="center">
-            <DirectorioAdmin />
                 <tbody>
                     <tr >
                         <th className="table_lista">Alumno</th>
                         <th className="table_lista">Boleta</th>
                         <th className="table_lista">Programa Academico</th>
                         <th className="table_lista">Semestre</th>
-                        <th className="table_lista">Responsable Directo</th>  
+                        <th className="table_lista">Responsable Directo</th>
+                        <th className="table_lista">Estado de la Solicitud</th>  
                     </tr>
                 </tbody>
                 <tbody>
                     <tr>
-                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
                         <td className="table_lista">{this.state.alumno.boleta}</td> 
                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+<<<<<<< HEAD
                         <td className="table_lista">{this.state.servicio.semestre}</td>
                         <td className="table_lista">{this.state.servicio.responsableDirecto}</td>
                     </tr>
@@ -144,80 +139,38 @@ class AlumnoServicio extends React.Component{
                         <td className="table_lista">{this.state.alumno.boleta}</td> 
                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                         <td className="table_lista">SIN REGISTRO</td>
+=======
+>>>>>>> 606a5068649145934465a3dc93964b724d453062
                         <td className="table_lista">SIN REGISTRO</td>
-                    </tr>
-                </tbody>
-                <div id="sidebar" className="dictamenAdminCenter">
-                    {this.state.listar.map((lista1, i) =>
-                        <tbody key={i}>
-                            <tr>
-                                <td>{lista1.nombreDoc}</td>
-                                <td><Link to={'/PdfDictamen/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
-                                <td><Link to={'/DocDictamen/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
-                                <td><BorrarDoc
-                                    idLista={lista1.idLista}
-                                    idDoc={lista1.idDoc}
-                                    url= "docServicio/deleteDoc/"
-                                    redirect={lista1.idAlumno}
-                                    /></td>
-                            </tr>
-                        </tbody>
-                    )}
-                </div>
-            </div>
-        );
-    }else if(this.state.listar.length == 0 && this.state.statusServicio != 'success'){
-        return(
-            <div className="center">
-            <DirectorioAdmin />
-                <tbody>
-                    <tr >
-                        <th className="table_lista">Alumno</th>
-                        <th className="table_lista">Boleta</th>
-                        <th className="table_lista">Programa Academico</th>
-                        <th className="table_lista">Semestre</th>
-                        <th className="table_lista">Responsable Directo</th>  
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
-                        <td className="table_lista">{this.state.alumno.boleta}</td> 
-                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                         <td className="table_lista">SIN REGISTRO</td>
                         <td className="table_lista">SIN REGISTRO</td>
                     </tr>
                 </tbody>
-                <div id="sidebar" className="dictamenAdminCenter">
-                        Este alumno aun no tiene archivos registrados
-                    </div>
             </div>
         );
     }else{
         return(
             <div className="center">
-            <DirectorioAdmin />
                 <tbody>
                     <tr >
                         <th className="table_lista">Alumno</th>
                         <th className="table_lista">Boleta</th>
                         <th className="table_lista">Programa Academico</th>
                         <th className="table_lista">Semestre</th>
-                        <th className="table_lista">Responsable Directo</th>  
+                        <th className="table_lista">Responsable Directo</th>
+                        <th className="table_lista">Estado de la Solicitud</th>  
                     </tr>
                 </tbody>
                 <tbody>
                     <tr>
-                        <td className="table_lista">{this.state.alumno.nombre} {this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno}</td>
+                        <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
                         <td className="table_lista">{this.state.alumno.boleta}</td> 
                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                         <td className="table_lista">Cargando...</td>
                         <td className="table_lista">Cargando...</td>
+                        <td className="table_lista">Cargando...</td>
                     </tr>
                 </tbody>
-                <div id="sidebar" className="dictamenAdminCenter">
-                        Cargando... Espere un momento...
-                    </div>
             </div>
         );
     }

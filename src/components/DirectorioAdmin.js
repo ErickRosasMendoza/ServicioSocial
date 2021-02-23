@@ -17,6 +17,7 @@ class DirectorioAdmin extends Component{
         cookies.remove('email', {path:"/"});
         cookies.remove('contraseña', {path:"/"});
         cookies.remove('tipoUsuario', {path:"/"});
+        cookies.remove('idAdmin', {path:"/"});
         window.location.href = '/IniciarSesion';
     }
 
@@ -41,7 +42,21 @@ class DirectorioAdmin extends Component{
             title2="DEyAE"/>
                     <tbody >
                         <tr >
-                            <th className="table"><Link to='/Lista' className = "active">Lista de Alumnos</Link></th>
+                        <th className="table"><div>
+                        <ul>
+                            <li>
+                                <Link to='#' className="active">Lista de Alumnos</Link>
+                                <ul>
+                                    <li><Link to={'/Lista'} className="active">TODOS</Link></li>
+                                    <li><Link to={'/BuscarDictamen'} className="active">DICTAMEN DE 70%</Link></li>
+                                    <li><Link to={'/BuscarLiberacion'} className="active">LIBERACIÓN EXTEMPORANEA</Link></li>
+                                    <li><Link to={'/BuscarBaja'} className="active">BAJA DE SERVICIO SOCIAL</Link></li>
+                                    <li><Link to={'/BuscarServicio'} className="active">SERVICIO SOCIAL</Link></li>
+                                </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </th>
                             <th className="table"><div>
                                 <ul>
                                     <li>

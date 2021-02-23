@@ -21,7 +21,7 @@ class Dictamen extends React.Component {
 
     state = {
         idAlumno: cookies.get('idAlumno'),
-        idDictamen: cookies.get('idDictamen'),
+        statusCreditos: null,
         dictamen: {},
         status: "null"
     };
@@ -31,6 +31,7 @@ class Dictamen extends React.Component {
             dictamen: {
                 porcentajeCreditos: this.creditosRef.current.value,
                 semestre: this.semestreRef.current.value,
+                estado: "NUEVO",
                 idAlumno: this.state.idAlumno,
                 idDictamen: this.state.idAlumno
             }
@@ -48,10 +49,12 @@ class Dictamen extends React.Component {
                     }
                 );
             })
-            alert("DOCUMENTO GENERADO")
         }else{
-            alert("LLENA EL CAMPO FECHA DE TERMINO")
-            window.location.href = './CrearDictamen';
+            this.setState(
+                {
+                    statusCreditos: "false"
+                }
+            );
         }//Fin de else % de Creditos
     }//Fin de funcion saveDictamen()
     render() {
@@ -67,6 +70,17 @@ class Dictamen extends React.Component {
                             <div>
                                 <label htmlFor="creditos" className="text_login">Porcentaje de Creditos</label>
                                 <input type="text" className="input_login" name="creditos" placeholder="Ingresa el % de creditos sin decimales" ref={this.creditosRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusCreditos){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa tu porcentaje de creditos sin decimales!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()}       
                             </div>
                             <div>
                                 <label htmlFor="semestre" className="text_login">Semestre</label>

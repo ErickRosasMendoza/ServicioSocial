@@ -83,9 +83,10 @@ class IniciarSesion extends React.Component {
                                          console.log(this.state.form.email + "datos dentro del form")
                                          console.log(this.state.usuario.email + "datos dentro de usuario")
                                          
-                                        return response.data;
+                                           return response.data;
                                         
                                          })
+                               
 
                            .then(response => {
                            if (this.state.usuario.tipoUsuario == false) {
@@ -117,8 +118,8 @@ class IniciarSesion extends React.Component {
                                     }
                                     else if (this.state.usuario.tipoUsuario == true) {
                                              if (cookies.get('contraseña') == this.state.usuario.contraseña){
-                                                 cookies.set('idUsuario', this.state.usuario.idUsuario, { path: "/" })
-                                                  cookies.set('email', this.state.usuario.email, { path: "/" })
+                                                cookies.set('idUsuario', response.idUsuario, { path: "/" })
+                                                cookies.set('email', response.email, { path: "/" })
                                                  window.location.href = "./MisDatosAdmin";
                                                    
                                                   } 
@@ -159,7 +160,7 @@ class IniciarSesion extends React.Component {
                     title="Iniciar Sesión"
                     size="slider-small"
                 />
-                 <Link to={'./Registrarse'} class="registrarse">Registrarse</Link>
+                 <Link to={'./Registrarse'} className="registrarse">Registrarse</Link>
                      <div id="sidebar">
                      <div>
                              <img src={logo2} id="logo2" alt="politecnico" />
@@ -197,7 +198,7 @@ class IniciarSesion extends React.Component {
                          }
                       })()}
                             <br/>
-                           <button class="btn" onClick={this.login} >Aceptar</button>  
+                           <button className="btn" onClick={this.login} >Aceptar</button>  
                         
 
                             

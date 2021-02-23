@@ -68,7 +68,7 @@ class Router extends React.Component {
                     <Route exact path = "/BuscarIE" component = {BuscarIE}/>
                     <Route exact path = '/BuscarISISA' component = {BuscarISISA}/>
                     <Route exact path = "/AlumnoDetalle/:id" component = {AlumnoDetalle}/>
-                  
+                    
                     <Route exact path = "/AlumnoBaja/:id" component = {AlumnoBaja}/>
                     <Route exact path = "/AlumnoLiberacion/:id" component = {AlumnoLiberacion}/>
                     <Route exact path = "/AlumnoServicio/:id" component = {AlumnoServicio}/>

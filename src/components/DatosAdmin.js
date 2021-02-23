@@ -28,8 +28,8 @@ class DatosAdmin extends React.Component {
     changeState = () => {
         this.setState({
             admin: {
-                nombre: this.nombreRef.current.value,
-                apellidos: this.apellidosRef.current.value,
+                nombre: this.nombreRef.current.value.toUpperCase(),
+                apellidos: this.apellidosRef.current.value.toUpperCase(),
                 telefono: this.telefonoRef.current.value,
                 idUsuario: this.state.idUsuario
             }

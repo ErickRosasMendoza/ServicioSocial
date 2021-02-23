@@ -23,32 +23,58 @@ class Baja extends React.Component {
     fechaInicioRef = React.createRef();
     fechaTerminoRef = React.createRef();
     tipoDeBajaRef = React.createRef();
+    horasRef = React.createRef();
     idAlumno = React.createRef();
 
 
     state = {
         idAlumno: cookies.get('idAlumno'),
+        statusRegistro: null,
+        statusPrograma: null,
+        statusPrestatario: null,
+        statusFechaInicio: null,
+        statusFechaTermino: null,
         baja: {},
         status: "null"
     };
 
     changeState = () => {
-        this.setState({
-            baja: {
-                egresado: this.egresadoRef.current.value,
-                semestre: this.semestreRef.current.value,
-                registroSS: this.registroSSRef.current.value,
-                prestatario: this.prestatarioRef.current.value.toUpperCase(),
-                programaSS: this.programaSSRef.current.value.toUpperCase(),
-                fechaInicio: this.fechaInicioRef.current.value,
-                fechaTermino: this.fechaTerminoRef.current.value,
-                tipoDeBaja: this.tipoDeBajaRef.current.value,
-                horas: 0,
-                idAlumno: this.state.idAlumno,
-                idSolicitud: this.state.idAlumno
-            }
-        });
-       // console.log(this.state + "Cambiando datos a usuario");
+        if(this.tipoDeBajaRef.current.value !="BAJA CON RECONOCIMIENTO DE HORAS")
+        {
+            this.setState({
+                baja: {
+                    egresado: this.egresadoRef.current.value,
+                    semestre: this.semestreRef.current.value,
+                    registroSS: this.registroSSRef.current.value,
+                    prestatario: this.prestatarioRef.current.value.toUpperCase(),
+                    programaSS: this.programaSSRef.current.value.toUpperCase(),
+                    fechaInicio: this.fechaInicioRef.current.value,
+                    fechaTermino: this.fechaTerminoRef.current.value,
+                    tipoDeBaja: this.tipoDeBajaRef.current.value,
+                    horas: 0,
+                    estado: "NUEVO",
+                    idAlumno: this.state.idAlumno,
+                    idSolicitud: this.state.idAlumno
+                }
+            });
+        }else{
+            this.setState({
+                baja: {
+                    egresado: this.egresadoRef.current.value,
+                    semestre: this.semestreRef.current.value,
+                    registroSS: this.registroSSRef.current.value,
+                    prestatario: this.prestatarioRef.current.value.toUpperCase(),
+                    programaSS: this.programaSSRef.current.value.toUpperCase(),
+                    fechaInicio: this.fechaInicioRef.current.value,
+                    fechaTermino: this.fechaTerminoRef.current.value,
+                    tipoDeBaja: this.tipoDeBajaRef.current.value,
+                    horas: this.horasRef.current.value,
+                    estado: "NUEVO",
+                    idAlumno: this.state.idAlumno,
+                    idSolicitud: this.state.idAlumno
+                }
+            });
+        }
     }
 
     saveBaja = (e) => {
@@ -60,33 +86,45 @@ class Baja extends React.Component {
                         if(this.state.baja.fechaTermino && this.state.baja.fechaTermino != null && this.state.baja.fechaTermino != undefined){
                             axios.post(this.url + "solicitudBaja/save", this.state.baja)
                             .then(res => {
-                            // console.log(this.state.usuario.idUsuario + "idUsuario Antes de guardar Usuario");
                                 this.setState(
-                                    {
-                                        status: "true"
-                                    }
-                                );
+                                {
+                                    status: "true"
+                                });
                             })
-                            alert("DOCUMENTO GENERADO")
                         }else{
-                            alert("LLENA EL CAMPO FECHA DE TERMINO")
-                            window.location.href = './CrearBaja';
-                        }
+                            this.setState(
+                                {
+                                    statusFechaTermino: "false"
+                                }
+                            );
+                        }//Fin de else Fecha Termino
                     }else{
-                        alert("LLENA EL CAMPO FECHA DE INICIO")
-                        window.location.href = './CrearBaja';
+                        this.setState(
+                            {
+                                statusFechaInicio: "false"
+                            }
+                        );
                     }//Fin de else Fecha Inicio
                 }else{
-                    alert("LLENA EL CAMPO PRESTATARIO")
-                    window.location.href = './CrearBaja';
+                    this.setState(
+                        {
+                            statusPrestatario: "false"
+                        }
+                    );
                 }//Fin de else Prestatario
             }else{
-                alert("LLENA EL CAMPO PROGRAMA DE SERVICIO SOCIAL")
-                window.location.href = './CrearBaja';
+                this.setState(
+                    {
+                        statusPrograma: "false"
+                    }
+                );
             }//Fin de else Programa de SS
         }else{
-            alert("LLENA EL CAMPO NUMERO DE SERVICIO SOCIAL")
-            window.location.href = './CrearBaja';
+            this.setState(
+                {
+                    statusRegistro: "false"
+                }
+            );
         }//Fin de else Numero de Registro de SS
     }//Fin de Funcion saveBaja
     render() {
@@ -102,30 +140,89 @@ class Baja extends React.Component {
                             <div>
                                 <label htmlFor="registroSS" className="text_login">Número de Registro Servicio Social</label>
                                 <input type="text" className="input_login" name="registroSS" placeholder="Ingresa el número de registro del servicio social" ref={this.registroSSRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusRegistro){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa tu número de registro de Servicio Social!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()}    
                             </div>
                             <div>
                                 <label htmlFor="programaSS" className="text_login">Programa de Servicio Social</label>
                                 <input type="text" className="input_login" name="programaSS" placeholder="Ingresa el nombre del programa de servicio social" ref={this.programaSSRef} onChange={this.changeState}/>
-                            </div>
+                                {(() => {
+                                    switch(this.state.statusPrograma){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa el programa al que perteneces!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()} 
+                           </div>
                             <div>
                                 <label htmlFor="prestatario" className="text_login">Prestatario</label>
                                 <input type="text" className="input_login" name="prestatario" placeholder="Ingresa el nombre de la Institución/Empresa/etc. donde realizas tu servicio social" ref={this.prestatarioRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusPrestatario){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa el nombre de la unidad donde realizas Servicio Social!</a>
+                                        );
+                                        break;
+                                        default:
+                                        break;
+                                    }
+                                })()} 
                             </div>
                             <div>
                                 <label htmlFor="fechaInicio" className="text_login">Fecha de Inicio</label>
                                 <input type="date" className="input_login" name="fechaInicio" ref={this.fechaInicioRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusFechaInicio){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa la Fecha de Inicio de tu Servicio Social!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()} 
                             </div>
                             <div>
                                 <label htmlFor="fechaTermino" className="text_login">Fecha de Término</label>
                                 <input type="date" className="input_login" name="fechaTermino" ref={this.fechaTerminoRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusFechaTermino){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa la Fecha de Término de tu Servicio Social!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()} 
                             </div>
                             <div>
                                 <label htmlFor="tipoBaja" className="text_login">Tipo de Baja</label>
                                 <select name="tipoBaja" className="input_login" ref={this.tipoDeBajaRef} onChange={this.changeState}>
-                                    <option value="SIN RECONOCIMIENTO DE HORAS">SIN RECONOCIMIENTO DE HORAS</option>
-                                    <option value="CON RECONOCIMIENTO DE HORAS">CON RECONOCIMIENTO DE HORAS</option>
-                                    <option value="POR MOVILIDAD ACADÉMICA">POR MOVILIDAD ACADÉMICA</option>
+                                    <option value="BAJA SIN RECONOCIMIENTO DE HORAS">SIN RECONOCIMIENTO DE HORAS</option>
+                                    <option value="BAJA CON RECONOCIMIENTO DE HORAS">CON RECONOCIMIENTO DE HORAS</option>
+                                    <option value="BAJA POR MOVILIDAD ACADÉMICA">POR MOVILIDAD ACADÉMICA</option>
                                     </select>
+                            </div>
+                            <div>
+                                <label htmlFor="horas" className="text_login">Horas de Servicio Social</label>
+                                <input type="text" className="input_login" name="horas" placeholder="Ingresa el total de horas" ref={this.horasRef} onChange={this.changeState}/>
                             </div>
                             <div>
                                 <label htmlFor="egresado" className="text_login">Eres egresado?</label>
@@ -140,7 +237,7 @@ class Baja extends React.Component {
                                     <option value="SEPTIMO">SEPTIMO</option>
                                     <option value="OCTAVO">OCTAVO</option>
                                     <option value="NOVENO">NOVENO</option>
-                                    <option value="null">EGRESADO</option>
+                                    <option value="EGRESADO">EGRESADO</option>
                                     </select>
                             </div>
                             <br/>

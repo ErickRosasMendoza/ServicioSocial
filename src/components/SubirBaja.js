@@ -13,6 +13,7 @@ class SubirBaja extends React.Component {
     
     state = {
         idSolicitud: cookies.get('idAlumno'),
+        statusArchivo: null,
         file: null,
         status: null,
         lista: {},
@@ -62,15 +63,17 @@ class SubirBaja extends React.Component {
                                 nombreDoc: res.data,
                                 idTramite: 3,
                                 idDoc: res.data + this.state.idSolicitud,
-                                comentario: ""
+                                comentario: "NUEVO"
                             }
                         })
                         this.guardarLista();
-                        alert("DOCUMENTO GUARDADO CON EXITO")
                     });
         }else{
-            alert("SELECCIONA UN ARCHIVO PARA SUBIR")
-            window.location.href = './CrearBaja';
+            this.setState(
+                {
+                    statusArchivo: "false"
+                }
+            );
         }//Fin de else file
         
     }//Fin de funcion upLoad
@@ -94,12 +97,21 @@ class SubirBaja extends React.Component {
         return (
             <div className="center">
                         <div id="sidebar" className="bajaRight">
-                            <div>
+                        <strong>DOCUMENTACIÓN BAJA DE SERVICIO SOCIAL</strong>
+                                <div>
+                                <br/>
+                                    <tbody>
+                                        <tr>
+                                            <td className="table_lista"><strong>Archivo</strong></td>
+                                            <td className="table_lista"><strong>Comentario</strong></td>
+                                        </tr>
+                                    </tbody>
                                     {this.state.listar.map((lista1, i) =>
                                         <tbody key={i}>
                                             <tr>
-                                                <td>{lista1.nombreDoc}</td>
-                                                <td><Link to={'/PdfBaja/' + lista1.idDoc}target="_blank" id="btn_watch">Ver Archivo</Link></td>
+                                                <td className="table_lista">{lista1.nombreDoc}</td>
+                                                <td className="table_lista">{lista1.comentario}</td>
+                                                <td><Link to={'/PdfBaja/' + lista1.idDoc}target="_blank" id="btn_watch">Visualizar</Link></td>
                                                 <td><Link to={'/DocBaja/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
                                                 <td><BorrarDoc
                                                 idLista={lista1.idLista}
@@ -110,7 +122,20 @@ class SubirBaja extends React.Component {
                                             </tr>
                                     </tbody>
                                     )}
+                                    <br/>
+                                    <a className="text_login">Subir Archivo</a>
                                     <input type="file" name = "file" onChange={this.fileChange} />
+                                    {(() => {
+                                    switch(this.state.statusArchivo){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Seleccione un Archivo para Registrar!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                    })()}  
                                 </div>
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>
@@ -122,8 +147,21 @@ class SubirBaja extends React.Component {
             <div className="center">
                         <div id="sidebar" className="bajaRight">
                             <div>
-                                Aun no hay archivos guardados
-                                    <input type="file" name = "file" onChange={this.fileChange} />
+                                <strong>Aun no hay archivos guardados</strong>
+                                <br/>
+                                <a className="text_login">Subir Archivo</a>
+                                <input type="file" name = "file" onChange={this.fileChange} />
+                                {(() => {
+                                    switch(this.state.statusArchivo){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Seleccione un Archivo para Registrar!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()}  
                             </div>
                             <br/>
                             <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>
@@ -136,7 +174,18 @@ class SubirBaja extends React.Component {
                         <div id="sidebar" className="bajaRight">
                             <div>
                                 Cargando... Espere un momento
-                                    <input type="file" name = "file" onChange={this.fileChange} />
+                                <input type="file" name = "file" onChange={this.fileChange} />
+                                {(() => {
+                                    switch(this.state.statusArchivo){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Seleccione un Archivo para Registrar!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()}    
                             </div>
                             <br/>
                             <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>

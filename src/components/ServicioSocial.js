@@ -20,6 +20,7 @@ class ServicioSocial extends React.Component {
 
     state = {
         idAlumno: cookies.get('idAlumno'),
+        statusResponsable: null,
         servicio: {},
         status: "null"
     };
@@ -29,6 +30,7 @@ class ServicioSocial extends React.Component {
             servicio: {
                 semestre: this.semestreRef.current.value,
                 responsableDirecto: this.responsableDirectoRef.current.value.toUpperCase(),
+                estado: "NUEVO",
                 idAlumno: this.state.idAlumno,
                 idServicio: this.state.idAlumno
             }
@@ -47,10 +49,12 @@ class ServicioSocial extends React.Component {
                     }
                 );
             })
-            alert("DOCUMENTO GENERADO")
         }else{
-            alert("LLENA EL CAMPO RESPONSABLE DIRECTO")
-            window.location.href = './CrearServicio';
+            this.setState(
+                {
+                    statusResponsable: "false"
+                }
+            );
         }//Fin de else Responsable Directo
     }//Fin de funcion saveServicio()
     render() {
@@ -66,6 +70,17 @@ class ServicioSocial extends React.Component {
                             <div>
                                 <label htmlFor="responsable" className="text_login">Responsable Directo</label>
                                 <input type="text" className="input_login" name="responsable" placeholder="Ingresa el nombre de tu responsable directo" ref={this.responsableDirectoRef} onChange={this.changeState}/>
+                                {(() => {
+                                    switch(this.state.statusResponsable){   
+                                        case "false":
+                                        return (
+                                        <a className="warning">¡Ingresa el nombre de tu Responsable Directo!</a>
+                                        );
+                                        break;
+                                        default:
+                                            break;
+                                    }
+                                })()}      
                             </div>
                             <div>
                                 <label htmlFor="semestre" className="text_login">Semestre</label>
@@ -73,6 +88,7 @@ class ServicioSocial extends React.Component {
                                     <option value="SEPTIMO">SEPTIMO</option>
                                     <option value="OCTAVO">OCTAVO</option>
                                     <option value="NOVENO">NOVENO</option>
+                                    <option value="EGRESADO">EGRESADO</option>
                                     </select>
                             </div>
                             <br/>

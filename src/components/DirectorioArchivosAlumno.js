@@ -4,17 +4,22 @@ import Slider from './Slider';
 import { Link, Switch } from 'react-router-dom';
 import DirectorioAdmin from './DirectorioAdmin';
 import Cookies from 'universal-cookie';
+import AlumnoDetalle from './AlumnoDetalle';
 import AlumnoDictamen from './AlumnoDictamen';
 import AlumnoBaja from './AlumnoBaja';
 import AlumnoServicio from './AlumnoServicio';
 import AlumnoLiberacion from './AlumnoLiberacion';
+import AdminBajaArchivos from './AdminBajaArchivos';
+import AdminDictamenArchivos from './AdminDictamenArchivos';
+import AdminLiberacionArchivos from './AdminLiberacionArchivos';
+import AdminServicioArchivos from './AdminServicioArchivos';
 const cookies = new Cookies();
 
 class DirectorioArchivosAlumno extends Component{
 
     state = {
         idAlumno: "",
-        idTramite: 0,
+        idTramite: "",
         status: null
     };
     
@@ -53,34 +58,10 @@ class DirectorioArchivosAlumno extends Component{
             return(
               <div className = "center">
                         <DirectorioAdmin />
-               
-                <tbody>
-                    <tr>
-                        <tr>
-                        <td>{this.state.idAlumno}</td>
-                        </tr>
-                        <tr>
-                        <td>{this.state.idTramite}</td>
-                        </tr>
-                        <tr>
-                        <td className="table_lista"> <button  class = "btn" onClick={this.tramite1} >Docuementacion Dictamen de 70%</button></td>
-                        </tr>
-                        <tr> 
-                        <td className="table_lista"><button  class = "btn" onClick={this.tramite2} >Docuementacion Liberacion Extemporanea</button></td>
-                        </tr>
-                        <tr>
-                        <td className="table_lista"><button  class = "btn" onClick={this.tramite3} >Documentacion Baja de Servicio Social</button></td> 
-                        </tr>
-                        <tr>
-                        <td className="table_lista"><button  class = "btn" onClick={this.tramite4} >Docuementacion Servicio Social</button></td>
-                        </tr>
-                     </tr>   
-                </tbody>
-               
-               
-                {(() => {  
-                    switch (this.state.idTramite){
-                        case 1:
+
+                        {(() => {  
+                        switch (this.state.idTramite){
+                        /*case 1:
                             return (
                                 <AlumnoDictamen
                                 id = {this.state.idAlumno}/>
@@ -100,6 +81,57 @@ class DirectorioArchivosAlumno extends Component{
                         case 4:
                             return(
                                 <AlumnoServicio
+                                id = {this.state.idAlumno}/>
+                            )*/
+                         default: 
+                            return(
+                                <AlumnoDetalle
+                                id = {this.state.idAlumno}/>
+                            )
+                            break;
+                        }
+                        })()}
+
+                <tbody>
+                    <tr>
+                        <tr>
+                        <td className="table_lista" > <button  class = "btn lista" onClick={this.tramite1} >Docuementacion Dictamen de 70%</button></td>
+                        </tr>
+                        <tr> 
+                        <td className="table_lista"><button  class = "btn" onClick={this.tramite2} >Docuementacion Liberacion Extemporanea</button></td>
+                        </tr>
+                        <tr>
+                        <td className="table_lista"><button  class = "btn" onClick={this.tramite3} >Documentacion Baja de Servicio Social</button></td> 
+                        </tr>
+                        <tr>
+                        <td className="table_lista"><button  class = "btn" onClick={this.tramite4} >Docuementacion Servicio Social</button></td>
+                        </tr>
+                     </tr>   
+                </tbody>
+               
+               
+                {(() => {  
+                    switch (this.state.idTramite){
+                        case 1:
+                            return (
+                                <AdminDictamenArchivos
+                                id = {this.state.idAlumno}/>
+                              );
+                        break;
+                        case 2:
+                            return(
+                                <AdminLiberacionArchivos
+                                id = {this.state.idAlumno}/>
+                              ); 
+                              break;  
+                        case 3:
+                            return(
+                                <AdminBajaArchivos
+                                id = {this.state.idAlumno}/>    
+                            );
+                        case 4:
+                            return(
+                                <AdminServicioArchivos
                                 id = {this.state.idAlumno}/>
                             )
                          default: break;

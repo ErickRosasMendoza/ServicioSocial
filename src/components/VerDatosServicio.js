@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Global from '../Global';
+import PdfServicioAlumno from './PdfServicioAlumno';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -12,6 +13,7 @@ class VerDatosServicio extends React.Component{
     state = {
         servicio: {},
         idAlumno: cookies.get('idAlumno'),
+        email: cookies.get('email'),
         status: null
     };
         componentWillMount() {
@@ -30,26 +32,78 @@ class VerDatosServicio extends React.Component{
         
     render() {
         if(this.state.status == 'success'){
-            return(
-                <div className="center">
-                        <div id="sidebar" className="servicioCenter">
-                            <div className="text_login">
-                                Responsable Directo: {this.state.servicio.responsableDirecto}
+            if(this.state.servicio.semestre != "EGRESADO")
+            {
+                return(
+                    <div className="center">
+                            <div id="sidebar" className="servicioCenter">
+                                {(() => {  
+                                switch (this.state.servicio.estado){
+                                case "NUEVO":
+                                    return (
+                                        <a id="state_new">NUEVO</a>
+                                    );
+                                break;
+                                case "PROCESANDO":
+                                    return(
+                                        <a id="state_processing">EN PROCESO</a>
+                                    ); 
+                                    break;  
+                                case "FINALIZADO":
+                                    return(
+                                        <a id="state_finished">TERMINADO</a>   
+                                    );
+                                case "RECHAZADO":
+                                    return(
+                                        <a id="state_rejected">RECHAZADO</a>
+                                    )
+                                default: 
+                                    break;
+                                }
+                                })()}
+                                <div className="text_login">
+                                    <strong>Responsable Directo:</strong> {this.state.servicio.responsableDirecto}
+                                </div>
+                                <div className="text_login">
+                                    <strong>Semestre:</strong> {this.state.servicio.semestre}
+                                </div>
+                                <br/>
+                                <PdfServicioAlumno
+                                    responsable={this.state.servicio.responsableDirecto}
+                                    redaccion={" alumno del " + this.state.servicio.semestre + " semestre "}
+                                    email={this.state.email}
+                                    idAlumno={this.state.idAlumno}
+                                    />
+                            </div>          
+                </div>
+                );
+            }else{
+                return(
+                    <div className="center">
+                            <div id="sidebar" className="servicioCenter">
+                                <div className="text_login">
+                                    <strong>Responsable Directo:</strong> {this.state.servicio.responsableDirecto}
+                                </div>
+                                <div className="text_login">
+                                    <strong>Soy Egresado</strong>
+                                </div>
+                                <br/>
+                                <PdfServicioAlumno
+                                    responsable={this.state.servicio.responsableDirecto}
+                                    redaccion={" egresado "}
+                                    email={this.state.email}
+                                    idAlumno={this.state.idAlumno}
+                                    />
                             </div>
-                            <div className="text_login">
-                                Semestre: {this.state.servicio.semestre}
-                            </div>
-                            <br/>
-                            <button className="btn"  onClick = {this.upLoad}>Generar PDF</button> 
-                        </div>          
-            </div>
-            );
+                </div>
+                );
+            }
         }else{ 
             return(
                 <div className="center">
                         <div id="sidebar" className="servicioCenter">
                             <div className="text_login">
-                                No tienes datos disponibles, registralos para empezar con tu documentación SERVICIO SOCIAL.
+                                <strong>No tienes datos disponibles, registralos para empezar con tu documentación SERVICIO SOCIAL.</strong>
                             </div>
                         </div>          
             </div>
