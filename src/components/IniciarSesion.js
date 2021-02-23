@@ -84,9 +84,10 @@ class IniciarSesion extends React.Component {
                                          console.log(this.state.form.email + "datos dentro del form")
                                          console.log(this.state.usuario.email + "datos dentro de usuario")
                                          
-                                        return response.data;
+                                           return response.data;
                                         
                                          })
+                               
 
                            .then(response => {
                            if (this.state.usuario.tipoUsuario == false) {

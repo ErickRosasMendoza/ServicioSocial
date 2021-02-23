@@ -14,106 +14,165 @@ class CrearAlumno extends React.Component {
 
     url = Global.url;
 
+    constructor (props){
+        super(props);
+        this.state = {
+                usuario:{
+                    contraseña: "false"
+                }
+        }
+
+        var luis = "";
+    }
+    
+
     tipoUsuarioRef = React.createRef();
     contraseñaRef = React.createRef();
     emailRef = React.createRef();
     confirmarContraseñaRef = React.createRef();
 
     state = {
-        confirmarContraseña: "",
+   
         idUsuario: cookies.get('idUsuario'),
         statusEmail: null,
         statusContraseña: null,
-        statusConfirmar: null,
-        usuario: {},
-        searchEmail: {},
+        contraseñaConfirmar: "false",
+        usuario:{
+            email:"false"
+        },
+        
+    
         status: "null",
         emailExist: null
     };
 
-    changeState = async (e) => {
+
+    
+
+    changeStateEmail =  async(e) => {
         
        await this.setState({
             usuario: {
                 email: this.emailRef.current.value,
-                contraseña: md5(this.contraseñaRef.current.value),
-                tipoUsuario: "false"
+              /* contraseña: this.contraseñaRef.current.value,
+                tipoUsuario: "false"*/
             },
-            confirmarContraseña: md5(this.confirmarContraseñaRef.current.value)
+           // confirmarContraseña: this.confirmarContraseñaRef.current.value,
+            
         });
-       // console.log(this.state.usuario.email);
-        //console.log(this.state.usuario.contraseña)
-       
-       
-    }
+      console.log(this.props.luis + "____confirmarContraseña");
+        console.log(this.state.usuario.contraseña + "____contraseña  dentro de usuario");
+        console.log(this.state.usuario.email + "email en el state")
 
-    searchEmail = () => {
-        axios.get(this.url + "usuario/findEmail/" + this.emailRef.current.value)
-        .then(res => {
-            this.setState({
-                searchEmail: res.data
-            })
-        })
-        .then(res => {
-            this.setState({
-                emailExist: "false"
-            })
-        })
-        .catch(error => {
-            this.setState({
-                emailExist: "true"
-            })
-        })
-    }//Fin de SearchEmail
+   if(this.state.usuario.email != null || this.state.usuario.email != undefined ){
+           
+    this.setState(
+        {
+            usuario:{
+                email: "true"
+            }
+        }
+    );
+   }
+}  
+           
+       changeStateContraseña=async(e)=>{
+        await this.setState({
+            usuario: {
+               email:"false",
+              contraseña: this.contraseñaRef.current.value,
+               
+            },
+         
+            
+        });
+        console.log(this.state.usuario.contraseña + "____contraseña  dentro de usuario");
+        console.log(this.state.usuario.email + "email dentro del change de contraseña")
+       }    
+           
+           /*
+                   if(this.state.usuario.contraseña == null || this.state.usuario.contraseña == undefined ||this.state.usuario.contraseña =="false" ){
+
+                    
+
+
+
+
+
+
+                                                    if(this.state.contraseñaConfirmar ==null ||this.state.contraseñaConfirmar==undefined||this.state.contraseñaConfirmar=="false")
+                                                      {
+                                                     this.setState({
+                                                    contraseñaConfirmar: "false"
+                                                     })
+                                                     console.log(this.state.contraseñaConfirmar + "confirmar contraseña dentro de la validacion")
+                                                    }
+                 }else
+                 {
+                this.setState({
+                    usuario:{
+                        contraseña: "false"
+                    }
+                   })
+                   }
+   
+        }
+          else{
+            this.setState(
+                {
+                    usuario:{
+                        email: "false"
+                    }
+                }
+            );
+            
+        }*/
+
+    
+
+
+
+
+    
+           // console.log(this.state.emailExist)
+           
+  
 
     saveUsuario = (e) => {
-        this.changeState();
-        this.searchEmail();
-        if(this.state.usuario.email && this.state.usuario.email != null && this.state.usuario.email != undefined){
-            if(this.state.searchEmail == null || this.state.searchEmail == undefined){
-                if(this.contraseñaRef.current.value && this.contraseñaRef.current.value != null && this.contraseñaRef.current.value != undefined){
-                    if(this.state.usuario.contraseña === this.state.confirmarContraseña){
-                        axios.post(this.url+"usuario/save", this.state.usuario)
-                        .then(res => {
-                            this.setState(
-                                {
-                                    status: "true"
-                                }
-                            );
-                        })
-                    }else{
-                        this.setState(
-                            {
-                                statusConfirmar: "false"
-                            }
-                        );
-                    }//Fin de else Confirmar Contraseña
-                }else{
-                    this.setState(
-                        {
-                            statusContraseña: "false"
-                        }
-                    );
-                }//Fin de else Contraseña
-            }else{
-                this.setState(
-                    {
-                        emailExist: "false"
+    
+            /*this.changeState();    
+        if(this.state.usuario.email != null || this.state.usuario.email != undefined ||this.state.usuario.contraseña =="false"){
+            if(this.state.usuario.contraseña == null || this.state.usuario.contraseña == undefined || this.state.usuario.contraseña=="false"){
+                       console.log(this.state.usuario.contraseña + "dentro del iff");
+            }else
+            {
+                this.setState({
+                    usuario:{
+                        contraseña: "false"
                     }
-                );
-            }//Fin de else email existente
+                })
+            }
+   
+
         }else{
             this.setState(
                 {
-                    statusEmail: "false"
+                    usuario:{
+                        email: "false"
+                    }
                 }
             );
+            console.log(this.state.usuario.email)
         }//Fin de else Email
+        */
     }
+
+
     render() {
         if(this.state.status === 'true'){
+           // alert("USUARIO REGISTRADO CON EXITO")
             return <Redirect to = "/IniciarSesion"></Redirect>
-            alert("USUARIO REGISTRADO CON EXITO")
+            
         }
 
         return (
@@ -133,21 +192,19 @@ class CrearAlumno extends React.Component {
                             <div className = "input-border">
                             <br/> <br/> <br/>
                                 <label htmlFor="email" className="text_login">Email</label>
-                                <input type="email" className="input_login" name="email" ref={this.emailRef} placeholder="Ingresa quí tu correo electrónico" onChange={this.changeState}/>
+                                <input type="email" className="input_login" name="email" ref={this.emailRef} placeholder="Ingresa quí tu correo electrónico" onChange={this.changeStateEmail}/>
                                 {(() => {
-                                switch(this.state.statusEmail){   
+                                switch(this.state.usuario.email){   
                                     case "false":
                                     return (
-                                    <a className="warning">¡Ingresa un correo electronico valido!</a>
+                                    <a className="warning">¡Ingresa un correo electronico!</a>
                                     );
-                                    break;
-                                    default:
-                                        break;
+                                
                                 }
                             })()}
                             {(() => {
                                 switch(this.state.emailExist){   
-                                    case "false":
+                                    case "true":
                                     return (
                                     <a className="warning">¡Este correo ya fue registrado!</a>
                                     );
@@ -159,31 +216,28 @@ class CrearAlumno extends React.Component {
                             </div>
                             <div>
                                 <label htmlFor="contraseña" className="text_login">Contraseña</label>
-                                <input type="password" className="input_login" name="contarseña" ref={this.contraseñaRef} placeholder="Ingresa aquí tu contraseña" onChange={this.changeState}/>
+                                <input type="password" className="input_login" name="contarseña" ref={this.contraseñaRef} placeholder="Ingresa aquí tu contraseña" onChange={this.changeStateContraseña}/>
                                 {(() => {
-                                switch(this.state.statusContraseña){   
+                                switch(this.state.usuario.contraseña){   
                                     case "false":
                                     return (
                                     <a className="warning">¡Ingresa una contraseña!</a>
                                     );
-                                    break;
-                                    default:
-                                        break;
+                                
+                                 
                                 }   
                                 })()}
                             </div>
                             <div>
                                 <label htmlFor="contraseñaconfirm" className="text_login">Confirma Contraseña</label>
-                                <input type="password" className="input_login" name="contarseñaconfirm" ref={this.confirmarContraseñaRef} placeholder="Confirma aquí tu contraseña" onChange={this.changeState}/>
+                                <input type="password" className="input_login" name="contarseñaconfirm" ref={this.confirmarContraseñaRef} placeholder="Confirma aquí tu contraseña" onChange={this.changeStateContraseña}/>
                                 {(() => {
-                                switch(this.state.statusContraseña){   
+                                switch(this.state.contraseñaConfirmar){   
                                     case "false":
                                     return (
                                     <a className="warning">¡Verifica tu Contraseña!</a>
                                     );
-                                    break;
-                                    default:
-                                        break;
+                                  
                                 }   
                                 })()}
                             </div>
