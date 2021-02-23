@@ -85,6 +85,23 @@ class AlumnoLiberacion extends React.Component{
                                 })()}</td>
                     </tr>
                 </tbody>
+                <div id="sidebar" className="archivosAdminRight">
+                    <div className="text_login">
+                        <strong>Programa de Servicio Social:</strong> {this.state.liberacion.programaSS}
+                    </div>
+                    <div className="text_login">
+                        <strong>Prestatario:</strong> {this.state.liberacion.prestatario}
+                    </div>
+                    <div className="text_login">
+                        <strong>Fecha de Inicio:</strong> {this.state.liberacion.fechaInicio}
+                    </div>
+                    <div className="text_login">
+                        <strong>Fecha de Término:</strong> {this.state.liberacion.fechaTermino}
+                    </div>
+                    <div className="text_login">
+                        <strong>Número Telefónico:</strong> {this.state.liberacion.telefono}
+                    </div>
+                </div>
             </div>
         );
     }else if(this.state.statusLiberacion != 'success'){
@@ -110,6 +127,9 @@ class AlumnoLiberacion extends React.Component{
                         <td className="table_lista">SIN REGISTRO</td>
                     </tr>
                 </tbody>
+                <div id="sidebar" className="archivosAdminRight">
+                    <strong>Este alumno aun no tiene información registrada para este tramite.</strong>
+                </div>
             </div>
         );   
     }else{
@@ -135,6 +155,9 @@ class AlumnoLiberacion extends React.Component{
                         <td className="table_lista">Cargando...</td>
                     </tr>
                 </tbody>
+                <div id="sidebar" className="archivosAdminRight">
+                    <strong>Cargando...</strong>
+                </div>
             </div>
         );
     }

@@ -83,6 +83,23 @@ class AlumnoBaja extends React.Component{
                                 })()}</td>
                     </tr>
                 </tbody>
+                <div id="sidebar" className="archivosAdminRight">
+                    <div className="text_login">
+                        <strong>Tipo de Baja:</strong> {this.state.tipoBaja.tipoDeBaja}
+                    </div>
+                    <div className="text_login">
+                        <strong>Programa de Servicio Social:</strong> {this.state.tipoBaja.programaSS}
+                    </div>
+                    <div className="text_login">
+                        <strong>Prestatario:</strong> {this.state.tipoBaja.prestatario}
+                    </div>
+                    <div className="text_login">
+                        <strong>Fecha de Inicio:</strong> {this.state.tipoBaja.fechaInicio}
+                    </div>
+                    <div className="text_login">
+                        <strong>Fehcta de Término:</strong> {this.state.tipoBaja.fechaTermino}
+                    </div>
+                </div>
             </div>
         );
     }else if(this.state.statusTipoBaja != 'success'){
@@ -108,6 +125,9 @@ class AlumnoBaja extends React.Component{
                         <td className="table_lista">SIN REGISTRO</td>
                     </tr>
                 </tbody>
+                <div id="sidebar" className="archivosAdminRight">
+                    <strong>Este alumno aun no tiene información registrada para este tramite.</strong>
+                </div>
             </div>
         );
     }else{
@@ -133,6 +153,9 @@ class AlumnoBaja extends React.Component{
                         <td className="table_lista">Cargando...</td>
                     </tr>
                 </tbody>
+                <div id="sidebar" className="archivosAdminRight">
+                <strong>Cargando...</strong>
+            </div>
             </div>
         );
     }

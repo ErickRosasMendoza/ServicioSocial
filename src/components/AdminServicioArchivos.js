@@ -84,7 +84,7 @@ class AdminServicioArchivos extends React.Component {
         if(this.state.listar.length >=1){
             return (
                 <div className="center">
-                            <div id="sidebar" className="dictamenAdminCenter">
+                            <div id="sidebar" className="archivosAdminCenter">
                             <strong>DOCUMENTACIÓN DE LIBERACIÓN EXTEMPORANEA</strong>
                                 <div>
                                 <br/>
@@ -126,7 +126,7 @@ class AdminServicioArchivos extends React.Component {
         }else if(this.state.listar.length == 0){
             return (
                 <div className="center">
-                            <div id="sidebar" className="dictamenAdminCenter">
+                            <div id="sidebar" className="archivosAdminCenter">
                                 <div>
                                 <strong>SIN DOCUMENTACION PARA COMENZAR SERVICIO SOCIAL</strong>
                                 <br/>
@@ -145,7 +145,7 @@ class AdminServicioArchivos extends React.Component {
         }else{
             return (
             <div className="center">
-                        <div id="sidebar" className="dictamenAdminCenter">
+                        <div id="sidebar" className="archivosAdminCenter">
                             <div>
                                 Cargando... Espere un momento
                                 <input type="file" name = "file" onChange={this.fileChange} />

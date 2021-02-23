@@ -62,10 +62,10 @@ class VerDatosServicio extends React.Component{
                                 }
                                 })()}
                                 <div className="text_login">
-                                    Responsable Directo: {this.state.servicio.responsableDirecto}
+                                    <strong>Responsable Directo:</strong> {this.state.servicio.responsableDirecto}
                                 </div>
                                 <div className="text_login">
-                                    Semestre: {this.state.servicio.semestre}
+                                    <strong>Semestre:</strong> {this.state.servicio.semestre}
                                 </div>
                                 <br/>
                                 <PdfServicioAlumno
@@ -82,10 +82,10 @@ class VerDatosServicio extends React.Component{
                     <div className="center">
                             <div id="sidebar" className="servicioCenter">
                                 <div className="text_login">
-                                    Responsable Directo: {this.state.servicio.responsableDirecto}
+                                    <strong>Responsable Directo:</strong> {this.state.servicio.responsableDirecto}
                                 </div>
                                 <div className="text_login">
-                                    Semestre: {this.state.servicio.semestre}
+                                    <strong>Soy Egresado</strong>
                                 </div>
                                 <br/>
                                 <PdfServicioAlumno
@@ -103,7 +103,7 @@ class VerDatosServicio extends React.Component{
                 <div className="center">
                         <div id="sidebar" className="servicioCenter">
                             <div className="text_login">
-                                No tienes datos disponibles, registralos para empezar con tu documentación SERVICIO SOCIAL.
+                                <strong>No tienes datos disponibles, registralos para empezar con tu documentación SERVICIO SOCIAL.</strong>
                             </div>
                         </div>          
             </div>
