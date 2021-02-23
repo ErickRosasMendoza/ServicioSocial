@@ -19,10 +19,12 @@ class DatosActualizadosEmail extends React.Component {
 
     state = {
         confirmarContraseña: "",
+        confirmarNuevaContraseña: "",
+        nuevaContraseña: "",
         idUsuario: cookies.get('idUsuario'),
+        emailPerfil: cookies.get('email'),
         statusEmail: null,
         statusContraseña: null,
-        statusConfirmar: null,
         statusNuevoEmail: null,
         statusNuevaContraseña: null,
         statusNuevaConfirmar: null,
@@ -31,7 +33,8 @@ class DatosActualizadosEmail extends React.Component {
         contraseña: "",
         status: "null",
         searchEmail: {},
-        emailExist: null
+        emailExistente: null,
+        ayuda: "false"
     };
 
     changeState = async (e) => {
@@ -44,126 +47,154 @@ class DatosActualizadosEmail extends React.Component {
                 idUsuario: this.state.idUsuario
             },
             confirmarContraseña: md5(this.confirmarNuevaContraseña.current.value),
+            confirmarNuevaContraseña: this.nuevaContraseñaRef.current.value,
+            nuevaContraseña: this.nuevaContraseñaRef.current.value,
             contraseña: this.contraseñaRef.current.value,
             email: this.emailRef.current.value
         });  
     }//Fin de changeState
 
-    searchEmail = () => {
-        axios.get(this.url + "usuario/findEmail/" + this.nuevoEmailRef.current.value)
-        .then(res => {
-            this.setState({
-                searchEmail: res.data
-            })
-        })
-        .then(res => {
-            this.setState({
-                emailExist: "false"
-            })
-        })
-        .catch(error => {
-            this.setState({
-                emailExist: "true"
-            })
-        })
-    }//Fin de SearchEmail
-
-    update = () =>{
+    update = () => {
         this.changeState();
-        this.searchEmail();
-        if(this.state.email && this.state.email != null && this.state.email != undefined){
-            if(this.contraseñaRef.current.value && this.contraseñaRef.current.value != null && this.contraseñaRef.current.value != undefined){
-                axios.get(this.url + "usuario/findEmail/" + this.emailRef.current.value)
-                .then(res =>{
-                    if(this.nuevoEmailRef.current.value && this.nuevoEmailRef.current.value != null && this.nuevoEmailRef.current.value != undefined){
-                        if(this.nuevoEmailRef.current.value == this.emailRef.current.value){
-                            if(this.nuevaContraseñaRef.current.value && this.nuevaContraseñaRef.current.value != null && this.nuevaContraseñaRef.current.value != undefined){
-                                if(this.state.usuario.contraseña == this.state.confirmarContraseña){
-                                    axios.patch(this.url + "usuario/update", this.state.usuario)
-                                    .then(res => {
-                                        this.setState(
-                                            {
-                                                status: "true"
-                                            }
-                                        );
-                                    })
-                                    .then(res =>{
-                                        cookies.set('email', this.nuevoEmailRef.current.value, { path: "/" })
-                                        console.log(cookies.get('contraseña') + " email de las cookies")
-                                    })
+        if(this.state.email && this.state.email !== null && this.state.email !== undefined){
+            if(this.state.contraseña && this.state.contraseña !== null && this.state.contraseña !== undefined){
+                axios.get(this.url+"usuario/findEmail/"+this.state.email)
+                .then(res => {
+                    if(this.state.email === this.state.emailPerfil){
+                        if(this.state.usuario.email && this.state.usuario.email !== null && this.state.usuario.email !== undefined){
+                            if(this.state.usuario.email === this.state.email){
+                                if(this.state.nuevaContraseña && this.state.nuevaContraseña !== null && this.state.nuevaContraseña !== undefined){
+                                    if(this.state.confirmarNuevaContraseña && this.state.confirmarNuevaContraseña !== null && this.state.confirmarNuevaContraseña !== undefined){
+                                        if(this.state.usuario.contraseña === this.state.confirmarContraseña){
+                                            axios.patch(this.url+"usuario/save", this.state.usuario)
+                                            .then(res => {
+                                                this.setState({
+                                                    status: "true"
+                                                });
+                                            });
+                                        }else{
+                                            this.setState({
+                                                statusNuevaConfirmar: "false",
+                                                statusNuevaContraseña: "true",
+                                                statusNuevoEmail: "true",
+                                                statusEmail: "true",
+                                                statusContraseña: "true"
+                                            });
+                                        }//Fin de else comparando nuevas contraseñas
+                                    }else{
+                                        this.setState({
+                                            statusNuevaConfirmar: "false",
+                                            statusNuevaContraseña: "true",
+                                            statusNuevoEmail: "true",
+                                            statusEmail: "true",
+                                            statusContraseña: "true"
+                                        });
+                                    }//Fin de Nueva Contraseña Confirmar
                                 }else{
-                                    this.setState(
-                                        {
-                                            statusNuevaConfirmar: "false"
-                                        }
-                                    );
-                                }//Fin de Nueva Contraseña Confirmada
+                                    this.setState({
+                                        statusNuevaContraseña: "false",
+                                        statusNuevoEmail: "true",
+                                        statusEmail: "true",
+                                        statusContraseña: "true"
+                                    });
+                                }//Fin de Nueva contraseña
                             }else{
-                                this.setState(
-                                    {
-                                        statusNuevaContraseña: "false"
-                                    }
-                                );
-                            }//Fin de else Nueva Contraseña
-                        }else if(this.state.emailExist == "true"){
-                            if(this.nuevaContraseñaRef.current.value && this.nuevaContraseñaRef.current.value != null && this.nuevaContraseñaRef.current.value != undefined){
-                                if(this.state.usuario.contraseña == this.state.confirmarContraseña){
-                                    axios.patch(this.url + "usuario/update", this.state.usuario)
-                                    .then(res => {
-                                        this.setState(
-                                            {
-                                                status: "true"
-                                            }
-                                        );
-                                    })
-                                    .then(res =>{
-                                        cookies.set('email', this.nuevoEmailRef.current.value, { path: "/" })
-                                        console.log(cookies.get('contraseña') + " email de las cookies")
-                                    })
+                                if(this.state.nuevaContraseña && this.state.nuevaContraseña !== null && this.state.nuevaContraseña !== undefined){
+                                    if(this.state.confirmarNuevaContraseña && this.state.confirmarNuevaContraseña !== null && this.state.confirmarNuevaContraseña !== undefined){
+                                        if(this.state.usuario.contraseña === this.state.confirmarContraseña){
+                                            axios.get(this.url+"usuario/findEmail/" + this.state.usuario.email)
+                                            .then(res =>{
+                                                this.setState({
+                                                    ayuda: "false",
+                                                    emailExistente: "true",
+                                                    statusNuevaConfirmar: "true",
+                                                    statusNuevaContraseña: "true",
+                                                    statusNuevoEmail: "true",
+                                                    statusEmail: "true",
+                                                    statusContraseña: "true"
+
+                                                });
+                                            })
+                                            .catch(error =>{
+                                                this.setState({
+                                                    emailExistente: "false"
+                                                });
+                                            })
+                                            .then(res => {
+                                                if(this.state.emailExistente == "false"){
+                                                    if(this.state.ayuda == "false"){
+                                                        axios.post(this.url+"usuario/save", this.state.usuario)
+                                                        .then(res =>{
+                                                            this.setState({
+                                                                status: "true"
+                                                            });
+                                                        })
+                                                        .then(res => {
+                                                            cookies.set('email', this.state.usuario.email , { path: "/" })
+                                                        })
+                                                    }else{
+                                                        this.setState({
+                                                            ayuda: "false"
+                                                        });
+                                                    }
+                                                }else{
+                                                    this.setState({
+                                                        emailExistente: "true",
+                                                        ayuda: "false"
+                                                    });
+                                                }//Fin de else Email Existe
+                                            })
+                                        }else{
+                                            this.setState({
+                                                statusNuevaConfirmar: "false",
+                                                statusNuevaContraseña: "true",
+                                                statusNuevoEmail: "true",
+                                                statusEmail: "true",
+                                                statusContraseña: "true"
+                                            });
+                                        }//Fin de else Comparando Nuevas Contraseñas
+                                    }else{
+                                        this.setState({
+                                            statusNuevaConfirmar: "false",
+                                            statusNuevaContraseña: "true",
+                                            statusNuevoEmail: "true",
+                                            statusEmail: "true",
+                                            statusContraseña: "true"
+                                        });
+                                    }//Fin de Confirmar Nueva Contraseña
                                 }else{
-                                    this.setState(
-                                        {
-                                            statusNuevaConfirmar: "false"
-                                        }
-                                    );
-                                }//Fin de Nueva Contraseña Confirmada
-                            }else{
-                                this.setState(
-                                    {
-                                        statusNuevaContraseña: "false"
-                                    }
-                                );
-                            }//Fin de else Nueva Contraseña
+                                    this.setState({
+                                        statusNuevaContraseña: "false",
+                                        statusNuevoEmail: "true",
+                                        statusEmail: "true",
+                                        statusContraseña: "true"
+                                    });
+                                }//Fin de else nueva contraseña
+                            }//Fin de else no esta ingresando emailPerfil
                         }else{
-                            this.setState(
-                                {
-                                    emailExist: "false"
-                                }
-                            );
-                        }//Fin de else email existente
+                            this.setState({
+                                statusNuevoEmail: "false",
+                                statusEmail: "true",
+                                statusContraseña: "true"
+                            });
+                        }//Fin de else Nuevo Email
                     }else{
-                        this.setState(
-                            {
-                                statusNuevoEmail: "false"
-                            }
-                        );
-                    }//Fin de else Nuevo Email
+                        this.setState({
+                            statusEmail: "false",
+                            statusContraseña: "true"
+                        });
+                    }//Fin de else Comparando el email ingresado
                 })
             }else{
-                this.setState(
-                    {
-                        statusContraseña: "false",
-                        statusEmail: "false"
-                    }
-                );
-            }//fin de else contraseña 
+                this.setState({
+                    statusContraseña: "false"
+                });
+            }//Fin de else contraseña
         }else{
-            this.setState(
-                {
-                    statusEmail: "false"
-                }
-            );
-        }//Fin de else email
+            this.setState({
+                statusEmail: "false"
+            });
+        }//Fin de Email
     }//Fin de update
 
     render() {
@@ -219,8 +250,8 @@ class DatosActualizadosEmail extends React.Component {
                         }
                         })()}
                         {(() => {
-                            switch(this.state.emailExist){   
-                                case "false":
+                            switch(this.state.emailExistente){   
+                                case "true":
                                 return (
                                 <a className="warning">¡Este correo ya fue registrado!</a>
                                 );
