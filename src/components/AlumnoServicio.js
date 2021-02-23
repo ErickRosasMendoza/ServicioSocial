@@ -60,7 +60,7 @@ class AlumnoServicio extends React.Component{
                         <td className="table_lista">{this.state.servicio.semestre}</td>
                         <td className="table_lista">{this.state.servicio.responsableDirecto}</td>
                         <td className="table_lista">{(() => {  
-                                switch (this.state.tipoBaja.estado){
+                                switch (this.state.servicio.estado){
                                 case "NUEVO":
                                     return (
                                         <a id="state_new">NUEVO</a>

@@ -279,21 +279,24 @@ div {
   height: 340px;
 }
 #sidebar.dictamenLeft{
-  height: 250px;
+  min-height: 250px;
+  height: auto;
   margin-left: 15px;
   max-width: 40%;
 }
 #sidebar.dictamenRight{
   float: right;
-  margin-top: -250px;
+  margin-top: -282px;
   margin-right: 5px;
-  height: 250px;
+  min-height: 220px;
+  height: auto;
   max-width: 40%;
 }
 #sidebar.dictamenCenter{
-  margin-left: 580px;
-  margin-top: -268px;
-  height: 250px;
+  margin-left: 528px;
+  margin-top: -283px;
+  min-height: 180px;
+  height: auto;
   max-width: 24%;
 }
 #sidebar.infoAdminLeft{
@@ -307,87 +310,82 @@ div {
   height: auto;
   max-width: 24%;
 }
-#sidebar.dictamenAdminCenter{
+#sidebar.archivosAdminCenter{
   float: center;
-  margin-top: -350px;
+  margin-top: -290px;
   margin-left: 265px;
   min-height: 350px;
   height: auto;
   width: 73%;
 }
-#sidebar.tipoBajaAdminRight{
+#sidebar.archivosAdminRight{
   float: right;
-  margin-top: -557px;
   margin-right: 5px;
-  height: auto;
-  max-width: 40%;
-}
-#sidebar.liberacionAdminRight{
-  float: right;
-  margin-top: -585px;
-  margin-right: 5px;
-  height: auto;
-  max-width: 40%;
-}
-#sidebar.servicioAdminRight{
-  float: right;
-  margin-top: -140px;
-  margin-right: 5px;
+  min-height: 70px;
   height: auto;
   max-width: 40%;
 }
 #sidebar.liberacionLeft{
-  height: 830px;
+  min-height: 830px;
+  height: auto;
   margin-left: 15px;
   max-width: 40%;
 }
 #sidebar.liberacionRight{
   float: right;
-  margin-top: -830px;
+  margin-top: -862px;
   margin-right: 5px;
-  height: 250px;
+  min-height: 220px;
+  height: auto;
   max-width: 40%;
 }
 #sidebar.liberacionCenter{
-  margin-left: 580px;
-  margin-top: -848px;
-  height: 715px;
+  margin-left: 518px;
+  margin-top: -862px;
+  min-height: 180px;
+  height: auto;
   max-width: 24%;
 }
 #sidebar.bajaLeft{
-  height: 830px;
+  min-height: 900px;
+  height: auto;
   margin-left: 15px;
   max-width: 40%;
 }
 #sidebar.bajaRight{
   float: right;
-  margin-top: -862px;
+  margin-top: -932px;
   margin-right: 5px;
-  height: 250px;
+  min-height: 220px;
+  height: auto;
   max-width: 40%;
 }
 #sidebar.bajaCenter{
-  margin-left: 580px;
-  margin-top: -863px;
-  height: 685px;
+  margin-left: 518px;
+  margin-top: -933px;
+  min-height: 160px;
+  height: auto;
   max-width: 24%;
 }
 #sidebar.servicioLeft{
-  height: 250px;
+  min-height: 250px;
+  height: auto;
   margin-left: 15px;
   max-width: 40%;
 }
 #sidebar.servicioRight{
   float: right;
-  margin-top: -250px;
+  margin-top: -282px;
   margin-right: 5px;
-  height: 250px;
+  min-height: 220px;
+  height: auto;
   max-width: 40%;
 }
 #sidebar.servicioCenter{
-  margin-left: 580px;
-  margin-top: -268px;
-  height: 250px;
+  margin-left: 528px;
+  margin-top: -283px;
+  min-height: 160px;
+  height: auto;
   max-width: 24%;
 }
 .warning{
@@ -429,10 +427,10 @@ div {
   text-transform: uppercase;
   font-size: 13px;
   text-decoration: none;
-  max-width: 120px;
+  max-width: 1220px;
   transition: 200ms;
   border: none;
-  border-radius: 1px;
+  border-radius: 2px;
   cursor: pointer;
   float: center;
   

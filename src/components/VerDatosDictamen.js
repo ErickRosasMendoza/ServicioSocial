@@ -60,10 +60,10 @@ class VerDatosDictamen extends React.Component{
                         }
                         })()}
                             <div className="text_login">
-                                Procentaje de creditos: {this.state.dictamen.porcentajeCreditos}
+                                <strong>Procentaje de creditos:</strong> {this.state.dictamen.porcentajeCreditos}%
                             </div>
                             <div className="text_login">
-                                Semestre: {this.state.dictamen.semestre}
+                                <strong>Semestre:</strong> {this.state.dictamen.semestre}
                             </div>
                             <br/>
                             <PdfDictamenAlumno
@@ -80,7 +80,7 @@ class VerDatosDictamen extends React.Component{
                 <div className="center">
                         <div id="sidebar" className="dictamenCenter">
                             <div className="text_login">
-                                No tienes datos disponibles, registralos para empezar con tu documentación de DICTAMEN DE MENOS DE 70% DE CREDITOS.
+                                <strong>No tienes datos disponibles, registralos para empezar con tu documentación de DICTAMEN DE MENOS DE 70% DE CREDITOS.</strong>
                             </div>
                         </div>          
             </div>
