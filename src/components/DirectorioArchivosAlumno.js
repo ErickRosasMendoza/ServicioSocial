@@ -61,7 +61,7 @@ class DirectorioArchivosAlumno extends Component{
 
                         {(() => {  
                         switch (this.state.idTramite){
-                        /*case 1:
+                        case 1:
                             return (
                                 <AlumnoDictamen
                                 id = {this.state.idAlumno}/>
@@ -82,7 +82,7 @@ class DirectorioArchivosAlumno extends Component{
                             return(
                                 <AlumnoServicio
                                 id = {this.state.idAlumno}/>
-                            )*/
+                            )
                          default: 
                             return(
                                 <AlumnoDetalle
