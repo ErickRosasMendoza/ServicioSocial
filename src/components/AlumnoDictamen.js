@@ -17,6 +17,8 @@ class AlumnoDictamen extends React.Component{
             this.getDictamen();
             this.getAlumno();
         }
+       
+        
         getAlumno = () => {
             axios.get(this.url +"alumno/find/"+ this.props.id)
             .then(response => {
@@ -132,7 +134,6 @@ class AlumnoDictamen extends React.Component{
                             <td className="table_lista">Cargando...</td>
                         </tr>
                     </tbody>
-                    <br/>
                 </div>
             );
         }

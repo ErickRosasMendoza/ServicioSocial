@@ -97,7 +97,7 @@ class DirectorioArchivosAlumno extends Component{
                 <tbody>
                     <tr>
                         <tr>
-                        <td className="table_lista"> <button  class = "btn" onClick={this.tramite1} >Docuementacion Dictamen de 70%</button></td>
+                        <td className="table_lista" > <button  class = "btn lista" onClick={this.tramite1} >Docuementacion Dictamen de 70%</button></td>
                         </tr>
                         <tr> 
                         <td className="table_lista"><button  class = "btn" onClick={this.tramite2} >Docuementacion Liberacion Extemporanea</button></td>
