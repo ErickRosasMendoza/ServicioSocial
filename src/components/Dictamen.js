@@ -17,7 +17,6 @@ class Dictamen extends React.Component {
     url = Global.url;
 
     creditosRef = React.createRef();
-    semestreRef = React.createRef();
 
     state = {
         idAlumno: cookies.get('idAlumno'),
@@ -30,7 +29,7 @@ class Dictamen extends React.Component {
         this.setState({
             dictamen: {
                 porcentajeCreditos: this.creditosRef.current.value,
-                semestre: this.semestreRef.current.value,
+                semestre: "SEPTIMO",
                 estado: "NUEVO",
                 idAlumno: this.state.idAlumno,
                 idDictamen: this.state.idAlumno
@@ -81,14 +80,6 @@ class Dictamen extends React.Component {
                                             break;
                                     }
                                 })()}       
-                            </div>
-                            <div>
-                                <label htmlFor="semestre" className="text_login">Semestre</label>
-                                <select name="semestre" className="input_login" ref={this.semestreRef} onChange={this.changeState}>
-                                    <option value="SEPTIMO">SEPTIMO</option>
-                                    <option value="OCTAVO">OCTAVO</option>
-                                    <option value="NOVENO">NOVENO</option>
-                                    </select>
                             </div>
                             <br/>
                                 <button className = "btn"  onClick = {this.saveDictamen}>Aceptar</button>
