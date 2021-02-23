@@ -36,6 +36,7 @@ class CrearAlumno extends React.Component {
         idUsuario: cookies.get('idUsuario'),
         statusEmail: null,
         statusContraseña: null,
+<<<<<<< HEAD
         contraseñaConfirmar: "false",
         usuario:{
             email:"false"
@@ -44,6 +45,16 @@ class CrearAlumno extends React.Component {
     
         status: "null",
         emailExist: null
+=======
+        statusConfirmar: null,
+        usuario: {},
+        email: "",
+        contraseña: "",
+        status: null,
+        searchEmail: {},
+        emailExistente: null,
+        ayuda: "false"
+>>>>>>> acde98aeb3bfea9752fb6f06605454a60335089b
     };
 
 
@@ -57,6 +68,7 @@ class CrearAlumno extends React.Component {
               /* contraseña: this.contraseñaRef.current.value,
                 tipoUsuario: "false"*/
             },
+<<<<<<< HEAD
            // confirmarContraseña: this.confirmarContraseñaRef.current.value,
             
         });
@@ -168,11 +180,98 @@ class CrearAlumno extends React.Component {
     }
 
 
+=======
+            confirmarContraseña: md5(this.confirmarContraseñaRef.current.value),
+            contraseña: this.contraseñaRef.current.value,
+            email: this.emailRef.current.value,
+            emailExistente: null,
+        });
+       // console.log(this.state.usuario.email);
+        //console.log(this.state.usuario.contraseña)    
+    }
+
+    saveAlumno = async (e) => {
+        this.changeState();
+        if(this.state.email && this.state.email !== null &&this.state.email !== undefined){
+            if(this.state.contraseña && this.state.contraseña !== null && this.state.contraseña !== undefined){
+                if(this.confirmarContraseñaRef.current.value && this.confirmarContraseñaRef.current.value !== null && this.confirmarContraseñaRef.current.value !== undefined){
+                    if(this.state.usuario.contraseña == this.state.confirmarContraseña){
+                        axios.get(this.url+"usuario/findEmail/"+this.state.email)
+                        .then(res =>{
+                            this.setState({
+                                emailExistente: "true",
+                                ayuda: "true",
+                                statusEmail: "true",
+                                statusContraseña: "true",
+                                statusConfirmar: "true"
+                            });
+                        })
+                        .catch(error =>{
+                            this.setState({
+                                emailExistente: "false"
+                            });
+                        })
+                        .then(res => {
+                            if(this.state.emailExistente == "false"){
+                                if(this.state.ayuda == "false"){
+                                    axios.post(this.url+"usuario/save", this.state.usuario)
+                                    .then(res =>{
+                                        this.setState({
+                                            status: "true"
+                                        });
+                                    });
+                                }else{
+                                    this.setState({
+                                        ayuda: "false",
+                                        emailExistente: "true",
+                                        statusConfirmar: "true",
+                                        statusContraseña: "true",
+                                        statusEmail: "true"
+                                    });
+                                }
+                            }else{
+                                this.setState({
+                                    emailExistente: "true",
+                                    ayuda: "false"
+                                });
+                            }//Fin de else Email Existe
+                        })
+                    }else{
+                        this.setState({
+                            statusConfirmar: "false",
+                            statusContraseña: "true",
+                            statusEmail: "true"
+                        });
+                    }//Fin de else comparando contraseñas
+                }else{
+                    this.setState({
+                        statusConfirmar: "false",
+                        statusContraseña: "true",
+                        statusEmail: "true"
+                    });
+                }//Fin de else confirmar contraseña
+            }else{
+                this.setState({
+                    statusContraseña: "false",
+                    statusEmail: "true"
+                });
+            }//Fin de else contraseña
+        }else{
+            this.setState({
+                statusEmail: "false"
+            });
+        }//Fin de else email
+    }//fin de saveAlumno
+   
+>>>>>>> acde98aeb3bfea9752fb6f06605454a60335089b
     render() {
         if(this.state.status === 'true'){
            // alert("USUARIO REGISTRADO CON EXITO")
             return <Redirect to = "/IniciarSesion"></Redirect>
+<<<<<<< HEAD
             
+=======
+>>>>>>> acde98aeb3bfea9752fb6f06605454a60335089b
         }
 
         return (
@@ -186,7 +285,7 @@ class CrearAlumno extends React.Component {
                         <div>     
                             <img src={logo2} id="logo2" alt="politecnico" />
                             <br/> <br/> 
-                            <a className = "text-logo"><strong>Departamento de Extensión</strong>  </a>
+                            <a className = "text-logo"><strong>Departamento de Extensión</strong></a>
                             <a className = "text-logo"><strong>y Apoyos Educativos</strong></a>
                             </div>
                             <div className = "input-border">
@@ -203,7 +302,11 @@ class CrearAlumno extends React.Component {
                                 }
                             })()}
                             {(() => {
+<<<<<<< HEAD
                                 switch(this.state.emailExist){   
+=======
+                                switch(this.state.emailExistente){   
+>>>>>>> acde98aeb3bfea9752fb6f06605454a60335089b
                                     case "true":
                                     return (
                                     <a className="warning">¡Este correo ya fue registrado!</a>
@@ -229,8 +332,13 @@ class CrearAlumno extends React.Component {
                                 })()}
                             </div>
                             <div>
+<<<<<<< HEAD
                                 <label htmlFor="contraseñaconfirm" className="text_login">Confirma Contraseña</label>
                                 <input type="password" className="input_login" name="contarseñaconfirm" ref={this.confirmarContraseñaRef} placeholder="Confirma aquí tu contraseña" onChange={this.changeStateContraseña}/>
+=======
+                                <label htmlFor="contraseñaConfirm" className="text_login">Confirma Contraseña</label>
+                                <input type="password" className="input_login" name="contraseñaConfirm" ref={this.confirmarContraseñaRef} placeholder="Confirma aquí tu contraseña" onChange={this.changeState}/>
+>>>>>>> acde98aeb3bfea9752fb6f06605454a60335089b
                                 {(() => {
                                 switch(this.state.contraseñaConfirmar){   
                                     case "false":
@@ -242,7 +350,7 @@ class CrearAlumno extends React.Component {
                                 })()}
                             </div>
                             <br/>
-                            <button  className = "btn" onClick = {this.saveUsuario}>Aceptar</button>
+                            <button  className = "btn" onClick = {this.saveAlumno}>Aceptar</button>
                         </div>
 		    </div>
         );

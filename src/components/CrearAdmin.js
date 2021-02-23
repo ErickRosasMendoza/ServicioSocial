@@ -15,11 +15,13 @@ class CrearAdmin extends React.Component {
 
     state = {
         usuario: {},
+        contraseña: "",
         statusEmail: null,
         statusContraseña: null,
         status: "null",
         searchEmail: {},
-        emailExist: null
+        emailExistente: null,
+        ayuda: "false"
     };
 
     changeState = () => {
@@ -28,64 +30,67 @@ class CrearAdmin extends React.Component {
                 email: this.emailRef.current.value,
                 contraseña: md5(this.contraseñaRef.current.value),
                 tipoUsuario: "true"
-            }
+            },
+            contraseña: this.contraseñaRef.current.value
         });
        // console.log(this.state + "Cambiando datos a usuario");
     }
 
-    searchEmail = () => {
-        axios.get(this.url + "usuario/findEmail/" + this.emailRef.current.value)
-        .then(res => {
-            this.setState({
-                searchEmail: res.data
-            })
-        })
-        .then(res => {
-            this.setState({
-                emailExist: "false"
-            })
-        })
-        .catch(error => {
-            this.setState({
-                emailExist: "true"
-            })
-        })
-    }//Fin de SearchEmail
-
-    saveUsuario = (e) => {
-        this.changeState();
-        this.searchEmail();
-        if(this.state.usuario.email && this.state.usuario.email != null && this.state.usuario.email != undefined){
-            if(this.state.searchEmail == null || this.state.searchEmail == undefined){
-                if(this.contraseñaRef.current.value && this.contraseñaRef.current.value != null && this.contraseñaRef.current.value != undefined){
-                    axios.post(this.url+"usuario/save", this.state.usuario)
-                    .then(res => {
-                        this.setState({
+    saveAdmin = () =>{
+        if(this.state.usuario.email && this.state.usuario.email !== null && this.state.usuario.email !== undefined){
+            if(this.state.contraseña && this.state.contraseña !== null && this.state.contraseña !== undefined){
+                axios.get(this.url+"usuario/findEmail/"+this.state.usuario.email)
+                .then(res => {
+                    this.setState({
+                        emailExistente: "true",
+                        ayuda: "true",
+                        statusContraseña: "true",
+                        statusEmail: "true"
+                    });
+                })
+                .catch(error =>{
+                    this.setState({
+                        emailExistente: "false"
+                    });
+                })
+                .then(res => {
+                    if(this.state.emailExistente == "false"){
+                        if(this.state.ayuda == "false"){
+                            axios.post(this.url+"usuario/save", this.state.usuario)
+                            .then(res =>{
+                                this.setState({
                                     status: "true"
                                 });
-                            })
+                            });
+                        }else{
+                            this.setState({
+                                ayuda: "false",
+                                emailExistente: "true",
+                                statusContraseña: "true",
+                                statusEmail: "true"
+                            });
+                        }
                     }else{
-                        this.setState(
-                            {
-                                statusContraseña: "false"
-                            }
-                        );
-                    }//Fin de else Contraseña
+                        this.setState({
+                            emailExistente: "true",
+                            ayuda: "false"
+                        });
+                    }//Fin de else Email Existe
+                })
             }else{
-                this.setState(
-                    {
-                        emailExist: "false"
-                    }
-                );
-            }//Fin de else email existente
+                this.setState({
+                    statusContraseña: "false",
+                    statusEmail: "true"
+                });
+            }//Fin de else contraseña
         }else{
-            this.setState(
-                {
-                    statusEmail: "false"
-                }
-            );
-        }//Fin de else Email
-    }//Fin de Save Usuario
+            this.setState({
+                statusEmail: "false",
+                emailExistente: "false",
+            });
+        }//Fin de else correo
+    }//Fin de saveAdmin
+
     render() {
         if(this.state.status == 'true'){
             return <Redirect to = "/Lista"></Redirect>
@@ -110,8 +115,8 @@ class CrearAdmin extends React.Component {
                                     }
                                 })()}  
                                 {(() => {
-                                    switch(this.state.emailExist){   
-                                        case "false":
+                                    switch(this.state.emailExistente){   
+                                        case "true":
                                         return (
                                         <a className="warning">¡Este correo ya fue registrado!</a>
                                         );
@@ -137,7 +142,7 @@ class CrearAdmin extends React.Component {
                                     })()}
                             </div>
                             <br/>
-                            <button className = "btn" onClick = {this.saveUsuario}>Aceptar</button>
+                            <button className = "btn" onClick = {this.saveAdmin}>Aceptar</button>
                           </div>
             </div>
         );

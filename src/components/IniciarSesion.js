@@ -161,7 +161,7 @@ class IniciarSesion extends React.Component {
                     title="Iniciar Sesión"
                     size="slider-small"
                 />
-                 <Link to={'./Registrarse'} class="registrarse">Registrarse</Link>
+                 <Link to={'./Registrarse'} className="registrarse">Registrarse</Link>
                      <div id="sidebar">
                      <div>
                              <img src={logo2} id="logo2" alt="politecnico" />
@@ -199,7 +199,7 @@ class IniciarSesion extends React.Component {
                          }
                       })()}
                             <br/>
-                           <button class="btn" onClick={this.login} >Aceptar</button>  
+                           <button className="btn" onClick={this.login} >Aceptar</button>  
                         
 
                             
