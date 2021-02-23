@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Global from '../Global';
+import DirectorioAdmin from './DirectorioAdmin'
+import DirectorioArchivosAlumno from './DirectorioArchivosAlumno'
 
 class AlumnoDictamen extends React.Component{
 

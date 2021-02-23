@@ -83,10 +83,6 @@ class AlumnoBaja extends React.Component{
                                 })()}</td>
                     </tr>
                 </tbody>
-<<<<<<< HEAD
-                <div id="sidebar" className="dictamenAdminCenter">
-                        Este alumno aun no tiene archivos registrados
-=======
                 <div id="sidebar" className="archivosAdminRight">
                     <div className="text_login">
                         <strong>Tipo de Baja:</strong> {this.state.tipoBaja.tipoDeBaja}
@@ -102,7 +98,6 @@ class AlumnoBaja extends React.Component{
                     </div>
                     <div className="text_login">
                         <strong>Fehcta de Término:</strong> {this.state.tipoBaja.fechaTermino}
->>>>>>> 606a5068649145934465a3dc93964b724d453062
                     </div>
                 </div>
             </div>
