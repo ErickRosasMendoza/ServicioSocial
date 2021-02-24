@@ -9,7 +9,6 @@ class ActualizarComentario extends React.Component {
     comentarioRef=React.createRef();
 
     state = {
-        idAlumno: this.props.id,
         status: null,
         lista: {},
         comentario: "",
@@ -37,7 +36,8 @@ class ActualizarComentario extends React.Component {
 
     cancelComentario = () => {
         this.setState({
-            comentario: "false"
+            comentario: "false",
+            statusComentario: "true"
         })
     }
 
@@ -47,7 +47,8 @@ class ActualizarComentario extends React.Component {
             axios.patch(this.url+"lista/update", this.state.lista)
             .then(res =>{
                 this.setState({
-                    status: "true"
+                    status: "true",
+                    statusComentario: "true"
                 });
             });
         }else{
@@ -69,8 +70,8 @@ class ActualizarComentario extends React.Component {
                                     case "true":
                                     return (
                                             <div className="table_watch">
-                                                <label htmlFor="comentario" className="text_login">Actualizar Comentario</label>
-                                                <input type="text" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState}/>
+                                                <label htmlFor="comentario">Actualizar Comentario</label>
+                                                <textarea className="table_watch_text" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState}/>
                                                 {(() => {
                                                 switch(this.state.statusComentario){   
                                                     case "false":
@@ -82,11 +83,8 @@ class ActualizarComentario extends React.Component {
                                                         break;
                                                 }
                                                 })()}
-                                                <br/>
                                                 <button className="btn_join" onClick={this.cambiarComentario}>Actualizar</button>
-                                                <br/>
                                                 <button id="btn_delete" onClick={this.cancelComentario}>Cancelar</button>
-                                                <br/><br/>
                                                 </div>
                                                     );
                                                 break;
