@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {Component} from 'react';
+=======
+ import React, {Component} from 'react';
+>>>>>>> 73e3af22bf6117020650c327ac2e72e3886e13dd
 import axios from 'axios';
 import Slider from './Slider';
 import { Link, Switch } from 'react-router-dom';
