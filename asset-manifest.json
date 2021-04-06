@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/ServicioSocial%E2%80%8B/static/css/main.b173601f.chunk.css",
+    "main.js": "/ServicioSocial%E2%80%8B/static/js/main.5548e60f.chunk.js",
+    "main.js.map": "/ServicioSocial%E2%80%8B/static/js/main.5548e60f.chunk.js.map",
+    "runtime-main.js": "/ServicioSocial%E2%80%8B/static/js/runtime-main.cfaaffac.js",
+    "runtime-main.js.map": "/ServicioSocial%E2%80%8B/static/js/runtime-main.cfaaffac.js.map",
+    "static/js/2.1d09c77d.chunk.js": "/ServicioSocial%E2%80%8B/static/js/2.1d09c77d.chunk.js",
+    "static/js/2.1d09c77d.chunk.js.map": "/ServicioSocial%E2%80%8B/static/js/2.1d09c77d.chunk.js.map",
+    "static/js/3.fa3fde46.chunk.js": "/ServicioSocial%E2%80%8B/static/js/3.fa3fde46.chunk.js",
+    "static/js/3.fa3fde46.chunk.js.map": "/ServicioSocial%E2%80%8B/static/js/3.fa3fde46.chunk.js.map",
+    "static/js/4.0e16378b.chunk.js": "/ServicioSocial%E2%80%8B/static/js/4.0e16378b.chunk.js",
+    "static/js/4.0e16378b.chunk.js.map": "/ServicioSocial%E2%80%8B/static/js/4.0e16378b.chunk.js.map",
+    "static/js/5.39a6f955.chunk.js": "/ServicioSocial%E2%80%8B/static/js/5.39a6f955.chunk.js",
+    "static/js/5.39a6f955.chunk.js.map": "/ServicioSocial%E2%80%8B/static/js/5.39a6f955.chunk.js.map",
+    "index.html": "/ServicioSocial%E2%80%8B/index.html",
+    "precache-manifest.562ca455541e976a780a787212c689ec.js": "/ServicioSocial%E2%80%8B/precache-manifest.562ca455541e976a780a787212c689ec.js",
+    "service-worker.js": "/ServicioSocial%E2%80%8B/service-worker.js",
+    "static/css/main.b173601f.chunk.css.map": "/ServicioSocial%E2%80%8B/static/css/main.b173601f.chunk.css.map",
+    "static/js/2.1d09c77d.chunk.js.LICENSE.txt": "/ServicioSocial%E2%80%8B/static/js/2.1d09c77d.chunk.js.LICENSE.txt",
+    "static/js/3.fa3fde46.chunk.js.LICENSE.txt": "/ServicioSocial%E2%80%8B/static/js/3.fa3fde46.chunk.js.LICENSE.txt",
+    "static/js/4.0e16378b.chunk.js.LICENSE.txt": "/ServicioSocial%E2%80%8B/static/js/4.0e16378b.chunk.js.LICENSE.txt",
+    "static/js/5.39a6f955.chunk.js.LICENSE.txt": "/ServicioSocial%E2%80%8B/static/js/5.39a6f955.chunk.js.LICENSE.txt",
+    "static/media/esimelogo.png": "/ServicioSocial%E2%80%8B/static/media/esimelogo.1c43ea00.png",
+    "static/media/ipnLogo.png": "/ServicioSocial%E2%80%8B/static/media/ipnLogo.03ce8084.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cfaaffac.js",
+    "static/js/3.fa3fde46.chunk.js",
+    "static/css/main.b173601f.chunk.css",
+    "static/js/main.5548e60f.chunk.js"
+  ]
+}
